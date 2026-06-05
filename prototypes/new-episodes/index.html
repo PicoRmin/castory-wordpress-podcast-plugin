@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>New Episodes | PodStream</title>
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+<div class="app-container">
+
+  <!-- Left Sidebar -->
+  <aside class="sidebar left-sidebar">
+    <div class="profile-card glass-card">
+      <img src="assets/avatars/user1.png" alt="User Avatar" class="avatar">
+      <div class="user-info">
+        <h4>Jane Doe <span class="badge premium">Premium</span></h4>
+      </div>
+    </div>
+    <nav class="nav-menu">
+      <ul>
+        <li>Home</li>
+        <li>Podcasts</li>
+        <li>Trending</li>
+        <li>Library</li>
+        <li>Watch Later</li>
+        <li>Creators</li>
+        <li>Topics</li>
+      </ul>
+    </nav>
+    <div class="upgrade-card glass-card gradient-card">
+      <h4>Upgrade to Pro</h4>
+      <p>Unlock premium features</p>
+      <button class="btn-gradient">Upgrade</button>
+    </div>
+    <div class="mini-player glass-card">
+      <img src="assets/images/episode1.jpg" alt="Episode" class="player-thumb">
+      <div class="player-info">
+        <p class="title">AI Revolution</p>
+        <p class="author">TechTalk</p>
+      </div>
+      <button class="play-btn">▶</button>
+    </div>
+  </aside>
+
+  <!-- Main Content -->
+  <main class="main-content">
+    <!-- Hero Section -->
+    <section class="hero">
+      <div class="hero-text">
+        <h1>New Episodes</h1>
+        <p>Discover the latest podcasts across all topics.</p>
+      </div>
+      <div class="hero-illustration">
+        <img src="assets/images/mic_waveform.png" alt="Microphone Illustration">
+      </div>
+    </section>
+
+    <!-- Filter Pills -->
+    <div class="filter-pills">
+      <button class="pill active">All</button>
+      <button class="pill">Video</button>
+      <button class="pill">Audio</button>
+      <button class="pill">Technology</button>
+      <button class="pill">Business</button>
+      <button class="pill">Health</button>
+      <button class="pill">AI</button>
+      <button class="pill">Design</button>
+      <button class="pill">Marketing</button>
+      <button class="pill">More</button>
+    </div>
+
+    <!-- Episode List -->
+    <section class="episode-list">
+      <div class="episode-card glass-card">
+        <img src="assets/images/episode1.jpg" alt="Episode" class="thumb">
+        <div class="episode-info">
+          <h3 class="title">AI Revolution: Future of Work</h3>
+          <p class="author">TechTalk <span class="verified">✔</span></p>
+          <div class="meta">
+            <span class="badge audio">Audio</span>
+            <span>45 min</span>
+            <span>2h ago</span>
+          </div>
+        </div>
+        <div class="actions">
+          <button class="bookmark">★</button>
+          <button class="play-btn">▶</button>
+          <button class="more">⋮</button>
+        </div>
+      </div>
+      <!-- Repeat episode cards as needed -->
+    </section>
+
+    <!-- Pagination -->
+    <div class="pagination">
+      <button class="page active">1</button>
+      <button class="page">2</button>
+      <button class="page">3</button>
+    </div>
+  </main>
+
+  <!-- Right Sidebar -->
+  <aside class="sidebar right-sidebar">
+    <div class="filter-widget glass-card">
+      <h4>Filter Episodes</h4>
+      <div>
+        <label>Type:</label>
+        <input type="radio" name="type" checked>All
+        <input type="radio" name="type">Audio
+        <input type="radio" name="type">Video
+      </div>
+      <div>
+        <label>Duration:</label>
+        <input type="radio" name="duration" checked>Any
+        <input type="radio" name="duration">Short
+        <input type="radio" name="duration">Long
+      </div>
+      <div>
+        <label>Published:</label>
+        <input type="radio" name="published" checked>Any
+        <input type="radio" name="published">Last 24h
+        <input type="radio" name="published">Last Week
+      </div>
+    </div>
+
+    <div class="top-creators glass-card">
+      <h4>Top Creators</h4>
+      <div class="creator">
+        <img src="assets/avatars/creator1.png" alt="Creator" class="avatar-small">
+        <p>John Smith <span class="followers">10k</span></p>
+      </div>
+      <div class="creator">
+        <img src="assets/avatars/creator2.png" alt="Creator" class="avatar-small">
+        <p>Emily White <span class="followers">8.5k</span></p>
+      </div>
+    </div>
+
+    <div class="newsletter glass-card gradient-card">
+      <h4>Subscribe to our newsletter</h4>
+      <input type="email" placeholder="Enter your email" id="newsletter-email">
+      <button id="subscribe-btn" class="btn-gradient">Subscribe</button>
+      <p id="newsletter-msg"></p>
+    </div>
+  </aside>
+</div>
+
+<script src="js/main.js"></script>
+</body>
+</html>

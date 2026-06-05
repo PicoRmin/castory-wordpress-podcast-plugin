@@ -1,0 +1,493 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta
+            name="description"
+            content="Trending Audio Episodes - Premium Podcast Streaming Platform" />
+        <title>Trending Audio Episodes | PodStream</title>
+
+        <link rel="stylesheet" href="styles.css" />
+
+        <link
+            rel="preconnect"
+            href="https://fonts.googleapis.com" />
+        <link
+            rel="preconnect"
+            href="https://fonts.gstatic.com"
+            crossorigin />
+        <link
+            href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap"
+            rel="stylesheet" />
+    </head>
+    <body>
+
+        <div class="app">
+
+            <!-- Mobile Menu -->
+            <button class="mobile-menu" id="mobileMenu">
+                ☰
+            </button>
+
+            <!-- LEFT SIDEBAR -->
+            <aside class="sidebar" id="sidebar">
+
+                <div class="logo">
+                    <div class="wave-icon">
+                        <span></span><span></span><span></span><span></span>
+                    </div>
+                    <h2>PodStream</h2>
+                </div>
+
+                <nav class="nav-menu">
+
+                    <a href="#" class="nav-item">
+                        <span>⌂</span>
+                        Home
+                    </a>
+
+                    <a href="#" class="nav-item">
+                        <span>◈</span>
+                        Podcasts
+                    </a>
+
+                    <a href="#" class="nav-item active">
+                        <span>🔥</span>
+                        Trending
+                    </a>
+
+                    <a href="#" class="nav-item">
+                        <span>▣</span>
+                        Library
+                    </a>
+
+                    <a href="#" class="nav-item">
+                        <span>⏱</span>
+                        Watch Later
+                    </a>
+
+                    <a href="#" class="nav-item">
+                        <span>✦</span>
+                        Creators
+                    </a>
+
+                    <a href="#" class="nav-item">
+                        <span>#</span>
+                        Topics
+                    </a>
+
+                </nav>
+
+                <div class="profile-card glass">
+                    <img
+                        src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=300"
+                        alt="Emma Watson" />
+                    <div>
+                        <h4>Emma Watson</h4>
+                        <p>Premium Member</p>
+                    </div>
+                    <span>›</span>
+                </div>
+
+                <div class="upgrade-card">
+                    <div class="crown">👑</div>
+                    <h3>Unlock Premium</h3>
+                    <p>
+                        Access exclusive podcasts, ad-free streaming and offline
+                        downloads.
+                    </p>
+
+                    <button>Upgrade Now</button>
+                    <a href="#">View Plans</a>
+                </div>
+
+                <div class="mini-player glass">
+
+                    <img
+                        src="https://images.unsplash.com/photo-1516280440614-37939bbacd81?w=500"
+                        alt />
+
+                    <div class="mini-content">
+                        <h4>The AI Revolution</h4>
+                        <p>Sarah Chen</p>
+
+                        <div class="progress">
+                            <span></span>
+                        </div>
+                    </div>
+
+                    <button class="play-mini">▶</button>
+
+                </div>
+
+                <div class="player-controls">
+                    <button>🔀</button>
+                    <button>⏮</button>
+                    <button class="play-main">▶</button>
+                    <button>⏭</button>
+                    <button>🔁</button>
+                </div>
+
+            </aside>
+
+            <!-- MAIN -->
+            <main class="main-content">
+
+                <!-- HEADER -->
+                <header class="topbar">
+
+                    <div class="search-box">
+                        <span>🔍</span>
+                        <input
+                            type="text"
+                            placeholder="Search podcasts, episodes, creators..." />
+                        <kbd>/</kbd>
+                    </div>
+
+                    <div class="header-actions">
+
+                        <button class="notification-btn">
+                            🔔
+                            <span class="badge"></span>
+                        </button>
+
+                        <button class="create-btn">
+                            + Create ▼
+                        </button>
+
+                    </div>
+
+                </header>
+
+                <!-- BREADCRUMB -->
+                <div class="breadcrumb">
+                    Home > Trending > Audio Episodes
+                </div>
+
+                <!-- HERO -->
+                <section class="hero glass">
+
+                    <div class="hero-content">
+
+                        <span class="hero-tag">
+                            #1 Podcast Discovery Hub
+                        </span>
+
+                        <h1>Trending Audio Episodes</h1>
+
+                        <p>
+                            Listen to the most popular and trending audio
+                            podcasts right now.
+                        </p>
+
+                    </div>
+
+                    <div class="hero-visual">
+
+                        <div class="waves">
+                            <span></span><span></span><span></span>
+                            <span></span><span></span><span></span>
+                            <span></span><span></span>
+                        </div>
+
+                        <div class="headphones">
+                            🎧
+                        </div>
+
+                    </div>
+
+                </section>
+
+                <!-- EPISODES SECTION -->
+                <section class="episodes-wrapper glass">
+
+                    <div class="section-top">
+
+                        <div class="filters">
+
+                            <button class="pill active">All</button>
+                            <button class="pill">Technology</button>
+                            <button class="pill">Business</button>
+                            <button class="pill">Health</button>
+                            <button class="pill">Mindset</button>
+                            <button class="pill">Marketing</button>
+                            <button class="pill">Crypto</button>
+                            <button class="pill">Design</button>
+                            <button class="pill">Stories</button>
+
+                        </div>
+
+                        <div class="sorting">
+                            <select>
+                                <option>Most Popular</option>
+                                <option>Latest</option>
+                            </select>
+
+                            <button>⚙</button>
+                        </div>
+
+                    </div>
+
+                    <!-- TABLE -->
+                    <div class="table-header">
+                        <span>Episode</span>
+                        <span>Podcast</span>
+                        <span>Duration</span>
+                        <span>Published</span>
+                        <span>Actions</span>
+                    </div>
+
+                    <div class="episodes-list">
+
+                        <!-- ROWS -->
+
+                        <div class="episode-row">
+
+                            <div class="episode-info">
+
+                                <div class="episode-thumb">
+                                    <img
+                                        src="https://images.unsplash.com/photo-1516321318423-f06f85e504b3?w=500"
+                                        alt>
+                                    <button>▶</button>
+                                </div>
+
+                                <div>
+                                    <h3>The Future of Artificial
+                                        Intelligence</h3>
+                                    <p>Exploring the next decade of machine
+                                        intelligence.</p>
+                                </div>
+
+                            </div>
+
+                            <div class="podcast-info">
+                                AI Insights ✓
+                                <small>Sarah Chen</small>
+                            </div>
+
+                            <div>52:45</div>
+                            <div>2 hours ago</div>
+
+                            <div class="actions">
+                                <button>🔖</button>
+                                <button>⋮</button>
+                            </div>
+
+                        </div>
+
+                        <div class="episode-row">
+                            <div class="episode-info">
+                                <div class="episode-thumb">
+                                    <img
+                                        src="https://images.unsplash.com/photo-1552664730-d307ca884978?w=500">
+                                    <button>▶</button>
+                                </div>
+                                <div>
+                                    <h3>Building Billion Dollar Startups</h3>
+                                    <p>Lessons from founders scaling
+                                        globally.</p>
+                                </div>
+                            </div>
+                            <div class="podcast-info">Founders Unplugged
+                                <small>David Ross</small></div>
+                            <div>48:12</div>
+                            <div>1 day ago</div>
+                            <div
+                                class="actions"><button>🔖</button><button>⋮</button></div>
+                        </div>
+
+                        <div class="episode-row">
+                            <div class="episode-info">
+                                <div class="episode-thumb">
+                                    <img
+                                        src="https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?w=500">
+                                    <button>▶</button>
+                                </div>
+                                <div>
+                                    <h3>Mindset Mastery</h3>
+                                    <p>Developing high-performance habits.</p>
+                                </div>
+                            </div>
+                            <div class="podcast-info">The Growth Mindset
+                                <small>Alex Reed</small></div>
+                            <div>41:30</div>
+                            <div>2 days ago</div>
+                            <div
+                                class="actions"><button>🔖</button><button>⋮</button></div>
+                        </div>
+
+                        <div class="episode-row">
+                            <div class="episode-info">
+                                <div class="episode-thumb">
+                                    <img
+                                        src="https://images.unsplash.com/photo-1639762681057-408e52192e55?w=500">
+                                    <button>▶</button>
+                                </div>
+                                <div>
+                                    <h3>Crypto & Web3 Explained</h3>
+                                    <p>The future of decentralized
+                                        ecosystems.</p>
+                                </div>
+                            </div>
+                            <div class="podcast-info">Web3 Daily <small>Chris
+                                    Parker</small></div>
+                            <div>39:18</div>
+                            <div>2 days ago</div>
+                            <div
+                                class="actions"><button>🔖</button><button>⋮</button></div>
+                        </div>
+
+                        <div class="episode-row">
+                            <div class="episode-info">
+                                <div class="episode-thumb">
+                                    <img
+                                        src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=500">
+                                    <button>▶</button>
+                                </div>
+                                <div>
+                                    <h3>Marketing in the New Era</h3>
+                                    <p>AI, creators and modern growth
+                                        channels.</p>
+                                </div>
+                            </div>
+                            <div class="podcast-info">Marketing School
+                                <small>Neil Harper</small></div>
+                            <div>44:22</div>
+                            <div>3 days ago</div>
+                            <div
+                                class="actions"><button>🔖</button><button>⋮</button></div>
+                        </div>
+
+                        <div class="episode-row">
+                            <div class="episode-info">
+                                <div class="episode-thumb">
+                                    <img
+                                        src="https://images.unsplash.com/photo-1455390582262-044cdead277a?w=500">
+                                    <button>▶</button>
+                                </div>
+                                <div>
+                                    <h3>The Power of Storytelling</h3>
+                                    <p>Why stories influence human behavior.</p>
+                                </div>
+                            </div>
+                            <div class="podcast-info">Story Matters <small>Emma
+                                    Blake</small></div>
+                            <div>55:04</div>
+                            <div>3 days ago</div>
+                            <div
+                                class="actions"><button>🔖</button><button>⋮</button></div>
+                        </div>
+
+                    </div>
+
+                    <div class="pagination">
+                        <button>&lt;</button>
+                        <button class="active">1</button>
+                        <button>2</button>
+                        <button>3</button>
+                        <button>4</button>
+                        <button>5</button>
+                        <button>...</button>
+                        <button>20</button>
+                        <button>&gt;</button>
+                    </div>
+
+                </section>
+
+            </main>
+
+            <!-- RIGHT SIDEBAR -->
+            <aside class="right-sidebar">
+
+                <div class="widget glass">
+
+                    <div class="widget-head">
+                        <h3>Filter Episodes</h3>
+                        <a href="#">Clear All</a>
+                    </div>
+
+                    <h4>Duration</h4>
+
+                    <label><input type="radio" checked> All Durations</label>
+                    <label><input type="radio"> Under 20 min</label>
+                    <label><input type="radio"> 20–40 min</label>
+                    <label><input type="radio"> 40–60 min</label>
+                    <label><input type="radio"> Over 60 min</label>
+
+                    <h4>Published</h4>
+
+                    <label><input type="radio" checked> All Time</label>
+                    <label><input type="radio"> Last 24 Hours</label>
+                    <label><input type="radio"> Last 7 Days</label>
+                    <label><input type="radio"> Last 30 Days</label>
+                    <label><input type="radio"> Last 3 Months</label>
+
+                </div>
+
+                <div class="widget glass">
+
+                    <div class="widget-head">
+                        <h3>Top Audio Podcasts</h3>
+                        <a href="#">View All</a>
+                    </div>
+
+                    <div class="ranking">
+                        <span>1</span><img
+                            src="https://images.unsplash.com/photo-1511379938547-c1f69419868d?w=300"><div><h5>The
+                                Daily Brief</h5><p>8.2M followers</p></div>
+                    </div>
+
+                    <div class="ranking">
+                        <span>2</span><img
+                            src="https://images.unsplash.com/photo-1487180144351-b8472da7d491?w=300"><div><h5>Huberman
+                                Lab</h5><p>7.4M followers</p></div>
+                    </div>
+
+                    <div class="ranking">
+                        <span>3</span><img
+                            src="https://images.unsplash.com/photo-1493225457124-a3eb161ffa5f?w=300"><div><h5>On
+                                Purpose</h5><p>6.7M followers</p></div>
+                    </div>
+
+                    <div class="ranking">
+                        <span>4</span><img
+                            src="https://images.unsplash.com/photo-1501612780327-45045538702b?w=300"><div><h5>The
+                                Tim Ferriss Show</h5><p>5.9M followers</p></div>
+                    </div>
+
+                    <div class="ranking">
+                        <span>5</span><img
+                            src="https://images.unsplash.com/photo-1459749411175-04bf5292ceea?w=300"><div><h5>The
+                                Joe Rogan Experience</h5><p>5.1M
+                                followers</p></div>
+                    </div>
+
+                </div>
+
+                <div class="premium-cta">
+
+                    <div class="particle p1"></div>
+                    <div class="particle p2"></div>
+
+                    <h2>Go Premium</h2>
+
+                    <p>
+                        Unlock exclusive episodes, downloads and ad-free
+                        listening.
+                    </p>
+
+                    <button>
+                        Upgrade Now
+                    </button>
+
+                </div>
+
+            </aside>
+
+        </div>
+
+        <script src="app.js"></script>
+    </body>
+</html>

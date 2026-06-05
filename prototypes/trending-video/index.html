@@ -1,0 +1,353 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>PodStream - Trending Video Episodes</title>
+
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link
+            href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
+            rel="stylesheet">
+
+        <link rel="stylesheet" href="styles.css">
+    </head>
+    <body>
+
+        <div class="app-layout">
+
+            <!-- SIDEBAR -->
+
+            <aside class="sidebar">
+
+                <div class="logo">
+                    <div class="logo-icon">
+                        🎙
+                    </div>
+                    <span>PodStream</span>
+                </div>
+
+                <nav class="sidebar-nav">
+
+                    <button class="nav-item">
+                        <span>🏠</span>
+                        <span>Home</span>
+                    </button>
+
+                    <button class="nav-item">
+                        <span>🎧</span>
+                        <span>Podcasts</span>
+                    </button>
+
+                    <button class="nav-item active">
+                        <span>🔥</span>
+                        <span>Trending</span>
+                    </button>
+
+                    <button class="nav-item">
+                        <span>📚</span>
+                        <span>Library</span>
+                    </button>
+
+                    <button class="nav-item">
+                        <span>⏰</span>
+                        <span>Watch Later</span>
+                    </button>
+
+                    <button class="nav-item">
+                        <span>🎤</span>
+                        <span>Creators</span>
+                    </button>
+
+                    <button class="nav-item">
+                        <span>🧠</span>
+                        <span>Topics</span>
+                    </button>
+
+                </nav>
+
+                <div class="sidebar-bottom">
+
+                    <div class="profile-card">
+
+                        <img
+                            src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=300"
+                            alt="User Avatar">
+
+                        <div>
+                            <h4>Emma Watson</h4>
+                            <p>Premium Member</p>
+                        </div>
+
+                        <span>›</span>
+
+                    </div>
+
+                    <div class="upgrade-card">
+
+                        <div class="upgrade-icon">👑</div>
+
+                        <h3>Upgrade to Premium</h3>
+
+                        <p>
+                            Unlock exclusive content, ad-free experience and
+                            more.
+                        </p>
+
+                        <button class="upgrade-btn">
+                            Upgrade Now
+                        </button>
+
+                        <a href="#">
+                            View Plans
+                        </a>
+
+                    </div>
+
+                </div>
+
+                <div class="mini-player">
+
+                    <img
+                        src="https://images.unsplash.com/photo-1478737270239-2f02b77fc618?w=600"
+                        alt>
+
+                    <div class="player-info">
+                        <h5>AI Revolution</h5>
+                        <p>Lex Friedman</p>
+
+                        <div class="player-progress">
+                            <div class="player-progress-fill"></div>
+                        </div>
+                    </div>
+
+                    <div class="player-controls">
+                        <button>⏮</button>
+                        <button class="play-btn">▶</button>
+                        <button>⏭</button>
+                    </div>
+
+                </div>
+
+            </aside>
+
+            <!-- MAIN -->
+
+            <main class="main-content">
+
+                <!-- MOBILE TOPBAR -->
+
+                <header class="mobile-header">
+                    <button>←</button>
+
+                    <div>
+                        <button>📺</button>
+                        <button>🔍</button>
+                    </div>
+                </header>
+
+                <!-- DESKTOP HEADER -->
+
+                <header class="header">
+
+                    <div class="search-box">
+
+                        <span>🔍</span>
+
+                        <input
+                            type="text"
+                            placeholder="Search podcasts, episodes, creators...">
+
+                    </div>
+
+                    <div class="header-actions">
+
+                        <button class="icon-btn">
+                            🔔
+                        </button>
+
+                        <button class="create-btn">
+                            + Create
+                        </button>
+
+                        <button class="icon-btn">
+                            ▼
+                        </button>
+
+                    </div>
+
+                </header>
+
+                <!-- BREADCRUMB -->
+
+                <div class="breadcrumb">
+                    Home
+                    <span>›</span>
+                    Trending
+                    <span>›</span>
+                    Video Episodes
+                </div>
+
+                <!-- HERO -->
+
+                <section class="hero">
+
+                    <div class="hero-content">
+
+                        <span class="hero-tag">
+                            Trending Now
+                        </span>
+
+                        <h1>
+                            Trending Video Episodes
+                        </h1>
+
+                        <p>
+                            Watch the most popular and trending video podcasts
+                            right now.
+                        </p>
+
+                    </div>
+
+                    <div class="hero-visual">
+
+                        <div class="hero-glow"></div>
+
+                        <div class="video-card">
+
+                            <div class="video-screen">
+                                ▶
+                            </div>
+
+                        </div>
+
+                        <div class="floating floating-1"></div>
+                        <div class="floating floating-2"></div>
+
+                    </div>
+
+                </section>
+
+                <!-- MOBILE TITLE -->
+
+                <section class="mobile-page-title">
+
+                    <h1>Trending Video Episodes</h1>
+
+                    <p>
+                        Discover the most popular video podcasts right now.
+                    </p>
+
+                </section>
+
+                <!-- FILTERS -->
+
+                <section class="filters">
+
+                    <div
+                        class="category-pills"
+                        id="categoryPills">
+                    </div>
+
+                    <div class="filter-actions">
+
+                        <select id="sortSelect">
+
+                            <option>
+                                Most Popular
+                            </option>
+
+                            <option>
+                                Newest
+                            </option>
+
+                            <option>
+                                Oldest
+                            </option>
+
+                        </select>
+
+                        <button class="filter-btn">
+                            ⚙ Filters
+                        </button>
+
+                    </div>
+
+                </section>
+
+                <!-- MOBILE SORT -->
+
+                <section class="mobile-sort">
+
+                    <select id="mobileSort">
+
+                        <option>
+                            Most Popular
+                        </option>
+
+                        <option>
+                            Newest
+                        </option>
+
+                    </select>
+
+                    <span id="episodeCount">
+                        0 Episodes
+                    </span>
+
+                </section>
+
+                <!-- EPISODES -->
+
+                <section
+                    class="episode-grid"
+                    id="episodeGrid">
+                </section>
+
+                <!-- PAGINATION -->
+
+                <div
+                    class="pagination"
+                    id="pagination">
+                </div>
+
+            </main>
+
+        </div>
+
+        <!-- MOBILE BOTTOM NAV -->
+
+        <nav class="bottom-nav">
+
+            <button>
+                🏠
+                <span>Home</span>
+            </button>
+
+            <button class="active">
+                🔥
+                <span>Trending</span>
+            </button>
+
+            <button>
+                📚
+                <span>Library</span>
+            </button>
+
+            <button>
+                🔔
+                <span>Notifications</span>
+            </button>
+
+            <button>
+                👤
+                <span>Profile</span>
+            </button>
+
+        </nav>
+
+        <script src="app.js"></script>
+
+    </body>
+</html>

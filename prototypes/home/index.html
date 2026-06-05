@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>PodStream - Premium Podcast Platform</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+<link rel="stylesheet"
+href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"/>
+
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="app">
+
+    <!-- SIDEBAR -->
+    <aside class="sidebar">
+        <div class="logo">
+            <i class="fa-solid fa-wave-square"></i>
+            <span>PodStream</span>
+        </div>
+
+        <nav class="nav">
+            <a class="nav-link active">
+                <i class="fa-solid fa-house"></i>
+                Home
+            </a>
+
+            <a class="nav-link">
+                <i class="fa-solid fa-podcast"></i>
+                Podcasts
+            </a>
+
+            <a class="nav-link">
+                <i class="fa-solid fa-fire"></i>
+                Trending
+            </a>
+
+            <a class="nav-link">
+                <i class="fa-solid fa-bookmark"></i>
+                Library
+            </a>
+
+            <a class="nav-link">
+                <i class="fa-solid fa-clock"></i>
+                Watch Later
+            </a>
+
+            <a class="nav-link">
+                <i class="fa-solid fa-user-group"></i>
+                Creators
+            </a>
+        </nav>
+
+        <div class="profile-card glass">
+            <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=300"
+                 alt="">
+            <div>
+                <h4>Emma Watson</h4>
+                <p>Premium Member</p>
+            </div>
+        </div>
+
+        <div class="upgrade-card glass">
+            <div class="premium-icon">
+                <i class="fa-solid fa-crown"></i>
+            </div>
+            <h3>Upgrade Pro</h3>
+            <p>Unlimited downloads and exclusive content.</p>
+            <button>Upgrade</button>
+        </div>
+    </aside>
+
+    <!-- MAIN -->
+    <main class="content">
+
+        <!-- TOPBAR -->
+        <header class="topbar">
+            <div class="search-box">
+                <i class="fa-solid fa-magnifying-glass"></i>
+                <input type="text" placeholder="Search podcasts..." id="searchInput">
+            </div>
+
+            <div class="header-actions">
+
+                <button class="icon-btn" id="notificationBtn">
+                    <i class="fa-solid fa-bell"></i>
+                    <span class="badge">3</span>
+                </button>
+
+                <button class="create-btn">
+                    <i class="fa-solid fa-plus"></i>
+                    Create
+                </button>
+            </div>
+        </header>
+
+        <!-- MOBILE CHIPS -->
+        <div class="chips">
+            <button class="chip active">Technology</button>
+            <button class="chip">Business</button>
+            <button class="chip">AI</button>
+            <button class="chip">Marketing</button>
+            <button class="chip">Startups</button>
+            <button class="chip">Design</button>
+        </div>
+
+        <!-- HERO -->
+        <section class="hero glass">
+
+            <div class="hero-overlay"></div>
+
+            <img id="heroImage"
+                src="https://images.unsplash.com/photo-1516321318423-f06f85e504b3?w=1600"
+                alt="">
+
+            <div class="hero-content">
+                <span class="featured-badge">FEATURED</span>
+                <span class="hero-category">Technology</span>
+
+                <h1 id="heroTitle">
+                    Future of Artificial Intelligence
+                </h1>
+
+                <p id="heroDescription">
+                    Discover how AI is reshaping business,
+                    creativity and the future of humanity.
+                </p>
+
+                <div class="hero-actions">
+                    <button class="primary-btn">
+                        Watch Now
+                    </button>
+
+                    <button class="secondary-btn">
+                        Save Later
+                    </button>
+                </div>
+
+                <div class="indicators">
+                    <span class="dot active"></span>
+                    <span class="dot"></span>
+                    <span class="dot"></span>
+                </div>
+            </div>
+
+        </section>
+
+        <!-- VIDEO -->
+        <section class="section">
+
+            <div class="section-header">
+                <h2>Trending Video Episodes</h2>
+                <a>View All</a>
+            </div>
+
+            <div class="episode-grid horizontal-scroll">
+
+                <div class="episode-card glass">
+                    <div class="thumb">
+                        <img src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?w=800">
+                        <span class="duration">52:10</span>
+                    </div>
+
+                    <div class="episode-info">
+                        <h3>The Startup Playbook</h3>
+                        <p>Alex Morgan</p>
+                        <div class="meta">
+                            <span>1.2M views</span>
+                            <span>2 days ago</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="episode-card glass">
+                    <div class="thumb">
+                        <img src="https://images.unsplash.com/photo-1497366811353-6870744d04b2?w=800">
+                        <span class="duration">45:18</span>
+                    </div>
+
+                    <div class="episode-info">
+                        <h3>Future of SaaS Products</h3>
+                        <p>David Lee</p>
+                        <div class="meta">
+                            <span>785K views</span>
+                            <span>1 day ago</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="episode-card glass">
+                    <div class="thumb">
+                        <img src="https://images.unsplash.com/photo-1516321497487-e288fb19713f?w=800">
+                        <span class="duration">1:04:20</span>
+                    </div>
+
+                    <div class="episode-info">
+                        <h3>AI Revolution</h3>
+                        <p>Sarah Chen</p>
+                        <div class="meta">
+                            <span>2.1M views</span>
+                            <span>6 hrs ago</span>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+        </section>
+
+        <!-- AUDIO -->
+        <section class="section">
+
+            <div class="section-header">
+                <h2>Trending Audio Episodes</h2>
+            </div>
+
+            <div class="audio-grid">
+
+                <div class="audio-card glass">
+                    <i class="fa-solid fa-headphones"></i>
+                    <h4>Building Billion Dollar Companies</h4>
+                    <p>John Carter</p>
+                </div>
+
+                <div class="audio-card glass">
+                    <i class="fa-solid fa-microphone"></i>
+                    <h4>Mindset Mastery</h4>
+                    <p>Rachel Green</p>
+                </div>
+
+                <div class="audio-card glass">
+                    <i class="fa-solid fa-wave-square"></i>
+                    <h4>Crypto & Web3</h4>
+                    <p>Mark Scott</p>
+                </div>
+
+            </div>
+
+        </section>
+
+        <!-- NEW -->
+        <section class="section">
+
+            <div class="section-header">
+                <h2>New Episodes</h2>
+            </div>
+
+            <div class="new-grid">
+
+                <div class="feed-card glass">
+                    <img src="https://images.unsplash.com/photo-1519389950473-47ba0277781c?w=600">
+                    <div>
+                        <h3>Scaling Remote Teams</h3>
+                        <p>Leadership • 30 mins</p>
+                    </div>
+                </div>
+
+                <div class="feed-card glass">
+                    <img src="https://images.unsplash.com/photo-1552664730-d307ca884978?w=600">
+                    <div>
+                        <h3>Future of Product Design</h3>
+                        <p>Design • 42 mins</p>
+                    </div>
+                </div>
+
+                <div class="feed-card glass">
+                    <img src="https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?w=600">
+                    <div>
+                        <h3>Creator Economy 2026</h3>
+                        <p>Business • 54 mins</p>
+                    </div>
+                </div>
+
+            </div>
+
+        </section>
+
+    </main>
+
+    <!-- RIGHT PANEL -->
+    <aside class="rightbar">
+
+        <div class="widget glass">
+            <h3>Top Creators</h3>
+
+            <div class="creator">
+                <img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=300">
+                <div>
+                    <h4>Alex Morgan</h4>
+                    <p>1.5M Followers</p>
+                </div>
+                <button class="follow-btn">
+                    Follow
+                </button>
+            </div>
+
+            <div class="creator">
+                <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=300">
+                <div>
+                    <h4>Sarah Chen</h4>
+                    <p>950K Followers</p>
+                </div>
+                <button class="follow-btn">
+                    Follow
+                </button>
+            </div>
+
+        </div>
+
+        <div class="widget glass">
+            <h3>Trending Topics</h3>
+
+            <div class="topic"># Artificial Intelligence</div>
+            <div class="topic"># Startup Funding</div>
+            <div class="topic"># Web3</div>
+            <div class="topic"># Product Design</div>
+        </div>
+
+    </aside>
+
+</div>
+
+<!-- MOBILE BOTTOM -->
+<nav class="mobile-nav">
+    <i class="fa-solid fa-house"></i>
+    <i class="fa-solid fa-fire"></i>
+    <i class="fa-solid fa-podcast"></i>
+    <i class="fa-solid fa-user"></i>
+</nav>
+
+<button class="floating-btn">
+    <i class="fa-solid fa-plus"></i>
+</button>
+
+<script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,33 @@
+/**
+ * Castory Design Tokens
+ * Phase 1 will populate full token set.
+ * @see docs/DECISIONS.md
+ */
+:root {
+  --color-bg-primary: #050816;
+  --color-bg-secondary: #0B1020;
+  --color-bg-sidebar: #070B18;
+  --color-surface: #101828;
+  --color-card: #111827;
+  --color-primary: #7C3AED;
+  --color-primary-hover: #8B5CF6;
+  --color-secondary: #A855F7;
+  --color-success: #22C55E;
+  --color-info: #3B82F6;
+  --color-text: #FFFFFF;
+  --color-text-secondary: #A1A1AA;
+  --color-text-muted: #71717A;
+  --color-border: rgba(255, 255, 255, 0.08);
+  --color-border-hover: rgba(124, 58, 237, 0.35);
+  --sidebar-width: 260px;
+  --right-panel-width: 320px;
+  --radius-sm: 12px;
+  --radius-md: 16px;
+  --radius-lg: 20px;
+  --radius-xl: 24px;
+  --radius-full: 999px;
+  --font-family: 'Inter', system-ui, sans-serif;
+  --transition: 0.25s ease;
+  --shadow-card: 0 10px 40px rgba(0, 0, 0, 0.4);
+  --shadow-hover: 0 20px 60px rgba(124, 58, 237, 0.2);
+}

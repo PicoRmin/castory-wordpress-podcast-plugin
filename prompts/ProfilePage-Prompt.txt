@@ -1,0 +1,99 @@
+Create a pixel-perfect static Podcast Profile Dashboard called "PodStream".
+
+Design a premium dark SaaS dashboard with a futuristic glassmorphism aesthetic.
+
+Layout:
+- 3-column desktop layout
+- Fixed left sidebar (280px)
+- Main content area
+- Right analytics panel (320px)
+
+Theme:
+- Dark navy background (#030712)
+- Purple neon gradients (#7C3AED, #8B5CF6, #A855F7)
+- Glassmorphism cards
+- Soft glowing borders
+- Modern SaaS design
+
+Typography:
+- Inter font
+- Large bold headings
+- Medium weight body text
+- Consistent spacing scale
+
+Left Sidebar:
+- PodStream logo
+- Navigation items:
+  Home, Explore, Library, Community, Messages, Notifications, Analytics, Monetization, Studio, Settings, Profile
+- Notification badges
+- User profile card
+- Premium membership card
+
+Hero Section:
+- Large cover banner
+- Profile avatar with glowing gradient ring
+- User name, verification badge
+- Username
+- Bio
+- Location
+- Website
+- Join date
+- Buttons:
+  Edit Profile
+  Share Profile
+  Settings
+
+Statistics Row:
+- Followers
+- Following
+- Saved Episodes
+- Playlists
+- Listening Hours
+
+Achievements Section:
+- Achievement cards with colorful icons
+- Green, Purple, Gold and Blue gradients
+
+Main Content:
+- Listening Activity timeline
+- Favorite Creators horizontal carousel
+- My Playlists cards
+- Saved Episodes horizontal list
+- Watch History cards with progress bars
+- Top Categories cards
+- Recently Completed episodes
+
+Right Panel:
+- Profile Insights widget
+- Mini line charts
+- Following Summary
+- Account Status card
+- Storage usage progress
+- Listening Activity heatmap (GitHub style)
+- Top Interests with progress bars
+
+Effects:
+- Glassmorphism
+- Backdrop blur
+- Neon purple glow
+- Hover lift animations
+- Smooth transitions
+- Custom scrollbars
+
+Technical Requirements:
+- Pure HTML5
+- Pure CSS3
+- Vanilla JavaScript
+- CSS Grid + Flexbox
+- Fully responsive
+- Reusable card components
+- Semantic HTML structure
+- No external frameworks
+
+Output:
+Produce complete production-ready files:
+index.html
+styles.css
+script.js
+
+The final result must match a premium modern SaaS profile dashboard seen in high-end products like Linear, Spotify Analytics, Notion, Arc Browser, and Stripe Dashboard.

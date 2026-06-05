@@ -1,0 +1,140 @@
+Create a pixel-perfect static desktop Explore Dashboard page for a modern podcast and creator discovery platform called "PodStream".
+
+Style:
+- Dark premium SaaS dashboard
+- Glassmorphism UI
+- Neon purple and blue gradients
+- Modern creator economy aesthetic
+- Inspired by Spotify, YouTube Studio, Linear, and Dribbble premium dashboards
+- Fully responsive desktop-first design
+- Use pure HTML5, CSS3 and Vanilla JavaScript only
+- No frameworks
+- No external dependencies except Google Fonts (Inter)
+
+Layout:
+- Three-column dashboard layout
+- Left navigation sidebar (260px)
+- Main content area (flexible)
+- Right analytics sidebar (320px)
+
+Left Sidebar:
+- Brand logo with audio waveform icon and gradient text
+- Navigation menu:
+  Home
+  Explore (active)
+  Video
+  Audio
+  Podcasters
+  Categories
+  Playlists
+  Community
+  Subscriptions
+  My Library
+  History
+  Watch Later
+  Downloads
+- Active menu item highlighted with purple glow
+- User profile card fixed at bottom with avatar, username, Pro Member badge and statistics
+
+Top Header:
+- Large search input with search icon
+- Advanced Search button
+- Create button with purple gradient
+- Notification bell with badge
+
+Category Filter Bar:
+- Horizontal pill navigation
+- Technology active by default
+- Smooth hover animations
+
+Hero Section:
+- Large featured podcast banner
+- Split layout
+- Left:
+    Featured label
+    "Discover New Voices" headline
+    Description
+    Creator avatars
+    Explore Now CTA button
+- Right:
+    Large female podcaster image
+    Neon microphone studio background
+- Slider indicators
+
+Trending Topics:
+- 8 gradient topic cards in a 4-column grid
+- Topics:
+  AI
+  Startups
+  Creator Economy
+  Productivity
+  Finance
+  Wellness
+  Marketing
+  Leadership
+- Each card contains title, episode count and illustration
+
+Popular Creators:
+- Horizontal creator cards
+- Avatar
+- Name
+- Followers
+- Category tag
+- Follow button
+
+Popular Video Episodes:
+- Video cards with:
+  Thumbnail
+  Duration badge
+  Title
+  Creator
+  Views
+
+Explore Audio Episodes:
+- Audio cards with:
+  Play button
+  Animated waveform
+  Episode title
+  Podcast name
+  Duration
+
+Recommended For You:
+- Mixed audio and video recommendations
+- Content-type badges
+- Modern card UI
+
+Right Sidebar:
+1. Top Creators ranking widget
+2. Trending Topics tag cloud
+3. Discovery Stats cards
+4. Most Followed Topics progress chart
+
+Design Requirements:
+- Background: deep navy and black gradients
+- Accent colors:
+    #8B5CF6
+    #7C3AED
+    #9333EA
+    #3B82F6
+- Border radius:
+    16px cards
+    12px buttons
+    999px pills
+- Soft glass backgrounds
+- Smooth hover effects
+- Subtle glow shadows
+- Animated buttons
+- Elegant transitions
+- Professional spacing system
+- Use CSS Grid and Flexbox
+- Clean semantic HTML structure
+- Well-organized CSS variables
+- Reusable components
+- Production-quality frontend architecture
+
+Output:
+1. index.html
+2. style.css
+3. script.js
+
+Generate complete code for all files with modern best practices and realistic placeholder content.

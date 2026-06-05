@@ -1,0 +1,67 @@
+"Generate a premium, dark-mode, modern podcast streaming page called 'New Episodes' for a SaaS-style platform called PodStream. The page should be fully responsive, mobile-first, and production-ready. Follow these detailed specifications:
+
+Overall Layout:
+
+Desktop: 3-column layout
+Left Sidebar (260px, sticky, full height): navigation menu (Home, Podcasts, Trending, Library, Watch Later, Creators, Topics), user profile card with avatar, name, premium badge, upgrade CTA card with gradient, mini audio player at bottom with thumbnail, title, author, play button
+Main Content (flexible width): hero section with large page title 'New Episodes', subtitle, right-aligned illustrated microphone with waveform, horizontal filter pills (All, Video, Audio, Technology, Business, Health, AI, Design, Marketing, More), episode list with cards, pagination
+Right Sidebar (280px): stacked widgets including Filter Episodes (type, duration, published), Top Creators list (avatar, name, followers), newsletter subscription (email input + subscribe button with purple gradient)
+
+Theme & Style:
+
+Background: #050816, subtle radial glow, noise texture, vignette corners
+Accent Colors: #7C3AED (primary purple), #9333EA (secondary), green badges for audio (#22C55E), purple badges for video (#7C3AED)
+Text: white #FFFFFF for titles, rgba(255,255,255,.7) for secondary, muted rgba(255,255,255,.45)
+Cards: glassmorphism style, border-radius 20px, subtle border rgba(255,255,255,.08), backdrop blur 24px, hover lift transform, glow on hover
+Typography: hero title 56px bold, episode title 18px bold, description 14px, author 14px with verification icon
+Buttons & Pills: gradient purple (#7C3AED → #9333EA), active states with glow, hover highlights
+
+Episode List Cards:
+
+Thumbnail: 120x72px, border-radius 14px, object-fit cover
+Play Overlay: circular, center-aligned, glowing on hover
+Metadata: type badge (audio/video), duration, published time, bookmark icon, more menu icon
+Hover: background rgba(255,255,255,.03), subtle glow
+Spacing: row height ~110px, divider 1px rgba(255,255,255,.05)
+
+Interactions (JS behavior, static for AI generation):
+
+Search input with focus effect
+Dropdowns for sorting and create menu
+Filter pills toggle
+Radio buttons for episode type, duration, published filters
+Bookmark toggle
+Pagination active page switching
+Mobile sidebar drawer toggle
+Notification badge dropdown toggle
+Play button toggle visual state
+Newsletter email validation
+
+Responsive Design:
+
+Tablet (max-width 1200px): right sidebar moves below main content
+Mobile (max-width 768px):
+sidebar becomes hamburger drawer
+bottom navigation replaces left sidebar
+episode cards vertical layout: thumbnail, title, metadata, actions
+widgets full width
+pagination scrollable horizontally
+
+Additional Visual Details:
+
+Neon purple glows around key accents and active elements
+Glass blur cards throughout the interface
+Smooth transitions on hover (0.25s)
+Icons: SVG or vector style, modern flat with subtle shadow
+All imagery: high-quality illustrations and thumbnails with realistic podcast artwork
+
+Deliverables:
+
+Fully coded HTML5 structure
+Vanilla CSS3 with reusable classes and responsive media queries
+Vanilla JavaScript for interactions
+Assets folder with icons, avatars, and images
+Pixel-perfect replication of mockup: spacing, typography, hover states, and mobile responsiveness
+
+Goal:
+Create a premium SaaS-grade podcast streaming page that is visually polished, highly interactive, dark-glassmorphism themed, neon-accented, fully responsive, and production-ready for desktop and mobile."

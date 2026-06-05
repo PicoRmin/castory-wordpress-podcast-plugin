@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Castory — Prototype Hub</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="shared/css/tokens.css">
+  <link rel="stylesheet" href="shared/css/reset.css">
+  <style>
+    body { padding: 48px 24px; max-width: 720px; margin: 0 auto; }
+    h1 { font-size: 32px; margin-bottom: 8px; color: var(--color-primary); }
+    .subtitle { color: var(--color-text-secondary); margin-bottom: 32px; }
+    section { margin-bottom: 32px; }
+    h2 { font-size: 14px; text-transform: uppercase; letter-spacing: 0.08em; color: var(--color-text-muted); margin-bottom: 12px; }
+    ul { display: flex; flex-direction: column; gap: 8px; }
+    a {
+      display: block;
+      padding: 14px 18px;
+      background: var(--color-card);
+      border: 1px solid var(--color-border);
+      border-radius: var(--radius-md);
+      transition: var(--transition);
+    }
+    a:hover { border-color: var(--color-border-hover); transform: translateX(4px); }
+    a strong { display: block; margin-bottom: 4px; }
+    a span { font-size: 13px; color: var(--color-text-muted); }
+    .done { border-left: 3px solid var(--color-success); }
+    .pending { opacity: 0.5; pointer-events: none; }
+    .archive { font-size: 13px; color: var(--color-text-muted); margin-top: 24px; }
+    .archive a { display: inline; padding: 0; background: none; border: none; color: var(--color-primary-hover); }
+  </style>
+</head>
+<body>
+  <h1>Castory</h1>
+  <p class="subtitle">Prototype hub — Phase 0 foundation</p>
+
+  <section>
+    <h2>MVP Pages</h2>
+    <ul>
+      <li><a class="done" href="home/index.html"><strong>Home</strong><span>Featured carousel, trending sections</span></a></li>
+      <li><a class="done" href="trending-video/index.html"><strong>Trending Video</strong><span>View All — canonical implementation</span></a></li>
+      <li><a class="done" href="trending-audio/index.html"><strong>Trending Audio</strong><span>Table layout, filters</span></a></li>
+      <li><a class="done" href="new-episodes/index.html"><strong>New Episodes</strong><span>Episode list, filters, newsletter</span></a></li>
+    </ul>
+  </section>
+
+  <section>
+    <h2>v1.1 (Planned)</h2>
+    <ul>
+      <li><a class="pending" href="explore/index.html"><strong>Explore</strong><span>Discovery dashboard</span></a></li>
+      <li><a class="pending" href="library/index.html"><strong>Library</strong><span>Personal content dashboard</span></a></li>
+      <li><a class="pending" href="profile/index.html"><strong>Profile</strong><span>User profile dashboard</span></a></li>
+    </ul>
+  </section>
+
+  <p class="archive">
+    Docs: <a href="../docs/roadmap.md">roadmap</a> ·
+    <a href="../docs/DECISIONS.md">decisions</a> ·
+    <a href="../docs/IA.md">IA</a> ·
+    <a href="../docs/review.md">review</a>
+  </p>
+</body>
+</html>

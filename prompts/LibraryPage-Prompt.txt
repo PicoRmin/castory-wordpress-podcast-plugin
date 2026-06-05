@@ -1,0 +1,152 @@
+Create a fully responsive dark-mode Podcast & Video Library Dashboard called "PodStream".
+
+Tech Stack:
+- Pure HTML5
+- Modern CSS3 (no frameworks)
+- Vanilla JavaScript
+- Responsive Desktop First
+- Component-based structure
+- Clean semantic markup
+
+Design Style:
+- Premium SaaS Dashboard
+- Glassmorphism
+- Dark Neo UI
+- Spotify + YouTube Studio + Linear inspired
+- Purple neon accent color
+- Smooth hover animations
+- Soft shadows
+- Modern rounded corners
+
+Layout:
+- Fixed left sidebar (240px)
+- Main content area
+- Right analytics sidebar (320px)
+- Full height dashboard
+- 24px spacing system
+- Responsive breakpoints
+
+Color Palette:
+Background:
+#050816
+#070B1A
+#0A1023
+
+Primary:
+#7B4DFF
+#8B5CFF
+#9B6BFF
+
+Success:
+#00E08A
+
+Info:
+#3B82F6
+
+Warning:
+#FACC15
+
+Pink:
+#EC4899
+
+Typography:
+Font: Inter
+Heading: 700
+Body: 400–500
+
+Left Sidebar:
+- Brand logo with waveform icon
+- Navigation menu
+- Active state for My Library
+- User profile card at bottom
+- Following, Followers, Episodes stats
+- Settings, Notifications, Logout buttons
+
+Header:
+- Search input
+- Create Playlist button
+- Import Podcasts button
+- Manage Downloads button
+- Notification bell with badge
+
+Main Content Sections:
+
+1. Stats Overview
+- 6 analytics cards
+- Icon
+- Value
+- Label
+- Trend information
+
+2. Continue Listening
+- Horizontal podcast cards
+- Cover image
+- Play button
+- Waveform visualization
+- Duration badge
+- Progress bar
+
+3. Continue Watching
+- Video cards
+- Thumbnail
+- Creator info
+- Watch progress
+
+4. My Playlists
+- Playlist grid
+- Collage cover
+- Episode count
+- Last update date
+- More options menu
+
+5. Downloaded Content
+- Audio and video download cards
+- File size
+- Duration
+- Labels
+
+6. Saved For Later
+- Watch later cards
+- Media type tags
+- Duration badges
+
+Right Sidebar:
+
+1. Recent Activity Panel
+- Activity timeline
+- Completion percentage
+- Time ago labels
+
+2. Storage Usage Card
+- Usage percentage
+- Progress bars
+- Download breakdown
+
+3. Watchlist Summary
+- Saved items
+- Unfinished episodes
+- New uploads
+- CTA button
+
+4. Listening Insights
+- Weekly listening time
+- Interactive bar chart
+- Top categories
+- Top creators leaderboard
+
+UI Requirements:
+- Glassmorphism cards
+- Backdrop blur
+- Neon purple glow effects
+- Smooth transitions
+- Custom scrollbar
+- Hover elevation
+- Accessible color contrast
+- Reusable CSS variables
+- Mobile responsive behavior
+- Sticky sidebars
+- Semantic HTML structure
+- Well-commented code
+
+Output:
+Generate complete production-quality HTML, CSS, and JavaScript files with realistic placeholder content and modern dashboard interactions.

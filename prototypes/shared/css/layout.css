@@ -1,0 +1,30 @@
+/**
+ * Castory Layout — Phase 1 will expand
+ * @see docs/IA.md
+ */
+.app-layout {
+  display: flex;
+  min-height: 100vh;
+}
+
+.sidebar {
+  width: var(--sidebar-width, 260px);
+  flex-shrink: 0;
+}
+
+.main-content {
+  flex: 1;
+  min-width: 0;
+}
+
+.right-panel {
+  width: var(--right-panel-width, 320px);
+  flex-shrink: 0;
+}
+
+@media (max-width: 768px) {
+  .sidebar,
+  .right-panel {
+    display: none;
+  }
+}

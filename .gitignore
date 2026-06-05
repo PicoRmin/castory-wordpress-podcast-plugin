@@ -1,0 +1,42 @@
+# OS
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Editor
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# Logs
+*.log
+npm-debug.log*
+
+# Dependencies (future)
+node_modules/
+vendor/
+
+# Build output (future)
+dist/
+*.min.css
+*.min.js
+
+# Environment & secrets
+.env
+.env.*
+*.pem
+credentials.json
+
+# WordPress local dev (optional)
+wp-config.php
+.htaccess
+
+# Temp
+tmp/
+temp/
+*.tmp
+
+# Large media (keep mockups intentional)
+# mockups/*.png

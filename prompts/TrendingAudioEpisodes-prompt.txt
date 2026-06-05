@@ -1,0 +1,661 @@
+# Trending Audio Episodes — Premium Podcast Streaming Platform
+
+Create a **pixel-perfect, production-quality dark-mode podcast streaming platform page** called **"Trending Audio Episodes"**.
+
+The page should represent a modern premium podcast ecosystem inspired by Spotify, Apple Podcasts, Linear, Arc Browser, YouTube Music, and Netflix.
+
+Use only:
+
+* HTML5
+* CSS3
+* Vanilla JavaScript
+* No frameworks
+* No Bootstrap
+* No Tailwind
+* Fully responsive
+* Production-ready code
+
+---
+
+## Design Style
+
+The interface should feel:
+
+* Premium
+* Futuristic
+* Elegant
+* Minimalistic
+* Content-focused
+* High-end SaaS quality
+
+Visual characteristics:
+
+* Deep dark background
+* Purple neon accent system
+* Glassmorphism cards
+* Soft glows
+* Subtle gradients
+* Layered depth
+* Smooth micro-interactions
+
+---
+
+## Layout Structure
+
+Create a three-column desktop layout:
+
+### Left Sidebar
+
+Fixed navigation panel.
+
+Width: 260px
+
+Contains:
+
+* Logo
+* Navigation menu
+* User profile card
+* Premium upgrade card
+* Mini audio player
+* Playback controls
+
+### Main Content Area
+
+Flexible central content region.
+
+Contains:
+
+* Top navigation bar
+* Search input
+* Breadcrumb
+* Hero banner
+* Category filters
+* Trending episodes list
+* Pagination
+
+### Right Sidebar
+
+Width: 320px
+
+Contains:
+
+* Filter episodes card
+* Top podcasts ranking widget
+* Premium CTA card
+
+---
+
+## Color Palette
+
+Background:
+
+#050816
+#0A0F1F
+#0D1226
+
+Primary Accent:
+
+#7C4DFF
+#8B5CF6
+#A855F7
+
+Text:
+
+#FFFFFF
+#B8C0D8
+#8A93A6
+
+Borders:
+
+rgba(255,255,255,0.08)
+
+Cards:
+
+rgba(255,255,255,0.04)
+
+---
+
+## Left Sidebar
+
+### Logo Area
+
+Top-left branding:
+
+Podcast waveform icon
+
+Brand name:
+
+"PodStream"
+
+White typography.
+
+---
+
+### Navigation Menu
+
+Items:
+
+* Home
+* Podcasts
+* Trending
+* Library
+* Watch Later
+* Creators
+* Topics
+
+Each item:
+
+* Modern outline icon
+* Label
+* Hover effect
+
+Active item:
+
+Trending
+
+Active state:
+
+* Purple gradient background
+* White text
+* Glow effect
+
+---
+
+### User Profile Card
+
+Avatar image
+
+User:
+
+Emma Watson
+
+Badge:
+
+Premium Member
+
+Arrow indicator
+
+Glass card styling.
+
+---
+
+### Premium Upgrade Card
+
+Large promotional card.
+
+Contains:
+
+* Crown icon
+* Headline
+* Short description
+* Upgrade Now button
+* View Plans link
+
+Strong purple gradient CTA.
+
+---
+
+### Mini Player
+
+Podcast cover artwork
+
+Episode:
+
+The AI Revolution
+
+Creator:
+
+Sarah Chen
+
+Mini play button
+
+Playback progress indicator.
+
+---
+
+### Bottom Playback Controls
+
+Persistent controls:
+
+* Shuffle
+* Previous
+* Play
+* Next
+* Repeat
+
+Play button should be larger and highlighted with purple glow.
+
+---
+
+## Header
+
+Height: 80px
+
+Contains:
+
+### Search Bar
+
+Large rounded search field.
+
+Placeholder:
+
+"Search podcasts, episodes, creators..."
+
+Leading search icon.
+
+Trailing keyboard shortcut hint:
+
+"/"
+
+---
+
+### Notification Button
+
+Bell icon
+
+Unread notification badge
+
+Subtle pulse animation.
+
+---
+
+### Create Button
+
+Purple gradient button.
+
+Text:
+
+"+ Create"
+
+Dropdown arrow icon.
+
+---
+
+## Breadcrumb Navigation
+
+Display:
+
+Home > Trending > Audio Episodes
+
+Small typography.
+
+Muted color.
+
+---
+
+## Hero Section
+
+Large feature banner.
+
+Approximate height:
+
+220px
+
+Two-column layout.
+
+---
+
+### Left Hero Content
+
+Title:
+
+Trending Audio Episodes
+
+Typography:
+
+* Extra bold
+* Large display size
+* Strong visual hierarchy
+
+Subtitle:
+
+"Listen to the most popular and trending audio podcasts right now."
+
+---
+
+### Right Hero Visual
+
+Large neon headphones illustration.
+
+Behind headphones:
+
+Animated sound-wave visualization.
+
+Effects:
+
+* Purple glow
+* Soft particles
+* Ambient lighting
+
+---
+
+## Trending Episodes Container
+
+Large glassmorphism card.
+
+Rounded corners:
+
+24px
+
+Subtle border.
+
+---
+
+## Category Filters
+
+Horizontal pill buttons.
+
+Categories:
+
+* All
+* Technology
+* Business
+* Health
+* Mindset
+* Marketing
+* Crypto
+* Design
+* Stories
+
+Active category:
+
+All
+
+Active style:
+
+Purple gradient.
+
+Hover:
+
+Scale animation.
+
+---
+
+## Sorting Controls
+
+Right side controls.
+
+Dropdown:
+
+Most Popular
+
+Filter button with icon.
+
+---
+
+## Episodes Table
+
+Create a premium table-like layout.
+
+Columns:
+
+* Episode
+* Podcast
+* Duration
+* Published
+* Actions
+
+Header should remain visually separated.
+
+---
+
+## Episode Rows
+
+Each row includes:
+
+### Episode Information
+
+Thumbnail image
+
+Play overlay button
+
+Episode title
+
+Episode description
+
+Examples:
+
+* The Future of Artificial Intelligence
+* Building Billion Dollar Startups
+* Mindset Mastery
+* Crypto & Web3 Explained
+* Marketing in the New Era
+* The Power of Storytelling
+* Daily Habits for a Better Life
+* Space: The Next Frontier
+
+---
+
+### Podcast Information
+
+Podcast title
+
+Host name
+
+Verified badge
+
+Examples:
+
+* AI Insights
+* Founders Unplugged
+* The Growth Mindset
+* Web3 Daily
+* Marketing School
+* Story Matters
+* Better Everyday
+* Space Tonight
+
+---
+
+### Duration
+
+Examples:
+
+52:45
+48:12
+41:30
+39:18
+
+---
+
+### Published Date
+
+Examples:
+
+2 hours ago
+1 day ago
+2 days ago
+3 days ago
+
+---
+
+### Actions
+
+Vertical menu button
+
+Bookmark button
+
+Interactive hover states.
+
+---
+
+## Pagination
+
+Centered at bottom.
+
+Buttons:
+
+< 1 2 3 4 5 ... 20 >
+
+Active page:
+
+1
+
+Purple filled state.
+
+---
+
+## Right Sidebar
+
+### Filter Episodes Card
+
+Title:
+
+Filter Episodes
+
+Action:
+
+Clear All
+
+---
+
+### Duration Filters
+
+Radio options:
+
+* All Durations
+* Under 20 min
+* 20–40 min
+* 40–60 min
+* Over 60 min
+
+---
+
+### Published Filters
+
+Options:
+
+* All Time
+* Last 24 Hours
+* Last 7 Days
+* Last 30 Days
+* Last 3 Months
+
+Custom purple radio controls.
+
+---
+
+## Top Audio Podcasts Widget
+
+Ranking list.
+
+Title:
+
+Top Audio Podcasts
+
+Action:
+
+View All
+
+Display top 5 podcasts with:
+
+* Rank number
+* Artwork
+* Podcast name
+* Follower count
+
+Examples:
+
+* The Daily Brief
+* Huberman Lab
+* On Purpose
+* The Tim Ferriss Show
+* The Joe Rogan Experience
+
+---
+
+## Premium CTA Card
+
+Large promotional card.
+
+Title:
+
+Go Premium
+
+Description:
+
+Unlock exclusive episodes, downloads and ad-free listening.
+
+Button:
+
+Upgrade Now
+
+Purple neon styling.
+
+Floating particles effect.
+
+---
+
+## Interactions
+
+Implement smooth animations:
+
+### Hover
+
+Cards slightly elevate.
+
+### Buttons
+
+Glow intensifies.
+
+### Episode Rows
+
+Highlight border and subtle background transition.
+
+### Navigation
+
+Smooth active state transitions.
+
+### Podcast Rankings
+
+Background fade on hover.
+
+### Pagination
+
+Scale effect on hover.
+
+---
+
+## Responsive Design
+
+### Tablet (≤1024px)
+
+* Right sidebar moves below content
+* Hero becomes stacked
+* Filters wrap naturally
+* Sidebar width reduced
+
+### Mobile (≤768px)
+
+* Sidebar becomes off-canvas drawer
+* Hamburger menu appears
+* Hero stacks vertically
+* Headphones image scales down
+* Episode table transforms into cards
+* Right sidebar moves below content
+* Pagination becomes horizontally scrollable
+
+No horizontal overflow should occur on mobile devices.
+
+---
+
+## Development Requirements
+
+Generate:
+
+* index.html
+* styles.css
+* app.js
+
+Code should be:
+
+* Semantic HTML
+* Accessible
+* SEO-friendly
+* Responsive
+* Modular
+* Scalable
+* Cleanly structured
+* Pixel-perfect to the provided design
+
+The final result should feel like a premium streaming product ready for production deployment.

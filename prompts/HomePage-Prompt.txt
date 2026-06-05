@@ -1,0 +1,114 @@
+Create a pixel-perfect premium Podcast Streaming Platform UI called "PodStream".
+
+Build BOTH desktop and mobile versions exactly like a modern Figma SaaS design.
+
+Technology:
+- HTML5
+- CSS3
+- Vanilla JavaScript
+- No frameworks
+
+Design Style:
+- Dark futuristic streaming platform
+- Spotify + YouTube Podcasts + MasterClass inspired
+- Glassmorphism
+- Neon purple accents
+- Premium SaaS aesthetics
+- Soft shadows
+- Smooth animations
+- Fully responsive
+
+Color Palette:
+Background: #050B18
+Card: #111827
+Primary Purple: #7C3AED
+Secondary Purple: #8B5CF6
+Success Green: #22C55E
+Primary Text: #FFFFFF
+Secondary Text: #A1A1AA
+
+Desktop Layout:
+- Left Sidebar 260px
+- Main Content Flexible
+- Right Sidebar 300px
+
+Desktop Components:
+- Logo
+- Navigation Sidebar
+- User Profile Card
+- Search Header
+- Notification Bell
+- Create Button
+- Featured Hero Carousel
+- Trending Video Episodes
+- Trending Audio Episodes
+- New Episodes Grid
+- Top Creators Panel
+- Trending Topics Panel
+- Premium Upgrade Card
+
+Mobile Layout:
+- Single-column layout
+- Search Bar
+- Notification Bell
+- Category Chips Slider
+- Hero Carousel
+- Horizontal Video Episode Slider
+- Horizontal Audio Episode Slider
+- Vertical New Episodes Feed
+- Bottom Navigation Bar
+- Floating Create Button
+
+Episode Cards:
+- Thumbnail
+- Duration Badge
+- Title
+- Creator Name
+- Views
+- Publish Time
+- Hover Effects
+
+Hero Carousel:
+- Image
+- Featured Badge
+- Category Label
+- Large Title
+- Description
+- CTA Buttons
+- Slider Indicators
+
+Interactions:
+- Hero slider
+- Follow button toggle
+- Notification updates
+- Search interaction
+- Topic filtering simulation
+- Watch Later action
+- Dropdown menus
+
+CSS Requirements:
+- CSS Variables
+- Grid Layout
+- Flexbox
+- Aspect Ratio
+- Custom Scrollbar
+- Line Clamp
+- Reusable Components
+- Smooth Animations
+
+Responsive Behavior:
+Desktop: >=1440px
+Laptop: 1200px–1439px
+Tablet: 768px–1199px
+Mobile: <768px
+
+Generate:
+1. index.html
+2. style.css
+3. script.js
+
+Use Font Awesome icons.
+Use realistic Unsplash placeholder images.
+Code must be clean, modular, production-ready, and visually match a premium Figma design with 95% accuracy.
+
+

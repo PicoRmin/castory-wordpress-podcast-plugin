@@ -1,0 +1,648 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Trending Video Episodes - PodStream</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  /* =========================
+     VARIABLES & BASE STYLES
+     ========================= */
+  :root {
+    --bg-dark: #050816;
+    --bg-dark-2: #0A0F1F;
+    --bg-dark-3: #0D1222;
+    --card-bg: #0F172A;
+    --card-bg-hover: #111827;
+    --primary: #7C3AED;
+    --primary-light: #8B5CF6;
+    --secondary: #A855F7;
+    --text-primary: #FFFFFF;
+    --text-secondary: #A1A1AA;
+    --border: rgba(255,255,255,0.08);
+    --hover-border: rgba(124,58,237,0.4);
+    --success: #22C55E;
+    --shadow: 0 10px 40px rgba(0,0,0,.4);
+    --radius-sm: 12px;
+    --radius-md: 16px;
+    --radius-lg: 20px;
+    --transition: 0.25s ease;
+  }
+
+  *, *::before, *::after {
+    box-sizing: border-box;
+  }
+
+  body {
+    margin: 0;
+    font-family: 'Inter', sans-serif;
+    color: var(--text-primary);
+    background: var(--bg-dark);
+  }
+
+  a {
+    color: inherit;
+    text-decoration: none;
+  }
+
+  img {
+    display: block;
+    max-width: 100%;
+  }
+
+  /* =========================
+     LAYOUT
+     ========================= */
+  .container {
+    display: flex;
+    min-height: 100vh;
+  }
+
+  /* SIDEBAR */
+  .sidebar {
+    width: 260px;
+    background: linear-gradient(180deg, #050816, #0A0F1F);
+    display: flex;
+    flex-direction: column;
+    padding: 24px 16px;
+  }
+
+  .logo {
+    display: flex;
+    align-items: center;
+    margin-bottom: 32px;
+  }
+
+  .logo-icon {
+    width: 40px;
+    height: 40px;
+    background: var(--primary);
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    margin-right: 12px;
+  }
+
+  .logo-text {
+    font-size: 1.25rem;
+    font-weight: 700;
+  }
+
+  .menu {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    flex: 1;
+  }
+
+  .menu li {
+    display: flex;
+    align-items: center;
+    padding: 12px 16px;
+    border-radius: var(--radius-md);
+    margin-bottom: 8px;
+    cursor: pointer;
+    transition: var(--transition);
+  }
+
+  .menu li.active {
+    background: var(--primary);
+    color: var(--text-primary);
+  }
+
+  .menu li:hover:not(.active) {
+    background: var(--bg-dark-3);
+  }
+
+  .menu li i {
+    margin-right: 12px;
+  }
+
+  .divider {
+    height: 1px;
+    background: var(--border);
+    margin: 16px 0;
+  }
+
+  .profile-card {
+    display: flex;
+    align-items: center;
+    padding: 12px;
+    background: var(--card-bg);
+    border-radius: var(--radius-md);
+    cursor: pointer;
+  }
+
+  .profile-avatar {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    margin-right: 12px;
+    background: gray;
+  }
+
+  .profile-info {
+    flex: 1;
+  }
+
+  .profile-name {
+    font-weight: 600;
+  }
+
+  .profile-badge {
+    font-size: 0.75rem;
+    color: var(--success);
+  }
+
+  /* UPGRADE CARD */
+  .upgrade-card {
+    background: rgba(255,255,255,0.05);
+    backdrop-filter: blur(8px);
+    padding: 16px;
+    border-radius: var(--radius-lg);
+    margin-top: 16px;
+    text-align: center;
+  }
+
+  .upgrade-card i {
+    font-size: 1.5rem;
+    color: gold;
+    display: block;
+    margin-bottom: 8px;
+  }
+
+  .upgrade-card button {
+    margin-top: 8px;
+    padding: 8px 16px;
+    background: var(--primary);
+    border: none;
+    border-radius: var(--radius-sm);
+    color: var(--text-primary);
+    cursor: pointer;
+    transition: var(--transition);
+  }
+
+  .upgrade-card button:hover {
+    background: var(--primary-light);
+  }
+
+  /* MAIN CONTENT */
+  .main {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+  }
+
+  /* TOP HEADER */
+  header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 32px;
+    height: 80px;
+    background: var(--bg-dark-2);
+    border-bottom: 1px solid var(--border);
+  }
+
+  .search-bar input {
+    padding: 8px 16px;
+    border-radius: var(--radius-md);
+    border: none;
+    background: var(--bg-dark-3);
+    color: var(--text-primary);
+    width: 400px;
+  }
+
+  .header-actions {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+  }
+
+  .header-actions button {
+    padding: 8px 16px;
+    border-radius: var(--radius-md);
+    border: none;
+    cursor: pointer;
+    background: var(--primary);
+    color: var(--text-primary);
+    display: flex;
+    align-items: center;
+    gap: 4px;
+  }
+
+  /* BREADCRUMB */
+  .breadcrumb {
+    padding: 16px 32px;
+    font-size: 0.875rem;
+    color: var(--text-secondary);
+  }
+
+  /* HERO */
+  .hero {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 32px;
+    background: var(--bg-dark-3);
+    border-bottom: 1px solid var(--border);
+  }
+
+  .hero-content h1 {
+    font-size: 2rem;
+    margin: 0 0 12px 0;
+  }
+
+  .hero-content p {
+    color: var(--text-secondary);
+    font-size: 1rem;
+  }
+
+  .hero-illustration {
+    width: 300px;
+    height: 200px;
+    background: linear-gradient(135deg, var(--primary), var(--secondary));
+    border-radius: var(--radius-lg);
+  }
+
+  /* FILTER SECTION */
+  .filters {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 16px 32px;
+  }
+
+  .category-pills {
+    display: flex;
+    gap: 8px;
+  }
+
+  .pill {
+    padding: 6px 12px;
+    border-radius: var(--radius-sm);
+    background: var(--bg-dark-3);
+    cursor: pointer;
+    border: 1px solid var(--border);
+    font-size: 0.875rem;
+    transition: var(--transition);
+  }
+
+  .pill.active {
+    background: var(--primary);
+    border-color: var(--primary);
+  }
+
+  .filter-controls {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+
+  /* CONTENT GRID */
+  .content-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill,minmax(280px,1fr));
+    gap: 24px;
+    padding: 16px 32px;
+  }
+
+  .episode-card {
+    background: var(--card-bg);
+    border-radius: var(--radius-md);
+    overflow: hidden;
+    cursor: pointer;
+    transition: var(--transition);
+    display: flex;
+    flex-direction: column;
+  }
+
+  .episode-card:hover {
+    transform: translateY(-4px) scale(1.02);
+    box-shadow: 0 0 20px var(--primary);
+  }
+
+  .episode-thumbnail {
+    position: relative;
+    width: 100%;
+    padding-top: 56.25%; /* 16:9 */
+    background: gray;
+  }
+
+  .play-overlay {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 48px;
+    height: 48px;
+    background: rgba(255,255,255,0.2);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.25rem;
+  }
+
+  .duration-badge {
+    position: absolute;
+    bottom: 8px;
+    right: 8px;
+    background: rgba(0,0,0,0.6);
+    padding: 2px 6px;
+    font-size: 0.75rem;
+    border-radius: var(--radius-sm);
+  }
+
+  .episode-body {
+    padding: 12px 16px;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+
+  .episode-title {
+    font-weight: 600;
+    margin-bottom: 4px;
+  }
+
+  .creator-row {
+    display: flex;
+    align-items: center;
+    font-size: 0.875rem;
+    color: var(--text-secondary);
+  }
+
+  .creator-row .verified {
+    color: var(--primary);
+    margin-left: 4px;
+  }
+
+  .meta-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 0.75rem;
+    color: var(--text-secondary);
+    margin-top: 8px;
+  }
+
+  .meta-row .dots {
+    cursor: pointer;
+  }
+
+  /* PAGINATION */
+  .pagination {
+    display: flex;
+    justify-content: center;
+    padding: 24px;
+    gap: 8px;
+  }
+
+  .pagination button {
+    padding: 6px 12px;
+    border-radius: var(--radius-sm);
+    border: none;
+    background: var(--bg-dark-3);
+    color: var(--text-primary);
+    cursor: pointer;
+    transition: var(--transition);
+  }
+
+  .pagination button.active {
+    background: var(--primary);
+  }
+
+  /* RESPONSIVE */
+  @media(max-width:1024px){
+    .sidebar{
+      width: 220px;
+    }
+    .search-bar input{
+      width: 250px;
+    }
+  }
+
+  @media(max-width:768px){
+    .container{
+      flex-direction: column;
+    }
+    .sidebar{
+      display: none;
+    }
+    .content-grid{
+      grid-template-columns: repeat(auto-fill,minmax(200px,1fr));
+      padding: 16px;
+    }
+    header{
+      padding: 0 16px;
+    }
+    .filters{
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 12px;
+      padding: 16px;
+    }
+  }
+
+</style>
+</head>
+<body>
+
+<div class="container">
+  <!-- SIDEBAR -->
+  <aside class="sidebar">
+    <div class="logo">
+      <div class="logo-icon">🎙️</div>
+      <div class="logo-text">PodStream</div>
+    </div>
+    <ul class="menu">
+      <li><i>🏠</i>Home</li>
+      <li><i>🎧</i>Podcasts</li>
+      <li class="active"><i>🔥</i>Trending</li>
+      <li><i>📚</i>Library</li>
+      <li><i>⏱️</i>Watch Later</li>
+      <li><i>👤</i>Creators</li>
+      <li><i>🏷️</i>Topics</li>
+    </ul>
+    <div class="divider"></div>
+    <div class="profile-card">
+      <div class="profile-avatar"></div>
+      <div class="profile-info">
+        <div class="profile-name">Emma Watson</div>
+        <div class="profile-badge">Premium Member</div>
+      </div>
+      <div>⬇️</div>
+    </div>
+    <div class="upgrade-card">
+      <i>👑</i>
+      <h4>Upgrade to Premium</h4>
+      <p>Unlock exclusive content, ad-free experience and more.</p>
+      <button>Upgrade Now</button>
+      <p style="margin-top:4px;font-size:0.75rem;cursor:pointer;">View Plans</p>
+    </div>
+  </aside>
+
+  <!-- MAIN CONTENT -->
+  <main class="main">
+    <!-- HEADER -->
+    <header>
+      <div class="search-bar">
+        <input type="text" placeholder="Search podcasts, episodes, creators...">
+      </div>
+      <div class="header-actions">
+        <button>🔔</button>
+        <button>+ Create ⬇️</button>
+      </div>
+    </header>
+
+    <!-- BREADCRUMB -->
+    <div class="breadcrumb">
+      Home &gt; Trending &gt; Video Episodes
+    </div>
+
+    <!-- HERO -->
+    <section class="hero">
+      <div class="hero-content">
+        <h1>Trending Video Episodes</h1>
+        <p>Watch the most popular and trending video podcasts right now.</p>
+      </div>
+      <div class="hero-illustration"></div>
+    </section>
+
+    <!-- FILTERS -->
+    <div class="filters">
+      <div class="category-pills">
+        <div class="pill active">All</div>
+        <div class="pill">Technology</div>
+        <div class="pill">Business</div>
+        <div class="pill">AI</div>
+        <div class="pill">Marketing</div>
+        <div class="pill">Startups</div>
+        <div class="pill">Design</div>
+        <div class="pill">Crypto</div>
+      </div>
+      <div class="filter-controls">
+        <button>Sort: Most Popular ⬇️</button>
+        <button>Filter ⬇️</button>
+      </div>
+    </div>
+
+    <!-- CONTENT GRID -->
+    <div class="content-grid" id="episodeGrid">
+      <!-- Episode cards will be generated by JS -->
+    </div>
+
+    <!-- PAGINATION -->
+    <div class="pagination" id="pagination"></div>
+  </main>
+</div>
+
+<script>
+  // =============================
+  // SAMPLE DATA
+  // =============================
+  const episodes = Array.from({length:20},(_,i)=>({
+    title: ['The Startup Playbook','Future of SaaS Products','AI Revolution','Building in Public'][i%4],
+    creator: ['Sarah Chen','John Doe','Alice Smith','Michael Lee'][i%4],
+    verified: true,
+    views: (Math.random()*5+1).toFixed(1)+'M',
+    time: ['6 hrs ago','1 day ago','3 days ago','1 week ago'][i%4],
+    duration: ['52:10','45:18','1:04:20','33:45'][i%4]
+  }));
+
+  const episodeGrid = document.getElementById('episodeGrid');
+  const pagination = document.getElementById('pagination');
+
+  // =============================
+  // RENDER EPISODES
+  // =============================
+  let currentPage = 1;
+  const perPage = 8;
+
+  function renderEpisodes() {
+    episodeGrid.innerHTML = '';
+    const start = (currentPage-1)*perPage;
+    const paginated = episodes.slice(start,start+perPage);
+
+    paginated.forEach(ep=>{
+      const card = document.createElement('div');
+      card.className = 'episode-card';
+      card.innerHTML = `
+        <div class="episode-thumbnail">
+          <div class="play-overlay">▶️</div>
+          <div class="duration-badge">${ep.duration}</div>
+        </div>
+        <div class="episode-body">
+          <div>
+            <div class="episode-title">${ep.title}</div>
+            <div class="creator-row">${ep.creator} ${ep.verified?'<span class="verified">✔️</span>':''}</div>
+          </div>
+          <div class="meta-row">
+            <span>${ep.views} • ${ep.time}</span>
+            <span class="dots">⋮</span>
+          </div>
+        </div>
+      `;
+      episodeGrid.appendChild(card);
+    });
+  }
+
+  // =============================
+  // RENDER PAGINATION
+  // =============================
+  function renderPagination() {
+    pagination.innerHTML = '';
+    const pageCount = Math.ceil(episodes.length/perPage);
+
+    const prev = document.createElement('button');
+    prev.textContent = 'Prev';
+    prev.disabled = currentPage===1;
+    prev.onclick = ()=>{currentPage--; updatePage();};
+    pagination.appendChild(prev);
+
+    for(let i=1;i<=pageCount;i++){
+      const btn = document.createElement('button');
+      btn.textContent = i;
+      if(i===currentPage) btn.classList.add('active');
+      btn.onclick = ()=>{currentPage=i; updatePage();};
+      pagination.appendChild(btn);
+    }
+
+    const next = document.createElement('button');
+    next.textContent = 'Next';
+    next.disabled = currentPage===pageCount;
+    next.onclick = ()=>{currentPage++; updatePage();};
+    pagination.appendChild(next);
+  }
+
+  function updatePage(){
+    renderEpisodes();
+    renderPagination();
+  }
+
+  // INITIAL RENDER
+  updatePage();
+
+  // =============================
+  // FILTER PILL INTERACTIONS
+  // =============================
+  const pills = document.querySelectorAll('.pill');
+  pills.forEach(pill=>{
+    pill.addEventListener('click', ()=>{
+      pills.forEach(p=>p.classList.remove('active'));
+      pill.classList.add('active');
+      // Filtering logic can be implemented here
+      currentPage=1;
+      updatePage();
+    });
+  });
+
+</script>
+
+</body>
+</html>
