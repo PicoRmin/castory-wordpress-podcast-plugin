@@ -6,7 +6,7 @@
 | **Date** | 2026-06-06 |
 | **Goal** | Cross-page shell: nav sync, global player, search, notifications, localStorage |
 | **Prerequisite** | [Phase 6](./PHASE-6.md) |
-| **Next Phase** | Phase 8 — WordPress Plugin Core |
+| **Next Phase** | Phase 8 — WordPress Plugin Core — see [PHASE-8.md](./PHASE-8.md) |
 
 ---
 

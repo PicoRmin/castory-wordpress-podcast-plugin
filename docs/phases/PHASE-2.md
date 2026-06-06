@@ -23,7 +23,7 @@
 | File | Action |
 |------|--------|
 | `index.html` | Rewritten — Castory, nav links, View All, shared CSS |
-| `home.css` | **Created** — hero, carousel, audio thumbs, create menu |
+| `home/home.css` | **Created** → renamed `page.css` in Phase 8 prep |
 | `script.js` | Rewritten — carousel, search all sections, chips, CASTORY_MOCK render |
 | `style.css` | **Deleted** — replaced by shared + home.css |
 

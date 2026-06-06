@@ -15,7 +15,7 @@
 | MockUpها | Castory |
 | Promptهای AI | PodStream |
 
-**اقدام بعدی (فاز ۲):** جایگزینی «PodStream» با «Castory» در تمام prototypeها.
+**اقدام بعدی (فاز ۲):** ✅ انجام شد — «PodStream» در prototypeهای canonical با «Castory» جایگزین شد (`_archive/` مستثنی).
 
 **Plugin slug:** `castory`  
 **Text domain:** `castory`

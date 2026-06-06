@@ -501,104 +501,55 @@ filtered.sort((a,b) => b.publishedAt - a.publishedAt);
 
 **هدف:** تبدیل UI به پلاگین WordPress واقعی  
 **مدت تخمینی:** ۱۰–۱۵ روز  
-**پیش‌نیاز:** فاز ۷
+**پیش‌نیاز:** فاز ۷  
+**وضعیت:** 🔄 foundation complete — [PHASE-8.md](./phases/PHASE-8.md)
 
 ### ۸.۱ Plugin Scaffold
 
-- [ ] **🔴** ایجاد `plugin/castory/castory.php`:
-
-```php
-/**
- * Plugin Name: Castory Podcast
- * Description: Premium podcast streaming platform
- * Version: 1.0.0
- * Requires at least: 6.0
- * Requires PHP: 8.0
- * Text Domain: castory
- */
-```
-
-- [ ] **🔴** Plugin folder structure:
-
-```
-plugin/castory/
-├── castory.php
-├── uninstall.php
-├── includes/
-│   ├── class-castory.php
-│   ├── class-activator.php
-│   ├── class-loader.php
-│   └── class-i18n.php
-├── admin/
-│   ├── class-admin.php
-│   └── views/
-├── public/
-│   ├── class-public.php
-│   ├── css/
-│   └── js/
-├── templates/
-│   ├── home.php
-│   ├── explore.php
-│   ├── library.php
-│   ├── profile.php
-│   ├── trending-audio.php
-│   ├── trending-video.php
-│   ├── new-episodes.php
-│   └── episode-detail.php
-├── blocks/               ← Gutenberg blocks
-└── languages/
-```
-
-- [ ] **🔴** Activation hook: flush rewrite rules
-- [ ] **🔴** Deactivation / uninstall cleanup
-- [ ] **🟡** Settings page در WP Admin
+- [x] **🔴** ایجاد `plugin/castory/castory.php`
+- [x] **🔴** Plugin folder structure (see PHASE-8.md)
+- [x] **🔴** Activation hook: flush rewrite rules + default pages
+- [x] **🔴** Deactivation / uninstall cleanup
+- [x] **🟡** Settings page در WP Admin
 
 ### ۸.۲ Custom Post Types & Taxonomies
 
-- [ ] **🔴** CPT: `castory_episode`
-  - [ ] meta: duration، views، media_type (audio/video)، media_url
-- [ ] **🔴** CPT: `castory_podcast` (show/channel)
-- [ ] **🔴** Taxonomy: `castory_category`
-- [ ] **🔴** Taxonomy: `castory_topic`
+- [x] **🔴** CPT: `castory_episode` + meta (duration, views, media_type, media_url)
+- [x] **🔴** CPT: `castory_podcast`
+- [x] **🔴** Taxonomy: `castory_category`
+- [x] **🔴** Taxonomy: `castory_topic`
 - [ ] **🟡** CPT: `castory_creator`
 - [ ] **🟡** User meta: premium status، listening stats
 
 ### ۸.۳ Asset Pipeline
 
-- [ ] **🔴** Enqueue shared CSS/JS via `wp_enqueue_style/script`
-- [ ] **🔴** Conditional loading per page/template
+- [x] **🔴** Enqueue shared CSS/JS via `wp_enqueue_style/script`
+- [x] **🔴** Conditional loading per page/shortcode
 - [ ] **🟡** Minify CSS/JS for production
 - [ ] **🟡** RTL stylesheet support
 
 ### ۸.۴ Templates & Shortcodes
 
-- [ ] **🔴** Page template registration
-- [ ] **🔴** Shortcodes:
-  - [ ] `[castory_home]`
-  - [ ] `[castory_trending type="video|audio"]`
-  - [ ] `[castory_new_episodes]`
-  - [ ] `[castory_explore]`
-  - [ ] `[castory_library]`
-  - [ ] `[castory_profile]`
-  - [ ] `[castory_episode id="123"]`
+- [ ] **🔴** Full HTML template port (home ✅, explore ✅, others shell)
+- [x] **🔴** Shortcodes: `[castory_home]`, `[castory_explore]`, `[castory_library]`, `[castory_profile]`, `[castory_trending]`, `[castory_new_episodes]`, `[castory_episode]`
 - [ ] **🟡** Gutenberg blocks (wrapper around shortcodes)
 
 ### ۸.۵ REST API
 
-- [ ] **🔴** `GET /wp-json/castory/v1/episodes` — list + filter + pagination
-- [ ] **🔴** `GET /wp-json/castory/v1/episodes/{id}`
+- [x] **🔴** `GET /wp-json/castory/v1/episodes`
+- [x] **🔴** `GET /wp-json/castory/v1/episodes/{id}`
 - [ ] **🟡** `GET /wp-json/castory/v1/trending`
 - [ ] **🟡** `GET /wp-json/castory/v1/creators`
 - [ ] **🟡** User endpoints: library، watch-later، progress (auth required)
 
 ### ۸.۶ Admin UI
 
-- [ ] **🔴** Episode editor: media upload، duration، type
+- [x] **🔴** Episode editor meta: duration, type, views, media URL
 - [ ] **🟡** Podcast editor: cover، creator link
 - [ ] **🟡** Dashboard widget: stats overview
 - [ ] **🟡** Import tool (RSS feed → episodes)
 
-**خروجی فاز ۸:** Plugin قابل نصب در WordPress
+**خروجی فاز ۸:** 🔄 Plugin قابل نصب — foundation آماده؛ template port + REST frontend باقی‌مانده
 
 ---
 

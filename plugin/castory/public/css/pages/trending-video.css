@@ -1,0 +1,103 @@
+/* Castory Trending Video — page overrides */
+
+.hero {
+  min-height: 220px;
+  display: grid;
+  grid-template-columns: 1fr 420px;
+  gap: var(--space-8);
+  margin-bottom: var(--space-8);
+  border-radius: var(--radius-xl);
+  padding: var(--space-10);
+  background: linear-gradient(135deg, rgba(124, 58, 237, 0.12), rgba(17, 24, 39, 0.9));
+  border: 1px solid var(--color-border);
+}
+
+.hero h1 {
+  font-size: 48px;
+  line-height: 1.1;
+  margin-bottom: var(--space-4);
+}
+
+.hero-visual {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.hero-glow {
+  position: absolute;
+  width: 260px;
+  height: 260px;
+  background: var(--color-primary);
+  filter: blur(90px);
+  opacity: 0.35;
+}
+
+.video-card.hero-float {
+  width: 260px;
+  height: 160px;
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: var(--radius-xl);
+  backdrop-filter: blur(20px);
+  position: relative;
+  z-index: 2;
+  animation: tv-float 4s ease-in-out infinite;
+}
+
+.video-screen {
+  width: 100%;
+  height: 100%;
+  display: grid;
+  place-items: center;
+  font-size: 42px;
+}
+
+.floating {
+  position: absolute;
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--color-primary), var(--color-secondary));
+  opacity: 0.6;
+}
+
+.floating-1 { width: 70px; height: 70px; top: 10px; right: 50px; }
+.floating-2 { width: 40px; height: 40px; bottom: 30px; left: 40px; }
+
+@keyframes tv-float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-12px); }
+}
+
+.filters {
+  display: flex;
+  justify-content: space-between;
+  gap: var(--space-5);
+  margin-bottom: var(--space-8);
+  flex-wrap: wrap;
+}
+
+.filter-actions {
+  display: flex;
+  gap: var(--space-3);
+}
+
+.mobile-sort {
+  display: none;
+  justify-content: space-between;
+  margin-bottom: var(--space-5);
+}
+
+.sidebar-bottom {
+  padding: var(--space-6) var(--space-4);
+}
+
+.upgrade-icon {
+  font-size: 32px;
+  margin-bottom: var(--space-4);
+}
+
+@media (max-width: 768px) {
+  .hero { display: none; }
+  .mobile-sort { display: flex; }
+}

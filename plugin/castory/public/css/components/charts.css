@@ -1,0 +1,86 @@
+/**
+ * Charts & progress (Library / Profile — v1.1)
+ */
+
+.stat-card {
+  padding: var(--space-5);
+  border-radius: var(--radius-md);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+}
+
+.stat-card .stat-value {
+  font-size: 28px;
+  font-weight: var(--font-weight-bold);
+}
+
+.stat-card .stat-label {
+  font-size: var(--text-body);
+  color: var(--color-text-secondary);
+}
+
+.stat-card .stat-trend {
+  font-size: var(--text-meta);
+  color: var(--color-success);
+}
+
+.progress-bar {
+  height: 8px;
+  background: rgba(255, 255, 255, 0.08);
+  border-radius: var(--radius-full);
+  overflow: hidden;
+}
+
+.progress-bar__fill {
+  height: 100%;
+  background: linear-gradient(90deg, var(--color-primary), var(--color-secondary));
+  border-radius: var(--radius-full);
+  transition: width var(--transition);
+}
+
+.bar-chart {
+  display: flex;
+  align-items: flex-end;
+  gap: var(--space-2);
+  height: 120px;
+  padding-top: var(--space-4);
+}
+
+.bar-chart__bar {
+  flex: 1;
+  min-height: 8px;
+  background: linear-gradient(to top, var(--color-primary), var(--color-secondary));
+  border-radius: var(--radius-sm) var(--radius-sm) 0 0;
+  transition: height var(--transition);
+}
+
+.interest-row {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  margin-bottom: var(--space-3);
+}
+
+.interest-row label {
+  width: 100px;
+  font-size: var(--text-meta);
+  color: var(--color-text-secondary);
+  padding: 0;
+}
+
+.heatmap {
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  gap: 3px;
+}
+
+.heatmap-cell {
+  aspect-ratio: 1;
+  border-radius: 3px;
+  background: rgba(124, 58, 237, 0.15);
+}
+
+.heatmap-cell--2 { background: rgba(124, 58, 237, 0.35); }
+.heatmap-cell--3 { background: rgba(124, 58, 237, 0.55); }
+.heatmap-cell--4 { background: rgba(124, 58, 237, 0.85); }

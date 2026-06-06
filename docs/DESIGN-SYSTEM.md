@@ -181,11 +181,17 @@ Pages still use local CSS. Migration steps per page:
 
 ## WordPress (Phase 8)
 
-Enqueue from plugin:
+Enqueue from plugin (`plugin/castory/public/`):
 
 ```php
-wp_enqueue_style('castory-design-system', CASTORY_URL . 'public/css/castory.css');
-wp_enqueue_script('castory-utils', CASTORY_URL . 'public/js/utils.js', [], CASTORY_VERSION, true);
+wp_enqueue_style('castory-design-system', CASTORY_PLUGIN_URL . 'public/css/castory.css');
+wp_enqueue_script('castory-utils', CASTORY_PLUGIN_URL . 'public/js/utils.js', [], CASTORY_VERSION, true);
 ```
 
-Mock data replaced by `wp_localize_script()` + REST API.
+After editing prototypes, sync assets:
+
+```powershell
+.\scripts\sync-assets.ps1
+```
+
+Mock data replaced by REST API + `castoryConfig` (Phase 8.5).

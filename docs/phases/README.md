@@ -14,6 +14,7 @@
 | 5 | [PHASE-5.md](./PHASE-5.md) | ✅ Complete | 2026-06-06 |
 | 6 | [PHASE-6.md](./PHASE-6.md) | ✅ Complete | 2026-06-06 |
 | 7 | [PHASE-7.md](./PHASE-7.md) | ✅ Complete | 2026-06-06 |
+| 8 | [PHASE-8.md](./PHASE-8.md) | 🔄 In Progress | 2026-06-06 |
 
 ## قالب استاندارد (برای فازهای بعد)
 

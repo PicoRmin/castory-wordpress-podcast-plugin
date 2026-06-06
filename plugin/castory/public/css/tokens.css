@@ -1,0 +1,113 @@
+/**
+ * Castory Design Tokens
+ * @see docs/DECISIONS.md
+ */
+
+:root {
+  /* ── Colors ── */
+  --color-bg-primary: #050816;
+  --color-bg-secondary: #0b1020;
+  --color-bg-sidebar: #070b18;
+  --color-surface: #101828;
+  --color-card: #111827;
+  --color-primary: #7c3aed;
+  --color-primary-hover: #8b5cf6;
+  --color-secondary: #a855f7;
+  --color-success: #22c55e;
+  --color-info: #3b82f6;
+  --color-warning: #f59e0b;
+  --color-text: #ffffff;
+  --color-text-secondary: #a1a1aa;
+  --color-text-muted: #71717a;
+  --color-border: rgba(255, 255, 255, 0.08);
+  --color-border-hover: rgba(124, 58, 237, 0.35);
+  --color-glass-bg: rgba(255, 255, 255, 0.04);
+  --color-glass-border: rgba(255, 255, 255, 0.08);
+  --color-overlay: rgba(5, 8, 22, 0.85);
+
+  /* Legacy aliases (Phase 2 migration) */
+  --bg: var(--color-bg-primary);
+  --bg-secondary: var(--color-bg-secondary);
+  --sidebar-bg: var(--color-bg-sidebar);
+  --card: var(--color-card);
+  --surface: var(--color-surface);
+  --primary: var(--color-primary);
+  --primary-hover: var(--color-primary-hover);
+  --secondary: var(--color-secondary);
+  --success: var(--color-success);
+  --text: var(--color-text);
+  --text-secondary: var(--color-text-secondary);
+  --text-muted: var(--color-text-muted);
+  --border: var(--color-border);
+  --border-hover: var(--color-border-hover);
+  --purple: var(--color-primary);
+  --purple2: var(--color-primary-hover);
+  --green: var(--color-success);
+  --muted: var(--color-text-secondary);
+
+  /* ── Spacing (8px scale) ── */
+  --space-1: 4px;
+  --space-2: 8px;
+  --space-3: 12px;
+  --space-4: 16px;
+  --space-5: 20px;
+  --space-6: 24px;
+  --space-8: 32px;
+  --space-10: 40px;
+  --space-12: 48px;
+  --space-16: 64px;
+
+  /* ── Layout ── */
+  --sidebar-width: 260px;
+  --sidebar-width-tablet: 240px;
+  --sidebar-width-collapsed: 90px;
+  --right-panel-width: 320px;
+  --header-height: 80px;
+  --mobile-header-height: 64px;
+  --bottom-nav-height: 80px;
+  --content-max-width: 1600px;
+
+  /* ── Radius ── */
+  --radius-sm: 12px;
+  --radius-md: 16px;
+  --radius-lg: 20px;
+  --radius-xl: 24px;
+  --radius-full: 999px;
+  --radius-round: var(--radius-full);
+
+  /* ── Typography ── */
+  --font-family: 'Inter', system-ui, -apple-system, sans-serif;
+  --font-weight-normal: 400;
+  --font-weight-medium: 500;
+  --font-weight-semibold: 600;
+  --font-weight-bold: 700;
+  --font-weight-extrabold: 800;
+  --text-page-title: 48px;
+  --text-section-title: 28px;
+  --text-card-title: 20px;
+  --text-body: 14px;
+  --text-meta: 12px;
+  --line-height: 1.5;
+  --line-height-tight: 1.25;
+
+  /* ── Effects ── */
+  --shadow-card: 0 10px 40px rgba(0, 0, 0, 0.4);
+  --shadow-hover: 0 20px 60px rgba(124, 58, 237, 0.2);
+  --shadow-glow: 0 0 24px rgba(124, 58, 237, 0.45);
+  --blur-glass: 20px;
+  --transition: 0.25s ease;
+  --transition-fast: 0.15s ease;
+
+  /* ── Breakpoints (reference — use in media queries) ── */
+  --bp-mobile: 768px;
+  --bp-tablet: 1024px;
+  --bp-desktop: 1200px;
+  --bp-desktop-xl: 1440px;
+
+  /* ── Z-index ── */
+  --z-dropdown: 100;
+  --z-sticky: 200;
+  --z-sidebar-drawer: 900;
+  --z-bottom-nav: 950;
+  --z-modal: 1000;
+}

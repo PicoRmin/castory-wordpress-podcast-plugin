@@ -1,0 +1,114 @@
+/**
+ * Episode tables (Trending Audio)
+ */
+
+.episodes-wrapper {
+  padding: var(--space-6);
+  border-radius: var(--radius-xl);
+  margin-top: var(--space-6);
+}
+
+.section-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: var(--space-5);
+  flex-wrap: wrap;
+  margin-bottom: var(--space-5);
+}
+
+.table-header,
+.episode-row {
+  display: grid;
+  grid-template-columns: 3fr 1.3fr 0.8fr 0.8fr 0.6fr;
+  align-items: center;
+  gap: var(--space-5);
+}
+
+.table-header {
+  padding: var(--space-5) 0;
+  color: var(--color-text-muted);
+  font-size: var(--text-body);
+  border-bottom: 1px solid var(--color-border);
+}
+
+.episode-row {
+  padding: var(--space-4);
+  border-radius: var(--radius-md);
+  margin-top: var(--space-2);
+  transition: var(--transition);
+}
+
+.episode-row:hover {
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid var(--color-border-hover);
+  transform: translateY(-2px);
+}
+
+.episode-info {
+  display: flex;
+  align-items: center;
+  gap: var(--space-4);
+}
+
+.episode-thumb {
+  position: relative;
+  flex-shrink: 0;
+}
+
+.episode-thumb img {
+  width: 88px;
+  height: 88px;
+  border-radius: var(--radius-md);
+  object-fit: cover;
+}
+
+.episode-thumb button {
+  position: absolute;
+  inset: 0;
+  margin: auto;
+  width: 42px;
+  height: 42px;
+  border-radius: var(--radius-full);
+  background: rgba(124, 58, 237, 0.9);
+  color: var(--color-text);
+}
+
+.podcast-info {
+  display: flex;
+  flex-direction: column;
+}
+
+.podcast-info small {
+  color: var(--color-text-muted);
+  margin-top: var(--space-2);
+}
+
+.actions {
+  display: flex;
+  gap: var(--space-2);
+}
+
+.actions button {
+  width: 42px;
+  height: 42px;
+  border-radius: var(--radius-sm);
+  background: rgba(255, 255, 255, 0.05);
+  color: var(--color-text);
+  transition: var(--transition);
+}
+
+.actions button:hover {
+  background: rgba(124, 58, 237, 0.2);
+}
+
+@media (max-width: 768px) {
+  .table-header {
+    display: none;
+  }
+
+  .episode-row {
+    grid-template-columns: 1fr;
+    gap: var(--space-3);
+  }
+}
