@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Profile | Castory</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+<link rel="stylesheet" href="../shared/css/castory.css">
+<link rel="stylesheet" href="page.css">
+</head>
+<body class="profile-page" data-castory-app>
+
+<div class="app-three-col">
+
+  <aside class="sidebar" id="sidebar">
+    <button class="mobile-menu-btn" id="menuBtn" type="button" aria-label="Open menu">☰</button>
+    <div class="logo">
+      <i class="fa-solid fa-wave-square"></i>
+      <span>Castory</span>
+    </div>
+    <nav class="nav-menu profile-nav">
+      <a href="../home/index.html" class="nav-item"><span>⌂</span> Home</a>
+      <a href="../explore/index.html" class="nav-item"><span>◈</span> Explore</a>
+      <a href="../library/index.html" class="nav-item"><span>📚</span> Library</a>
+      <a href="#" class="nav-item"><span>👥</span> Community</a>
+      <a href="#" class="nav-item"><span>💬</span> Messages <span class="nav-badge">3</span></a>
+      <a href="#" class="nav-item"><span>🔔</span> Notifications <span class="nav-badge">5</span></a>
+      <a href="#" class="nav-item"><span>📊</span> Analytics</a>
+      <a href="#" class="nav-item"><span>💰</span> Monetization</a>
+      <a href="#" class="nav-item"><span>🎬</span> Studio</a>
+      <a href="#" class="nav-item"><span>⚙</span> Settings</a>
+      <a href="index.html" class="nav-item active"><span>👤</span> Profile</a>
+    </nav>
+    <div class="profile-card glass sidebar-profile">
+      <img id="sidebarAvatar" src="" alt="">
+      <div>
+        <h4 id="sidebarName"></h4>
+        <p class="text-accent" id="sidebarBadge"></p>
+      </div>
+    </div>
+    <div class="upgrade-card glass sidebar-premium">
+      <i class="fa-solid fa-crown premium-icon"></i>
+      <h4>Premium Active</h4>
+      <p class="text-muted">Unlimited access enabled</p>
+    </div>
+  </aside>
+
+  <main class="main-content profile-main">
+    <section class="profile-hero">
+      <div class="cover-banner">
+        <img id="coverImage" src="" alt="">
+        <div class="cover-overlay"></div>
+      </div>
+      <div class="profile-hero-body">
+        <div class="avatar-ring">
+          <img id="profileAvatar" src="" alt="">
+        </div>
+        <div class="profile-identity">
+          <h1 id="profileName"></h1>
+          <p class="profile-username" id="profileUsername"></p>
+          <p class="profile-bio" id="profileBio"></p>
+          <div class="profile-meta">
+            <span id="profileLocation"><i class="fa-solid fa-location-dot"></i></span>
+            <a id="profileWebsite" href="#" target="_blank" rel="noopener"><i class="fa-solid fa-link"></i></a>
+            <span id="profileJoin"><i class="fa-solid fa-calendar"></i></span>
+          </div>
+          <div class="profile-actions">
+            <button class="btn btn-primary" type="button" id="editProfileBtn">Edit Profile</button>
+            <button class="btn btn-secondary" type="button" id="shareProfileBtn">Share Profile</button>
+            <button class="btn btn-secondary icon-only" type="button" id="settingsProfileBtn" aria-label="Settings"><i class="fa-solid fa-gear"></i></button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <div class="stats-row" id="statsRow"></div>
+
+    <section class="section">
+      <div class="section-header"><h2>Achievements</h2></div>
+      <div class="achievements-grid" id="achievementsGrid"></div>
+    </section>
+
+    <section class="section">
+      <div class="section-header"><h2>Listening Activity</h2></div>
+      <div class="timeline" id="listeningTimeline"></div>
+    </section>
+
+    <section class="section">
+      <div class="section-header">
+        <h2>Favorite Creators</h2>
+        <div class="carousel-controls">
+          <button type="button" class="carousel-btn" id="creatorsPrev" aria-label="Previous">‹</button>
+          <button type="button" class="carousel-btn" id="creatorsNext" aria-label="Next">›</button>
+        </div>
+      </div>
+      <div class="carousel-wrap">
+        <div class="creators-carousel horizontal-scroll" id="creatorsCarousel"></div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="section-header">
+        <h2>My Playlists</h2>
+        <a href="../library/index.html">View All</a>
+      </div>
+      <div class="playlist-grid" id="playlistGrid"></div>
+    </section>
+
+    <section class="section">
+      <div class="section-header"><h2>Saved Episodes</h2></div>
+      <div class="saved-scroll horizontal-scroll" id="savedEpisodes"></div>
+    </section>
+
+    <section class="section">
+      <div class="section-header"><h2>Watch History</h2></div>
+      <div class="history-grid" id="watchHistory"></div>
+    </section>
+
+    <section class="section">
+      <div class="section-header"><h2>Top Categories</h2></div>
+      <div class="categories-grid" id="topCategories"></div>
+    </section>
+
+    <section class="section">
+      <div class="section-header"><h2>Recently Completed</h2></div>
+      <div class="completed-list" id="recentlyCompleted"></div>
+    </section>
+  </main>
+
+  <aside class="right-panel">
+    <div class="widget glass">
+      <h3>Profile Insights</h3>
+      <div id="insightsWidget"></div>
+    </div>
+    <div class="widget glass">
+      <h3>Following Summary</h3>
+      <div id="followingWidget"></div>
+    </div>
+    <div class="widget glass">
+      <h3>Account Status</h3>
+      <div id="accountWidget"></div>
+    </div>
+    <div class="widget glass">
+      <h3>Storage Usage</h3>
+      <div id="storageWidget"></div>
+    </div>
+    <div class="widget glass">
+      <h3>Listening Activity</h3>
+      <div id="heatmapWidget"></div>
+    </div>
+    <div class="widget glass">
+      <h3>Top Interests</h3>
+      <div id="interestsWidget"></div>
+    </div>
+  </aside>
+</div>
+
+<nav class="bottom-nav" id="bottomNav" aria-label="Mobile navigation"></nav>
+<div class="sidebar-backdrop" id="sidebarBackdrop"></div>
+
+<div class="modal" id="actionModal" aria-hidden="true">
+  <div class="modal-backdrop" id="modalBackdrop"></div>
+  <div class="modal-dialog glass" role="dialog" aria-labelledby="modalTitle">
+    <button class="modal-close" type="button" id="modalClose" aria-label="Close">×</button>
+    <h3 id="modalTitle">Action</h3>
+    <p id="modalBody" class="text-secondary">This feature will be available in the WordPress plugin.</p>
+    <button class="btn btn-primary" type="button" id="modalOk" style="margin-top:16px">Got it</button>
+  </div>
+</div>
+
+<script src="../shared/js/utils.js"></script>
+<script src="../shared/js/storage.js"></script>
+<script src="../shared/js/mock-data.js"></script>
+<script src="../shared/js/components/sidebar.js"></script>
+<script src="../shared/js/components/nav.js"></script>
+<script src="../shared/js/components/global-player.js"></script>
+<script src="../shared/js/components/notifications.js"></script>
+<script src="../shared/js/components/search.js"></script>
+<script src="../shared/js/castory.js"></script>
+<script src="script.js"></script>
+</body>
+</html>

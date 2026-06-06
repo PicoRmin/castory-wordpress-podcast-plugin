@@ -6,9 +6,8 @@
   <title>Castory — Prototype Hub</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="shared/css/tokens.css">
-  <link rel="stylesheet" href="shared/css/reset.css">
-  <style>
+<link rel="stylesheet" href="shared/css/castory.css">
+<style>
     body { padding: 48px 24px; max-width: 720px; margin: 0 auto; }
     h1 { font-size: 32px; margin-bottom: 8px; color: var(--color-primary); }
     .subtitle { color: var(--color-text-secondary); margin-bottom: 32px; }
@@ -34,24 +33,41 @@
 </head>
 <body>
   <h1>Castory</h1>
-  <p class="subtitle">Prototype hub — Phase 0 foundation</p>
+  <p class="subtitle">Prototype hub — Phase 7 SPA-lite · <a href="shared/preview.html" style="color:var(--color-primary-hover)">Design System →</a></p>
 
   <section>
-    <h2>MVP Pages</h2>
+    <h2>Integrated Demo Flow</h2>
     <ul>
-      <li><a class="done" href="home/index.html"><strong>Home</strong><span>Featured carousel, trending sections</span></a></li>
-      <li><a class="done" href="trending-video/index.html"><strong>Trending Video</strong><span>View All — canonical implementation</span></a></li>
-      <li><a class="done" href="trending-audio/index.html"><strong>Trending Audio</strong><span>Table layout, filters</span></a></li>
-      <li><a class="done" href="new-episodes/index.html"><strong>New Episodes</strong><span>Episode list, filters, newsletter</span></a></li>
+      <li><a class="done" href="home/index.html"><strong>Start at Home</strong><span>Global player · search · notifications · nav sync</span></a></li>
+      <li><a class="done" href="explore/index.html?q=podcast"><strong>Explore with search</strong><span>Pre-filtered via <code>?q=</code> query param</span></a></li>
+    </ul>
+  </section>
+
+    <section>
+      <h2>MVP Pages</h2>
+      <ul>
+        <li><a class="done" href="home/index.html"><strong>Home</strong><span>Migrated to Castory DS · linked nav</span></a></li>
+        <li><a class="done" href="trending-video/index.html"><strong>Trending Video</strong><span>CASTORY_MOCK · shared Pagination</span></a></li>
+        <li><a class="done" href="trending-audio/index.html"><strong>Trending Audio</strong><span>Dynamic table · filters · fixed JS</span></a></li>
+        <li><a class="done" href="new-episodes/index.html"><strong>New Episodes</strong><span>15+ episodes · pagination · filters</span></a></li>
+      </ul>
+    </section>
+
+  <section>
+    <h2>Episode Detail</h2>
+    <ul>
+      <li><a class="done" href="episode-detail/audio/index.html?id=14"><strong>Audio Detail</strong><span>Player · waveform · comments · related</span></a></li>
+      <li><a class="done" href="episode-detail/video/index.html?id=2"><strong>Video Detail</strong><span>16:9 player · chapters · transcript</span></a></li>
+      <li><a class="done" href="episode-detail/mobile/index.html?id=14"><strong>Mobile Detail</strong><span>Sticky mini-player · fullscreen mode</span></a></li>
     </ul>
   </section>
 
   <section>
-    <h2>v1.1 (Planned)</h2>
+    <h2>v1.1 Pages</h2>
     <ul>
-      <li><a class="pending" href="explore/index.html"><strong>Explore</strong><span>Discovery dashboard</span></a></li>
-      <li><a class="pending" href="library/index.html"><strong>Library</strong><span>Personal content dashboard</span></a></li>
-      <li><a class="pending" href="profile/index.html"><strong>Profile</strong><span>User profile dashboard</span></a></li>
+      <li><a class="done" href="explore/index.html"><strong>Explore</strong><span>Discovery dashboard · hero slider · topics grid</span></a></li>
+      <li><a class="done" href="library/index.html"><strong>Library</strong><span>Personal dashboard · stats · playlists · insights</span></a></li>
+      <li><a class="done" href="profile/index.html"><strong>Profile</strong><span>Hero banner · achievements · heatmap · insights</span></a></li>
     </ul>
   </section>
 

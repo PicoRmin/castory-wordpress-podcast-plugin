@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>Episode | Castory</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+<link rel="stylesheet" href="../../shared/css/castory.css">
+<link rel="stylesheet" href="page.css">
+</head>
+<body class="episode-mobile-page" data-castory-app>
+
+<header class="mobile-detail-header">
+  <button type="button" class="back-btn" id="backBtn" aria-label="Go back"><i class="fa-solid fa-arrow-left"></i></button>
+  <span class="header-title" id="headerTitle">Episode</span>
+  <div class="header-actions">
+    <button type="button" class="icon-btn" id="shareBtn" aria-label="Share"><i class="fa-solid fa-share-nodes"></i></button>
+    <button type="button" class="icon-btn" id="bookmarkBtn" aria-label="Bookmark"><i class="fa-regular fa-bookmark"></i></button>
+  </div>
+</header>
+
+<main class="mobile-main" id="mobileMain"></main>
+
+<section class="related-section">
+  <h2>Related</h2>
+  <div class="related-scroll horizontal-scroll" id="relatedScroll"></div>
+</section>
+
+<!-- Sticky mini player -->
+<div class="sticky-mini-player" id="stickyPlayer">
+  <img id="miniThumb" src="" alt="">
+  <div class="mini-info">
+    <p class="mini-title" id="miniTitle"></p>
+    <div class="progress player-progress"><span class="progress-fill" id="miniProgress"></span></div>
+  </div>
+  <button type="button" class="play-btn" id="miniPlay" aria-label="Play">▶</button>
+  <button type="button" class="expand-btn" id="expandBtn" aria-label="Expand player"><i class="fa-solid fa-up-right-and-down-left-from-center"></i></button>
+</div>
+
+<!-- Fullscreen player overlay -->
+<div class="fullscreen-player" id="fullscreenPlayer" aria-hidden="true">
+  <button type="button" class="fs-close" id="fsClose" aria-label="Close">×</button>
+  <div class="fs-content" id="fsContent"></div>
+  <div class="fs-controls" id="fsControls"></div>
+</div>
+
+<div class="detail-toast" id="detailToast" role="status"></div>
+
+<script src="../../shared/js/utils.js"></script>
+<script src="../../shared/js/storage.js"></script>
+<script src="../../shared/js/mock-data.js"></script>
+<script src="../../shared/js/episode-detail.js"></script>
+<script src="../../shared/js/components/global-player.js"></script>
+<script src="../../shared/js/castory.js"></script>
+<script src="script.js"></script>
+</body>
+</html>

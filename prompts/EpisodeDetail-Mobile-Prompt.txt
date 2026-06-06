@@ -1,0 +1,26 @@
+Create a mobile-first Episode Detail page for "Castory" (audio + video unified).
+
+Style: Dark neo UI, glassmorphism, purple accents, Inter font.
+Stack: HTML5, CSS3, Vanilla JS, castory.css.
+
+Features:
+- Detect mediaType from CASTORY_MOCK.getEpisodeById(?id=)
+- Sticky mini-player bar fixed at bottom (thumb, title, play, progress)
+- Full-screen player mode overlay (tap expand): large art/video area + full controls
+- Back button to previous page or home
+- Swipe-friendly horizontal scroll for related episodes
+- Breadcrumb simplified for mobile
+- Bottom safe-area padding
+
+Audio mode: cover art + waveform + controls in fullscreen overlay.
+Video mode: 16:9 player in fullscreen overlay.
+
+Actions: Share, Bookmark, Download icon buttons in header.
+
+Data: ?id= query param. Works for both audio (14) and video (2) episodes.
+
+Output: index.html, page.css, script.js
+
+Breakpoint: optimized for ≤768px; usable on desktop as mobile preview.
+
+Link from desktop detail pages: "Open mobile view" → mobile/index.html?id={id}

@@ -63,8 +63,10 @@ castory-wordpress-podcast-plugin/
 
 | Doc | Purpose |
 |-----|---------|
+| [docs/phases/](docs/phases/) | **Phase completion reports** (PHASE-0, PHASE-1, …) |
 | [docs/DECISIONS.md](docs/DECISIONS.md) | Brand, MVP scope, asset strategy |
 | [docs/IA.md](docs/IA.md) | Sidebar, breadcrumbs, mobile nav |
+| [docs/DESIGN-SYSTEM.md](docs/DESIGN-SYSTEM.md) | Shared CSS/JS components |
 | [docs/review.md](docs/review.md) | Audit of prompts vs implementation |
 | [docs/roadmap.md](docs/roadmap.md) | Full development roadmap |
 
@@ -79,7 +81,8 @@ castory-wordpress-podcast-plugin/
 | Success | `#22C55E` |
 | Font | Inter |
 
-Full tokens: `prototypes/shared/css/tokens.css` (Phase 1)
+Full tokens: `prototypes/shared/css/castory.css`  
+Preview: `prototypes/shared/preview.html`
 
 ---
 

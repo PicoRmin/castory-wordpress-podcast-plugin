@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>My Library | Castory</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+<link rel="stylesheet" href="../shared/css/castory.css">
+<link rel="stylesheet" href="page.css">
+</head>
+<body class="library-page" data-castory-app>
+
+<div class="app-three-col">
+
+  <aside class="sidebar" id="sidebar">
+    <button class="mobile-menu-btn" id="menuBtn" type="button" aria-label="Open menu">☰</button>
+    <div class="logo">
+      <i class="fa-solid fa-wave-square"></i>
+      <span>Castory</span>
+    </div>
+    <nav class="nav-menu library-nav">
+      <a href="../home/index.html" class="nav-item"><span>⌂</span> Home</a>
+      <a href="../explore/index.html" class="nav-item"><span>◈</span> Explore</a>
+      <a href="../trending-video/index.html" class="nav-item"><span>▶</span> Video</a>
+      <a href="../trending-audio/index.html" class="nav-item"><span>🎧</span> Audio</a>
+      <a href="index.html" class="nav-item active"><span>📚</span> My Library</a>
+      <a href="#" class="nav-item"><span>⏱</span> Watch Later</a>
+      <a href="#" class="nav-item"><span>⬇</span> Downloads</a>
+      <a href="../profile/index.html" class="nav-item"><span>👤</span> Profile</a>
+    </nav>
+    <div class="profile-card glass sidebar-profile">
+      <img id="userAvatar" src="" alt="">
+      <div>
+        <h4 id="userName"></h4>
+        <p class="text-accent" id="userBadge"></p>
+        <p class="user-stats text-muted" id="userStats"></p>
+      </div>
+    </div>
+    <div class="sidebar-footer">
+      <button type="button" class="sidebar-action" id="settingsBtn"><i class="fa-solid fa-gear"></i> Settings</button>
+      <button type="button" class="sidebar-action" id="sidebarNotifBtn"><i class="fa-solid fa-bell"></i> Notifications</button>
+      <button type="button" class="sidebar-action sidebar-action--muted" id="logoutBtn"><i class="fa-solid fa-right-from-bracket"></i> Logout</button>
+    </div>
+  </aside>
+
+  <main class="main-content">
+    <header class="topbar">
+      <div class="search-box">
+        <i class="fa-solid fa-magnifying-glass"></i>
+        <input type="search" id="searchInput" placeholder="Search your library..." aria-label="Search library">
+      </div>
+      <div class="header-actions">
+        <button class="btn btn-secondary btn-sm" type="button" id="createPlaylistBtn">Create Playlist</button>
+        <button class="btn btn-secondary btn-sm hide-tablet" type="button" id="importBtn">Import Podcasts</button>
+        <button class="btn btn-secondary btn-sm hide-tablet" type="button" id="downloadsBtn">Manage Downloads</button>
+        <button class="icon-btn" type="button" aria-label="Notifications">
+          <i class="fa-solid fa-bell"></i>
+          <span class="badge">2</span>
+        </button>
+      </div>
+    </header>
+
+    <nav class="breadcrumb" aria-label="Breadcrumb">
+      <a href="../home/index.html">Home</a> › <span>Library</span>
+    </nav>
+
+    <section class="section">
+      <div class="section-header">
+        <h2>Stats Overview</h2>
+      </div>
+      <div class="stats-grid" id="statsGrid"></div>
+    </section>
+
+    <section class="section">
+      <div class="section-header">
+        <h2>Continue Listening</h2>
+        <a href="../trending-audio/index.html">View All</a>
+      </div>
+      <div class="continue-scroll horizontal-scroll" id="continueListening"></div>
+    </section>
+
+    <section class="section">
+      <div class="section-header">
+        <h2>Continue Watching</h2>
+        <a href="../trending-video/index.html">View All</a>
+      </div>
+      <div class="continue-scroll horizontal-scroll" id="continueWatching"></div>
+    </section>
+
+    <section class="section">
+      <div class="section-header">
+        <h2>My Playlists</h2>
+        <button class="text-link" type="button" id="newPlaylistBtn">+ New Playlist</button>
+      </div>
+      <div class="playlist-grid" id="playlistGrid"></div>
+    </section>
+
+    <section class="section">
+      <div class="section-header">
+        <h2>Downloaded Content</h2>
+      </div>
+      <div class="download-list" id="downloadList"></div>
+    </section>
+
+    <section class="section">
+      <div class="section-header">
+        <h2>Saved For Later</h2>
+      </div>
+      <div class="saved-grid" id="savedGrid"></div>
+    </section>
+  </main>
+
+  <aside class="right-panel">
+    <div class="widget glass">
+      <h3>Recent Activity</h3>
+      <div id="recentActivity"></div>
+    </div>
+    <div class="widget glass">
+      <h3>Storage Usage</h3>
+      <div id="storageWidget"></div>
+    </div>
+    <div class="widget glass">
+      <h3>Watchlist Summary</h3>
+      <div id="watchlistWidget"></div>
+    </div>
+    <div class="widget glass">
+      <h3>Listening Insights</h3>
+      <div id="insightsWidget"></div>
+    </div>
+  </aside>
+</div>
+
+<nav class="bottom-nav" id="bottomNav" aria-label="Mobile navigation"></nav>
+<div class="sidebar-backdrop" id="sidebarBackdrop"></div>
+
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+<script src="../shared/js/utils.js"></script>
+<script src="../shared/js/storage.js"></script>
+<script src="../shared/js/mock-data.js"></script>
+<script src="../shared/js/components/sidebar.js"></script>
+<script src="../shared/js/components/nav.js"></script>
+<script src="../shared/js/components/global-player.js"></script>
+<script src="../shared/js/components/notifications.js"></script>
+<script src="../shared/js/components/search.js"></script>
+<script src="../shared/js/castory.js"></script>
+<script src="script.js"></script>
+</body>
+</html>

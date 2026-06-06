@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Episode | Castory</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+<link rel="stylesheet" href="../../shared/css/castory.css">
+<link rel="stylesheet" href="page.css">
+</head>
+<body class="episode-video-page" data-castory-app>
+
+<div class="detail-shell">
+
+  <header class="detail-header">
+    <a href="../../trending-video/index.html" class="back-btn"><i class="fa-solid fa-arrow-left"></i> Back</a>
+    <nav class="breadcrumb" id="breadcrumb" aria-label="Breadcrumb"></nav>
+    <div class="header-actions">
+      <a href="../mobile/index.html" class="icon-btn" id="mobileLink" aria-label="Mobile view"><i class="fa-solid fa-mobile"></i></a>
+      <button type="button" class="icon-btn" id="shareBtn" aria-label="Share"><i class="fa-solid fa-share-nodes"></i></button>
+      <button type="button" class="icon-btn" id="bookmarkBtn" aria-label="Bookmark"><i class="fa-regular fa-bookmark"></i></button>
+    </div>
+  </header>
+
+  <section class="video-stage glass" id="videoStage">
+    <img id="videoPoster" src="" alt="">
+    <div class="video-overlay" id="videoOverlay">
+      <button type="button" class="play-large" id="videoPlayBtn" aria-label="Play video">▶</button>
+    </div>
+    <div class="video-controls">
+      <div class="progress player-progress seek-bar" id="seekBar">
+        <span class="progress-fill" id="progressFill"></span>
+      </div>
+      <div class="controls-bottom">
+        <button type="button" class="ctrl-sm" id="videoPlaySmall">▶</button>
+        <span id="currentTime">0:00</span>
+        <span class="sep">/</span>
+        <span id="totalTime">0:00</span>
+        <span class="spacer"></span>
+        <button type="button" class="ctrl-sm" id="volumeBtn" aria-label="Volume"><i class="fa-solid fa-volume-high"></i></button>
+        <button type="button" class="ctrl-sm" id="fullscreenBtn" aria-label="Fullscreen"><i class="fa-solid fa-expand"></i></button>
+      </div>
+    </div>
+  </section>
+
+  <div class="detail-grid">
+    <main class="detail-main">
+      <section class="episode-header">
+        <h1 id="episodeTitle"></h1>
+        <div class="creator-row" id="creatorRow"></div>
+        <div class="meta-tags" id="metaTags"></div>
+        <p class="episode-desc" id="episodeDesc"></p>
+        <button type="button" class="btn btn-secondary" id="downloadBtn"><i class="fa-solid fa-download"></i> Download</button>
+      </section>
+
+      <section class="section">
+        <h2>Chapters</h2>
+        <div class="chapters-list" id="chaptersList"></div>
+      </section>
+
+      <section class="section transcript-section">
+        <button type="button" class="transcript-toggle" id="transcriptToggle" aria-expanded="false">
+          <h2>Transcript</h2>
+          <i class="fa-solid fa-chevron-down"></i>
+        </button>
+        <div class="transcript-body" id="transcriptBody" hidden></div>
+      </section>
+    </main>
+
+    <aside class="detail-aside">
+      <h2>Related Videos</h2>
+      <div class="related-grid" id="relatedGrid"></div>
+    </aside>
+  </div>
+</div>
+
+<div class="detail-toast" id="detailToast" role="status"></div>
+
+<script src="../../shared/js/utils.js"></script>
+<script src="../../shared/js/storage.js"></script>
+<script src="../../shared/js/mock-data.js"></script>
+<script src="../../shared/js/episode-detail.js"></script>
+<script src="../../shared/js/components/nav.js"></script>
+<script src="../../shared/js/components/global-player.js"></script>
+<script src="../../shared/js/components/notifications.js"></script>
+<script src="../../shared/js/castory.js"></script>
+<script src="script.js"></script>
+</body>
+</html>

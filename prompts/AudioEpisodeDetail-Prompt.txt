@@ -1,0 +1,37 @@
+Create a pixel-perfect static Audio Episode Detail page for "Castory" podcast platform.
+
+Style: Dark premium SaaS, glassmorphism, purple neon accents (#7C3AED), Inter font.
+Stack: HTML5, CSS3, Vanilla JS only. Import shared Design System (castory.css).
+
+Layout:
+- Optional left sidebar (Castory nav) + main content + right panel (related episodes)
+- Breadcrumb: Home › {Podcast} › {Episode Title}
+
+Hero Player:
+- Large cover art
+- Animated waveform visualization
+- Progress bar (seekable simulation)
+- Controls: skip back 15s, play/pause, skip forward 30s, playback speed (0.5x–2x)
+- Current time / duration display
+
+Episode Info:
+- Title, podcast name, creator, verified badge
+- Published date, duration, category, view count
+- Full description paragraph
+- Action row: Share, Bookmark, Download buttons
+
+Creator Card:
+- Avatar, name, follower count, Follow button toggle
+
+Related Episodes:
+- List or grid of same mediaType (audio), thumbnail + title + duration
+
+Comments Section (static mock):
+- 3+ comment cards with avatar, author, text, time ago, like count
+
+Data: CASTORY_MOCK.getEpisodeById(id) from URL ?id= query param.
+Default showcase episode: id=14 (audio).
+
+Output: index.html, page.css, script.js
+
+Responsive: tablet stack, mobile sticky mini-player bar optional link to mobile variant.

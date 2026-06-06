@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Episode | Castory</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+<link rel="stylesheet" href="../../shared/css/castory.css">
+<link rel="stylesheet" href="page.css">
+</head>
+<body class="episode-audio-page" data-castory-app>
+
+<div class="app-three-col detail-layout">
+
+  <aside class="sidebar" id="sidebar">
+    <button class="mobile-menu-btn" id="menuBtn" type="button" aria-label="Menu">☰</button>
+    <div class="logo"><i class="fa-solid fa-wave-square"></i><span>Castory</span></div>
+    <nav class="nav-menu detail-nav">
+      <a href="../../home/index.html" class="nav-item"><span>⌂</span> Home</a>
+      <a href="../../explore/index.html" class="nav-item"><span>◈</span> Explore</a>
+      <a href="../../trending-audio/index.html" class="nav-item"><span>🎧</span> Trending Audio</a>
+      <a href="../../library/index.html" class="nav-item"><span>📚</span> Library</a>
+    </nav>
+    <a href="../../home/index.html" class="btn btn-secondary back-link"><i class="fa-solid fa-arrow-left"></i> Back</a>
+  </aside>
+
+  <main class="main-content">
+    <nav class="breadcrumb" id="breadcrumb" aria-label="Breadcrumb"></nav>
+
+    <section class="audio-player glass" id="playerSection">
+      <div class="player-cover">
+        <img id="coverArt" src="" alt="">
+      </div>
+      <div class="player-body">
+        <div id="waveformWrap"></div>
+        <div class="progress player-progress seek-bar" id="seekBar">
+          <span class="progress-fill" id="progressFill"></span>
+        </div>
+        <div class="time-row">
+          <span id="currentTime">0:00</span>
+          <span id="totalTime">0:00</span>
+        </div>
+        <div class="player-controls-row">
+          <button type="button" class="ctrl-btn" id="skipBack" aria-label="Skip back 15 seconds">↺ 15</button>
+          <button type="button" class="ctrl-btn ctrl-btn--main play-btn" id="playBtn" aria-label="Play">▶</button>
+          <button type="button" class="ctrl-btn" id="skipForward" aria-label="Skip forward 30 seconds">30 ↻</button>
+          <select id="speedSelect" class="speed-select" aria-label="Playback speed">
+            <option value="0.5">0.5×</option>
+            <option value="1" selected>1×</option>
+            <option value="1.25">1.25×</option>
+            <option value="1.5">1.5×</option>
+            <option value="2">2×</option>
+          </select>
+        </div>
+      </div>
+    </section>
+
+    <section class="episode-meta glass">
+      <h1 id="episodeTitle"></h1>
+      <p class="podcast-name" id="podcastName"></p>
+      <div class="meta-tags" id="metaTags"></div>
+      <p class="episode-desc" id="episodeDesc"></p>
+      <div class="action-row">
+        <button type="button" class="btn btn-secondary" id="shareBtn"><i class="fa-solid fa-share-nodes"></i> Share</button>
+        <button type="button" class="btn btn-secondary" id="bookmarkBtn"><i class="fa-regular fa-bookmark"></i> Bookmark</button>
+        <button type="button" class="btn btn-secondary" id="downloadBtn"><i class="fa-solid fa-download"></i> Download</button>
+        <a href="../mobile/index.html" class="btn btn-secondary" id="mobileLink"><i class="fa-solid fa-mobile"></i> Mobile view</a>
+      </div>
+    </section>
+
+    <section class="creator-card glass" id="creatorCard"></section>
+
+    <section class="section">
+      <div class="section-header"><h2>Comments</h2><span class="text-muted" id="commentCount"></span></div>
+      <div id="commentsList"></div>
+    </section>
+  </main>
+
+  <aside class="right-panel">
+    <div class="widget glass">
+      <h3>Related Episodes</h3>
+      <div class="related-list" id="relatedList"></div>
+    </div>
+  </aside>
+</div>
+
+<div class="detail-toast" id="detailToast" role="status"></div>
+
+<script src="../../shared/js/utils.js"></script>
+<script src="../../shared/js/storage.js"></script>
+<script src="../../shared/js/mock-data.js"></script>
+<script src="../../shared/js/episode-detail.js"></script>
+<script src="../../shared/js/components/sidebar.js"></script>
+<script src="../../shared/js/components/nav.js"></script>
+<script src="../../shared/js/components/global-player.js"></script>
+<script src="../../shared/js/components/notifications.js"></script>
+<script src="../../shared/js/castory.js"></script>
+<script src="script.js"></script>
+</body>
+</html>

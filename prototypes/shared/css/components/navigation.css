@@ -1,0 +1,111 @@
+/**
+ * Navigation
+ */
+
+.logo,
+.logo-area {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  font-size: 24px;
+  font-weight: var(--font-weight-extrabold);
+  color: var(--color-primary-hover);
+  margin-bottom: var(--space-8);
+}
+
+.logo-icon {
+  width: 48px;
+  height: 48px;
+  display: grid;
+  place-items: center;
+  border-radius: var(--radius-sm);
+  background: linear-gradient(135deg, var(--color-primary), var(--color-secondary));
+  font-size: 20px;
+}
+
+.nav,
+.nav-menu,
+.sidebar-nav {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+  flex: 1;
+}
+
+.nav-link,
+.nav-item {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  height: 48px;
+  padding: 0 var(--space-4);
+  border-radius: var(--radius-sm);
+  color: var(--color-text-secondary);
+  font-size: var(--text-body);
+  font-weight: var(--font-weight-medium);
+  transition: var(--transition);
+  cursor: pointer;
+  text-decoration: none;
+  border: none;
+  background: transparent;
+  width: 100%;
+  text-align: left;
+}
+
+.nav-link:hover,
+.nav-item:hover {
+  background: rgba(255, 255, 255, 0.05);
+  color: var(--color-text);
+}
+
+.nav-link.active,
+.nav-item.active {
+  background: linear-gradient(135deg, var(--color-primary), var(--color-secondary));
+  color: var(--color-text);
+  box-shadow: var(--shadow-glow);
+}
+
+.breadcrumb {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  margin-bottom: var(--space-6);
+  font-size: var(--text-body);
+  color: var(--color-text-muted);
+}
+
+.breadcrumb a:hover {
+  color: var(--color-primary-hover);
+}
+
+.bottom-nav button,
+.bottom-tabs button,
+.mobile-nav i,
+.mobile-nav button {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+  background: none;
+  border: none;
+  color: var(--color-text-muted);
+  font-size: var(--text-meta);
+  padding: var(--space-2);
+  transition: var(--transition);
+}
+
+.bottom-nav button.active,
+.bottom-tabs button.active,
+.mobile-nav .active {
+  color: var(--color-primary-hover);
+}
+
+.header-actions {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+}
+
+.sidebar-bottom {
+  margin-top: auto;
+}

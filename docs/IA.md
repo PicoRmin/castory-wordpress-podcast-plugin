@@ -10,13 +10,13 @@
 | Order | Label | Route | Prototype File | WP Page Slug | Status |
 |-------|-------|-------|----------------|--------------|--------|
 | 1 | Home | `/` | `prototypes/home/index.html` | `castory-home` | ✅ Built |
-| 2 | Explore | `/explore` | `prototypes/explore/index.html` | `castory-explore` | 🔲 v1.1 |
+| 2 | Explore | `/explore` | `prototypes/explore/index.html` | `castory-explore` | ✅ Built |
 | 3 | Podcasts | `/podcasts` | — | `castory-podcasts` | 🔲 v2 |
 | 4 | Trending | `/trending` | — (hub) | `castory-trending` | ⚠️ Subpages |
-| 5 | Library | `/library` | `prototypes/library/index.html` | `castory-library` | 🔲 v1.1 |
+| 5 | Library | `/library` | `prototypes/library/index.html` | `castory-library` | ✅ Built |
 | 6 | Watch Later | `/watch-later` | — | `castory-watch-later` | 🔲 v2 |
 | 7 | Creators | `/creators` | — | `castory-creators` | 🔲 v2 |
-| 8 | Profile | `/profile` | `prototypes/profile/index.html` | `castory-profile` | 🔲 v1.1 |
+| 8 | Profile | `/profile` | `prototypes/profile/index.html` | `castory-profile` | ✅ Built |
 
 ### Trending Subpages
 

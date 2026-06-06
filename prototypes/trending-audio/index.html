@@ -6,9 +6,10 @@
         <meta
             name="description"
             content="Trending Audio Episodes - Premium Podcast Streaming Platform" />
-        <title>Trending Audio Episodes | PodStream</title>
+        <title>Trending Audio Episodes | Castory</title>
 
-        <link rel="stylesheet" href="styles.css" />
+        <link rel="stylesheet" href="../shared/css/castory.css" />
+        <link rel="stylesheet" href="page.css" />
 
         <link
             rel="preconnect"
@@ -23,12 +24,10 @@
     </head>
     <body>
 
-        <div class="app">
+        <div class="app-three-col">
 
             <!-- Mobile Menu -->
-            <button class="mobile-menu" id="mobileMenu">
-                ☰
-            </button>
+            <button class="mobile-menu-btn" id="mobileMenu" type="button" aria-label="Open menu">☰</button>
 
             <!-- LEFT SIDEBAR -->
             <aside class="sidebar" id="sidebar">
@@ -37,42 +36,42 @@
                     <div class="wave-icon">
                         <span></span><span></span><span></span><span></span>
                     </div>
-                    <h2>PodStream</h2>
+                    <h2>Castory</h2>
                 </div>
 
                 <nav class="nav-menu">
 
-                    <a href="#" class="nav-item">
+                    <a href="../home/index.html" class="nav-item">
                         <span>⌂</span>
                         Home
                     </a>
 
-                    <a href="#" class="nav-item">
+                    <a href="../explore/index.html" class="nav-item">
                         <span>◈</span>
                         Podcasts
                     </a>
 
-                    <a href="#" class="nav-item active">
+                    <a href="index.html" class="nav-item active">
                         <span>🔥</span>
                         Trending
                     </a>
 
-                    <a href="#" class="nav-item">
+                    <a href="../library/index.html" class="nav-item">
                         <span>▣</span>
                         Library
                     </a>
 
-                    <a href="#" class="nav-item">
+                    <a href="../library/index.html" class="nav-item">
                         <span>⏱</span>
                         Watch Later
                     </a>
 
-                    <a href="#" class="nav-item">
+                    <a href="../profile/index.html" class="nav-item">
                         <span>✦</span>
                         Creators
                     </a>
 
-                    <a href="#" class="nav-item">
+                    <a href="../explore/index.html" class="nav-item">
                         <span>#</span>
                         Topics
                     </a>
@@ -238,161 +237,9 @@
                         <span>Actions</span>
                     </div>
 
-                    <div class="episodes-list">
+                    <div class="episodes-list" id="episodesList"></div>
 
-                        <!-- ROWS -->
-
-                        <div class="episode-row">
-
-                            <div class="episode-info">
-
-                                <div class="episode-thumb">
-                                    <img
-                                        src="https://images.unsplash.com/photo-1516321318423-f06f85e504b3?w=500"
-                                        alt>
-                                    <button>▶</button>
-                                </div>
-
-                                <div>
-                                    <h3>The Future of Artificial
-                                        Intelligence</h3>
-                                    <p>Exploring the next decade of machine
-                                        intelligence.</p>
-                                </div>
-
-                            </div>
-
-                            <div class="podcast-info">
-                                AI Insights ✓
-                                <small>Sarah Chen</small>
-                            </div>
-
-                            <div>52:45</div>
-                            <div>2 hours ago</div>
-
-                            <div class="actions">
-                                <button>🔖</button>
-                                <button>⋮</button>
-                            </div>
-
-                        </div>
-
-                        <div class="episode-row">
-                            <div class="episode-info">
-                                <div class="episode-thumb">
-                                    <img
-                                        src="https://images.unsplash.com/photo-1552664730-d307ca884978?w=500">
-                                    <button>▶</button>
-                                </div>
-                                <div>
-                                    <h3>Building Billion Dollar Startups</h3>
-                                    <p>Lessons from founders scaling
-                                        globally.</p>
-                                </div>
-                            </div>
-                            <div class="podcast-info">Founders Unplugged
-                                <small>David Ross</small></div>
-                            <div>48:12</div>
-                            <div>1 day ago</div>
-                            <div
-                                class="actions"><button>🔖</button><button>⋮</button></div>
-                        </div>
-
-                        <div class="episode-row">
-                            <div class="episode-info">
-                                <div class="episode-thumb">
-                                    <img
-                                        src="https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?w=500">
-                                    <button>▶</button>
-                                </div>
-                                <div>
-                                    <h3>Mindset Mastery</h3>
-                                    <p>Developing high-performance habits.</p>
-                                </div>
-                            </div>
-                            <div class="podcast-info">The Growth Mindset
-                                <small>Alex Reed</small></div>
-                            <div>41:30</div>
-                            <div>2 days ago</div>
-                            <div
-                                class="actions"><button>🔖</button><button>⋮</button></div>
-                        </div>
-
-                        <div class="episode-row">
-                            <div class="episode-info">
-                                <div class="episode-thumb">
-                                    <img
-                                        src="https://images.unsplash.com/photo-1639762681057-408e52192e55?w=500">
-                                    <button>▶</button>
-                                </div>
-                                <div>
-                                    <h3>Crypto & Web3 Explained</h3>
-                                    <p>The future of decentralized
-                                        ecosystems.</p>
-                                </div>
-                            </div>
-                            <div class="podcast-info">Web3 Daily <small>Chris
-                                    Parker</small></div>
-                            <div>39:18</div>
-                            <div>2 days ago</div>
-                            <div
-                                class="actions"><button>🔖</button><button>⋮</button></div>
-                        </div>
-
-                        <div class="episode-row">
-                            <div class="episode-info">
-                                <div class="episode-thumb">
-                                    <img
-                                        src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=500">
-                                    <button>▶</button>
-                                </div>
-                                <div>
-                                    <h3>Marketing in the New Era</h3>
-                                    <p>AI, creators and modern growth
-                                        channels.</p>
-                                </div>
-                            </div>
-                            <div class="podcast-info">Marketing School
-                                <small>Neil Harper</small></div>
-                            <div>44:22</div>
-                            <div>3 days ago</div>
-                            <div
-                                class="actions"><button>🔖</button><button>⋮</button></div>
-                        </div>
-
-                        <div class="episode-row">
-                            <div class="episode-info">
-                                <div class="episode-thumb">
-                                    <img
-                                        src="https://images.unsplash.com/photo-1455390582262-044cdead277a?w=500">
-                                    <button>▶</button>
-                                </div>
-                                <div>
-                                    <h3>The Power of Storytelling</h3>
-                                    <p>Why stories influence human behavior.</p>
-                                </div>
-                            </div>
-                            <div class="podcast-info">Story Matters <small>Emma
-                                    Blake</small></div>
-                            <div>55:04</div>
-                            <div>3 days ago</div>
-                            <div
-                                class="actions"><button>🔖</button><button>⋮</button></div>
-                        </div>
-
-                    </div>
-
-                    <div class="pagination">
-                        <button>&lt;</button>
-                        <button class="active">1</button>
-                        <button>2</button>
-                        <button>3</button>
-                        <button>4</button>
-                        <button>5</button>
-                        <button>...</button>
-                        <button>20</button>
-                        <button>&gt;</button>
-                    </div>
+                    <div class="pagination" id="pagination"></div>
 
                 </section>
 
@@ -488,6 +335,17 @@
 
         </div>
 
-        <script src="app.js"></script>
+        <script src="../shared/js/utils.js"></script>
+        <script src="../shared/js/storage.js"></script>
+        <script src="../shared/js/mock-data.js"></script>
+        <script src="../shared/js/components/sidebar.js"></script>
+        <script src="../shared/js/components/pagination.js"></script>
+        <script src="../shared/js/components/filters.js"></script>
+        <script src="../shared/js/components/nav.js"></script>
+        <script src="../shared/js/components/global-player.js"></script>
+        <script src="../shared/js/components/notifications.js"></script>
+        <script src="../shared/js/components/search.js"></script>
+        <script src="../shared/js/castory.js"></script>
+        <script src="script.js"></script>
     </body>
 </html>

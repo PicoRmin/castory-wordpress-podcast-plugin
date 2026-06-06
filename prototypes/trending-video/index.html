@@ -3,15 +3,13 @@
     <head>
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <title>PodStream - Trending Video Episodes</title>
+        <title>Castory — Trending Video Episodes</title>
 
         <link rel="preconnect" href="https://fonts.googleapis.com">
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-        <link
-            href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
-            rel="stylesheet">
-
-        <link rel="stylesheet" href="styles.css">
+        <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+        <link rel="stylesheet" href="../shared/css/castory.css">
+        <link rel="stylesheet" href="page.css">
     </head>
     <body>
 
@@ -25,45 +23,16 @@
                     <div class="logo-icon">
                         🎙
                     </div>
-                    <span>PodStream</span>
+                    <span>Castory</span>
                 </div>
 
                 <nav class="sidebar-nav">
 
-                    <button class="nav-item">
-                        <span>🏠</span>
-                        <span>Home</span>
-                    </button>
-
-                    <button class="nav-item">
-                        <span>🎧</span>
-                        <span>Podcasts</span>
-                    </button>
-
-                    <button class="nav-item active">
-                        <span>🔥</span>
-                        <span>Trending</span>
-                    </button>
-
-                    <button class="nav-item">
-                        <span>📚</span>
-                        <span>Library</span>
-                    </button>
-
-                    <button class="nav-item">
-                        <span>⏰</span>
-                        <span>Watch Later</span>
-                    </button>
-
-                    <button class="nav-item">
-                        <span>🎤</span>
-                        <span>Creators</span>
-                    </button>
-
-                    <button class="nav-item">
-                        <span>🧠</span>
-                        <span>Topics</span>
-                    </button>
+                    <a href="../home/index.html" class="nav-item"><span>🏠</span><span>Home</span></a>
+                    <a href="../trending-video/index.html" class="nav-item active"><span>🔥</span><span>Trending</span></a>
+                    <a href="../library/index.html" class="nav-item"><span>📚</span><span>Library</span></a>
+                    <a href="../new-episodes/index.html" class="nav-item"><span>🎧</span><span>New Episodes</span></a>
+                    <a href="../profile/index.html" class="nav-item"><span>👤</span><span>Profile</span></a>
 
                 </nav>
 
@@ -319,34 +288,22 @@
         <!-- MOBILE BOTTOM NAV -->
 
         <nav class="bottom-nav">
-
-            <button>
-                🏠
-                <span>Home</span>
-            </button>
-
-            <button class="active">
-                🔥
-                <span>Trending</span>
-            </button>
-
-            <button>
-                📚
-                <span>Library</span>
-            </button>
-
-            <button>
-                🔔
-                <span>Notifications</span>
-            </button>
-
-            <button>
-                👤
-                <span>Profile</span>
-            </button>
-
+            <a href="../home/index.html"><span>🏠</span><span>Home</span></a>
+            <a href="../trending-video/index.html" class="active"><span>🔥</span><span>Trending</span></a>
+            <a href="../library/index.html"><span>📚</span><span>Library</span></a>
+            <a href="../profile/index.html"><span>👤</span><span>Profile</span></a>
         </nav>
 
+        <script src="../shared/js/utils.js"></script>
+        <script src="../shared/js/storage.js"></script>
+        <script src="../shared/js/mock-data.js"></script>
+        <script src="../shared/js/components/pagination.js"></script>
+        <script src="../shared/js/components/filters.js"></script>
+        <script src="../shared/js/components/nav.js"></script>
+        <script src="../shared/js/components/global-player.js"></script>
+        <script src="../shared/js/components/notifications.js"></script>
+        <script src="../shared/js/components/search.js"></script>
+        <script src="../shared/js/castory.js"></script>
         <script src="app.js"></script>
 
     </body>

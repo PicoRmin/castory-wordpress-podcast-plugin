@@ -1,0 +1,37 @@
+Create a pixel-perfect static Video Episode Detail page for "Castory" podcast platform.
+
+Style: Dark premium SaaS, glassmorphism, purple neon accents, Inter font.
+Stack: HTML5, CSS3, Vanilla JS. Shared Design System (castory.css).
+
+Layout:
+- Top: 16:9 video player area (placeholder with play overlay + progress bar)
+- Below: metadata row (title, creator, stats, action buttons)
+- Two-column content: chapters + transcript | related videos grid
+
+Video Player:
+- 16:9 aspect ratio container
+- Play/pause overlay, progress bar, volume, fullscreen toggle (simulation)
+- Duration badge
+
+Metadata:
+- Episode title, creator row with avatar + Follow
+- Views, date, duration, category badges
+- Share, Bookmark, Download buttons
+
+Chapters List:
+- Timestamp + chapter title rows, click highlights active chapter
+
+Transcript:
+- Collapsible section (<details> or JS toggle)
+- Timestamped paragraphs
+
+Related Videos:
+- 4–6 episode cards from CASTORY_MOCK.getRelatedEpisodes()
+
+Data: URL ?id= query param. Default showcase: id=2 (video).
+
+Output: index.html, page.css, script.js
+
+Breadcrumb: Home › Trending › Video › {Title}
+
+Responsive: mobile stacks sections, player remains 16:9.

@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Explore | Castory</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+<link rel="stylesheet" href="../shared/css/castory.css">
+<link rel="stylesheet" href="page.css">
+</head>
+<body class="explore-page" data-castory-app>
+
+<div class="app-three-col">
+
+  <aside class="sidebar" id="sidebar">
+    <button class="mobile-menu-btn" id="menuBtn" type="button" aria-label="Open menu">☰</button>
+    <div class="logo">
+      <i class="fa-solid fa-wave-square"></i>
+      <span>Castory</span>
+    </div>
+    <nav class="nav-menu explore-nav">
+      <a href="../home/index.html" class="nav-item"><span>⌂</span> Home</a>
+      <a href="index.html" class="nav-item active"><span>◈</span> Explore</a>
+      <a href="../trending-video/index.html" class="nav-item"><span>▶</span> Video</a>
+      <a href="../trending-audio/index.html" class="nav-item"><span>🎧</span> Audio</a>
+      <a href="../profile/index.html" class="nav-item"><span>✦</span> Podcasters</a>
+      <a href="#" class="nav-item"><span>#</span> Categories</a>
+      <a href="../library/index.html" class="nav-item"><span>▣</span> Playlists</a>
+      <a href="#" class="nav-item"><span>👥</span> Community</a>
+      <a href="#" class="nav-item"><span>★</span> Subscriptions</a>
+      <a href="../library/index.html" class="nav-item"><span>📚</span> My Library</a>
+      <a href="#" class="nav-item"><span>🕐</span> History</a>
+      <a href="#" class="nav-item"><span>⏱</span> Watch Later</a>
+      <a href="#" class="nav-item"><span>⬇</span> Downloads</a>
+    </nav>
+    <div class="profile-card glass sidebar-bottom">
+      <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=300" alt="Emma Watson">
+      <div>
+        <h4>Emma Watson</h4>
+        <p class="text-accent">Pro Member</p>
+        <p class="text-muted sidebar-stats">128 Following · 2.4K Followers</p>
+      </div>
+    </div>
+  </aside>
+
+  <main class="main-content">
+    <header class="topbar">
+      <div class="search-box">
+        <i class="fa-solid fa-magnifying-glass"></i>
+        <input type="search" id="searchInput" placeholder="Search podcasts, creators, topics..." aria-label="Search">
+      </div>
+      <div class="header-actions">
+        <button class="btn btn-secondary btn-sm" type="button" id="advancedSearchBtn">Advanced Search</button>
+        <button class="icon-btn" type="button" aria-label="Notifications">
+          <i class="fa-solid fa-bell"></i>
+          <span class="badge">5</span>
+        </button>
+        <div class="create-wrap">
+          <button class="create-btn" id="createBtn" type="button"><i class="fa-solid fa-plus"></i> Create</button>
+          <div class="create-menu" id="createMenu">
+            <button type="button">New Episode</button>
+            <button type="button">New Podcast</button>
+            <button type="button">Upload Video</button>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <nav class="breadcrumb" aria-label="Breadcrumb">
+      <a href="../home/index.html">Home</a> › <span>Explore</span>
+    </nav>
+
+    <div class="filter-pills category-bar" id="categoryBar">
+      <button class="pill" data-category="All">All</button>
+      <button class="pill active" data-category="Technology">Technology</button>
+      <button class="pill" data-category="Business">Business</button>
+      <button class="pill" data-category="AI">AI</button>
+      <button class="pill" data-category="Marketing">Marketing</button>
+      <button class="pill" data-category="Startups">Startups</button>
+      <button class="pill" data-category="Design">Design</button>
+      <button class="pill" data-category="Health">Health</button>
+    </div>
+
+    <section class="explore-hero glass" id="exploreHero">
+      <div class="explore-hero-content">
+        <span class="featured-badge">FEATURED</span>
+        <h1 id="heroTitle">Discover New Voices</h1>
+        <p id="heroDesc">Explore emerging podcasters, fresh perspectives, and stories shaping the creator economy.</p>
+        <div class="avatar-stack" id="heroAvatars"></div>
+        <button class="btn btn-primary explore-cta" type="button">Explore Now</button>
+        <div class="indicators" id="heroDots"></div>
+      </div>
+      <div class="explore-hero-visual">
+        <div class="hero-glow"></div>
+        <img id="heroImage" src="" alt="Featured podcaster">
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="section-header">
+        <h2>Trending Topics</h2>
+        <a href="#">View All</a>
+      </div>
+      <div class="topic-grid" id="topicGrid"></div>
+    </section>
+
+    <section class="section">
+      <div class="section-header">
+        <h2>Popular Creators</h2>
+        <a href="../profile/index.html">View All</a>
+      </div>
+      <div class="creators-scroll horizontal-scroll" id="creatorsScroll"></div>
+    </section>
+
+    <section class="section">
+      <div class="section-header">
+        <h2>Popular Video Episodes</h2>
+        <a href="../trending-video/index.html">View All</a>
+      </div>
+      <div class="episode-grid" id="videoGrid"></div>
+    </section>
+
+    <section class="section">
+      <div class="section-header">
+        <h2>Explore Audio Episodes</h2>
+        <a href="../trending-audio/index.html">View All</a>
+      </div>
+      <div class="audio-explore-list" id="audioList"></div>
+    </section>
+
+    <section class="section">
+      <div class="section-header">
+        <h2>Recommended For You</h2>
+      </div>
+      <div class="recommended-grid" id="recommendedGrid"></div>
+    </section>
+  </main>
+
+  <aside class="right-panel">
+    <div class="widget glass">
+      <h3>Top Creators</h3>
+      <div id="topCreatorsWidget"></div>
+    </div>
+    <div class="widget glass">
+      <h3>Trending Topics</h3>
+      <div class="tag-cloud" id="tagCloud"></div>
+    </div>
+    <div class="widget glass">
+      <h3>Discovery Stats</h3>
+      <div id="discoveryStats"></div>
+    </div>
+    <div class="widget glass">
+      <h3>Most Followed Topics</h3>
+      <div id="followedTopics"></div>
+    </div>
+  </aside>
+</div>
+
+<nav class="bottom-nav" id="bottomNav" aria-label="Mobile navigation"></nav>
+<div class="sidebar-backdrop" id="sidebarBackdrop"></div>
+
+<script src="../shared/js/utils.js"></script>
+<script src="../shared/js/storage.js"></script>
+<script src="../shared/js/mock-data.js"></script>
+<script src="../shared/js/components/sidebar.js"></script>
+<script src="../shared/js/components/filters.js"></script>
+<script src="../shared/js/components/nav.js"></script>
+<script src="../shared/js/components/global-player.js"></script>
+<script src="../shared/js/components/notifications.js"></script>
+<script src="../shared/js/components/search.js"></script>
+<script src="../shared/js/castory.js"></script>
+<script src="script.js"></script>
+</body>
+</html>

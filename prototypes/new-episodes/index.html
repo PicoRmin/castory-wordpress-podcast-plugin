@@ -3,148 +3,124 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>New Episodes | PodStream</title>
-<link rel="stylesheet" href="css/style.css">
+<title>New Episodes | Castory</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../shared/css/castory.css">
+<link rel="stylesheet" href="page.css">
 </head>
-<body>
-<div class="app-container">
+<body data-castory-app>
 
-  <!-- Left Sidebar -->
-  <aside class="sidebar left-sidebar">
+<div class="app-three-col new-episodes-page">
+
+  <aside class="sidebar left-sidebar" id="sidebar">
+    <button class="mobile-menu-btn" id="mobileMenu" type="button" aria-label="Menu">☰</button>
+    <div class="logo"><span class="logo-icon">🎙</span><span>Castory</span></div>
     <div class="profile-card glass-card">
-      <img src="assets/avatars/user1.png" alt="User Avatar" class="avatar">
-      <div class="user-info">
-        <h4>Jane Doe <span class="badge premium">Premium</span></h4>
-      </div>
+      <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=300" alt="Jane Doe" class="avatar">
+      <div><h4>Jane Doe <span class="premium-badge">Premium</span></h4></div>
     </div>
     <nav class="nav-menu">
       <ul>
-        <li>Home</li>
-        <li>Podcasts</li>
-        <li>Trending</li>
-        <li>Library</li>
-        <li>Watch Later</li>
-        <li>Creators</li>
-        <li>Topics</li>
+        <li><a href="../home/index.html">Home</a></li>
+        <li><a href="../trending-video/index.html">Trending</a></li>
+        <li><a href="index.html" class="active">New Episodes</a></li>
+        <li><a href="../library/index.html">Library</a></li>
+        <li><a href="../profile/index.html">Profile</a></li>
       </ul>
     </nav>
     <div class="upgrade-card glass-card gradient-card">
       <h4>Upgrade to Pro</h4>
-      <p>Unlock premium features</p>
-      <button class="btn-gradient">Upgrade</button>
+      <p class="text-secondary">Unlock premium features</p>
+      <button class="btn btn-primary" style="width:100%;margin-top:12px">Upgrade</button>
     </div>
     <div class="mini-player glass-card">
-      <img src="assets/images/episode1.jpg" alt="Episode" class="player-thumb">
+      <img src="https://images.unsplash.com/photo-1516321318423-f06f85e504b3?w=200" alt="Now playing" class="player-thumb">
       <div class="player-info">
         <p class="title">AI Revolution</p>
-        <p class="author">TechTalk</p>
+        <p class="author text-muted">TechTalk</p>
       </div>
-      <button class="play-btn">▶</button>
+      <button class="play-btn" type="button" aria-label="Play">▶</button>
     </div>
   </aside>
 
-  <!-- Main Content -->
   <main class="main-content">
-    <!-- Hero Section -->
+    <header class="topbar hide-mobile">
+      <div class="search-box">
+        <span>🔍</span>
+        <input type="text" placeholder="Search episodes..." id="searchInput" aria-label="Search">
+      </div>
+      <div class="header-actions">
+        <button class="icon-btn" aria-label="Notifications">🔔</button>
+        <button class="create-btn">+ Create</button>
+      </div>
+    </header>
+
     <section class="hero">
       <div class="hero-text">
         <h1>New Episodes</h1>
-        <p>Discover the latest podcasts across all topics.</p>
+        <p class="text-secondary">Discover the latest podcasts across all topics.</p>
       </div>
       <div class="hero-illustration">
-        <img src="assets/images/mic_waveform.png" alt="Microphone Illustration">
+        <img src="https://images.unsplash.com/photo-1478737270239-2f02b77fc618?w=400" alt="Microphone">
       </div>
     </section>
 
-    <!-- Filter Pills -->
-    <div class="filter-pills">
-      <button class="pill active">All</button>
-      <button class="pill">Video</button>
-      <button class="pill">Audio</button>
-      <button class="pill">Technology</button>
-      <button class="pill">Business</button>
-      <button class="pill">Health</button>
-      <button class="pill">AI</button>
-      <button class="pill">Design</button>
-      <button class="pill">Marketing</button>
-      <button class="pill">More</button>
+    <div class="filter-pills" id="filterPills">
+      <button class="pill active" data-filter="all">All</button>
+      <button class="pill" data-filter="video">Video</button>
+      <button class="pill" data-filter="audio">Audio</button>
+      <button class="pill" data-filter="Technology">Technology</button>
+      <button class="pill" data-filter="Business">Business</button>
+      <button class="pill" data-filter="AI">AI</button>
+      <button class="pill" data-filter="Design">Design</button>
     </div>
 
-    <!-- Episode List -->
-    <section class="episode-list">
-      <div class="episode-card glass-card">
-        <img src="assets/images/episode1.jpg" alt="Episode" class="thumb">
-        <div class="episode-info">
-          <h3 class="title">AI Revolution: Future of Work</h3>
-          <p class="author">TechTalk <span class="verified">✔</span></p>
-          <div class="meta">
-            <span class="badge audio">Audio</span>
-            <span>45 min</span>
-            <span>2h ago</span>
-          </div>
-        </div>
-        <div class="actions">
-          <button class="bookmark">★</button>
-          <button class="play-btn">▶</button>
-          <button class="more">⋮</button>
-        </div>
-      </div>
-      <!-- Repeat episode cards as needed -->
-    </section>
-
-    <!-- Pagination -->
-    <div class="pagination">
-      <button class="page active">1</button>
-      <button class="page">2</button>
-      <button class="page">3</button>
-    </div>
+    <section class="episode-list" id="episodeList"></section>
+    <div class="pagination" id="pagination"></div>
   </main>
 
-  <!-- Right Sidebar -->
-  <aside class="sidebar right-sidebar">
+  <aside class="sidebar right-sidebar right-panel">
     <div class="filter-widget glass-card">
       <h4>Filter Episodes</h4>
-      <div>
-        <label>Type:</label>
-        <input type="radio" name="type" checked>All
-        <input type="radio" name="type">Audio
-        <input type="radio" name="type">Video
-      </div>
-      <div>
-        <label>Duration:</label>
-        <input type="radio" name="duration" checked>Any
-        <input type="radio" name="duration">Short
-        <input type="radio" name="duration">Long
-      </div>
-      <div>
-        <label>Published:</label>
-        <input type="radio" name="published" checked>Any
-        <input type="radio" name="published">Last 24h
-        <input type="radio" name="published">Last Week
+      <div style="margin-top:12px">
+        <strong>Type</strong>
+        <label><input type="radio" name="type" value="all" checked> All</label>
+        <label><input type="radio" name="type" value="audio"> Audio</label>
+        <label><input type="radio" name="type" value="video"> Video</label>
       </div>
     </div>
-
     <div class="top-creators glass-card">
       <h4>Top Creators</h4>
-      <div class="creator">
-        <img src="assets/avatars/creator1.png" alt="Creator" class="avatar-small">
-        <p>John Smith <span class="followers">10k</span></p>
-      </div>
-      <div class="creator">
-        <img src="assets/avatars/creator2.png" alt="Creator" class="avatar-small">
-        <p>Emily White <span class="followers">8.5k</span></p>
-      </div>
+      <div id="creatorsSide"></div>
     </div>
-
     <div class="newsletter glass-card gradient-card">
       <h4>Subscribe to our newsletter</h4>
       <input type="email" placeholder="Enter your email" id="newsletter-email">
-      <button id="subscribe-btn" class="btn-gradient">Subscribe</button>
-      <p id="newsletter-msg"></p>
+      <button id="subscribe-btn" class="btn btn-primary" style="width:100%;margin-top:12px">Subscribe</button>
+      <p id="newsletter-msg" class="text-muted" style="margin-top:8px"></p>
     </div>
   </aside>
 </div>
 
+<nav class="bottom-nav show-mobile">
+  <a href="../home/index.html"><span>🏠</span><span>Home</span></a>
+  <a href="../trending-video/index.html"><span>🔥</span><span>Trending</span></a>
+  <a href="index.html" class="active"><span>🎧</span><span>New</span></a>
+  <a href="../profile/index.html"><span>👤</span><span>Profile</span></a>
+</nav>
+
+<script src="../shared/js/utils.js"></script>
+<script src="../shared/js/storage.js"></script>
+<script src="../shared/js/mock-data.js"></script>
+<script src="../shared/js/components/sidebar.js"></script>
+<script src="../shared/js/components/pagination.js"></script>
+<script src="../shared/js/components/filters.js"></script>
+<script src="../shared/js/components/nav.js"></script>
+<script src="../shared/js/components/global-player.js"></script>
+<script src="../shared/js/components/notifications.js"></script>
+<script src="../shared/js/components/search.js"></script>
+<script src="../shared/js/castory.js"></script>
 <script src="js/main.js"></script>
 </body>
 </html>
