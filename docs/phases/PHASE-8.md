@@ -2,11 +2,11 @@
 
 | Field | Value |
 |-------|--------|
-| **Status** | 🔄 In Progress (core complete — profile/user REST pending) |
+| **Status** | ✅ Core complete |
 | **Date** | 2026-06-06 |
 | **Goal** | Installable WP plugin: scaffold, CPT, assets, shortcodes, REST |
 | **Prerequisite** | [Phase 7](./PHASE-7.md) |
-| **Next Phase** | Phase 8.4–8.6 completion → Phase 9 |
+| **Next Phase** | [Phase 9](./PHASE-9.md) |
 
 ---
 
@@ -31,7 +31,8 @@
 | `includes/class-i18n.php` | Text domain |
 | `includes/class-post-types.php` | `castory_episode`, `castory_podcast`, taxonomies |
 | `includes/class-templates.php` | Template loader + page URLs |
-| `includes/class-rest-api.php` | REST: episodes, widgets, creators, trending |
+| `includes/class-rest-api.php` | REST: episodes, widgets, creators, trending, progress |
+| `includes/class-user-progress.php` | Playback positions in user meta (Phase 9) |
 | `includes/class-widget-data.php` | Hero/creators/topics from CPT + taxonomies |
 | `includes/class-episode-routing.php` | `/episode/{slug}/` + legacy redirect |
 | `templates/single-episode.php` | Native CPT single template |
@@ -150,7 +151,7 @@ flowchart TD
 | # | Issue | Severity |
 |---|--------|----------|
 | 1 | Profile/library widgets still mock (user REST in Phase 9) | 🟡 partial |
-| 2 | MockUp PNGs missing | 🟡 |
+| 2 | MockUp pixel QA pending — [QA-MOCKUP-CHECKLIST.md](../QA-MOCKUP-CHECKLIST.md) | 🟡 |
 | 3 | Gutenberg blocks not started | 🟢 optional |
 
 ---
@@ -163,7 +164,8 @@ flowchart TD
 - [x] Sample content importer (activation + admin)
 - [x] Episode permalink `/episode/{slug}/` + legacy redirect
 - [ ] User library / watch-later REST (auth)
-- [ ] Phase 9 — real player, premium, WP user integration
+- [x] Phase 9.2 — real HTML5 player — [PLAYER.md](../PLAYER.md)
+- [ ] Phase 9.3+ — premium, WP user integration
 
 ---
 

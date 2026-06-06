@@ -186,7 +186,7 @@ flowchart TD
 | 2 | No theme toggle in UI (storage ready) | 🟢 |
 | 3 | Global player simulates progress; no real audio element | 🟢 expected |
 | 4 | Explore/library/profile call `Sidebar.init` after auto-init (safe via guard) | 🟢 |
-| 5 | MockUp PNG assets still missing | 🟡 |
+| 5 | MockUp pixel QA pending (15 PNGs in `mockups/` ✅) | 🟡 |
 
 ---
 

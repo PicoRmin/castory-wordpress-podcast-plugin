@@ -31,6 +31,14 @@
       Castory.GlobalPlayer.init();
     }
 
+    if (Castory.QuickPlay) {
+      Castory.QuickPlay.init();
+    }
+
+    if (Castory.LibraryActions) {
+      Castory.LibraryActions.init();
+    }
+
     if (opts.search !== false && Castory.Search) {
       Castory.Search.init(typeof opts.search === 'object' ? opts.search : {});
     }

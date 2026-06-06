@@ -125,7 +125,7 @@ flowchart TD
 
 | # | Issue | Severity |
 |---|--------|----------|
-| 1 | MockUp PNG QA blocked | 🟡 |
+| 1 | MockUp pixel QA pending (PNGs restored ✅) | 🟡 |
 | 2 | Community/Messages/Analytics nav → `#` | 🟡 v2 |
 | 3 | Heatmap levels static (not date-bound) | 🟢 prototype |
 

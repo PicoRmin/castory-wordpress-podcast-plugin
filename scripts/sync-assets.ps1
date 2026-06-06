@@ -36,7 +36,7 @@ Copy-Item "$proto\episode-detail\audio\script.js" "$plugin\js\pages\episode-audi
 Copy-Item "$proto\episode-detail\video\script.js" "$plugin\js\pages\episode-video.js" -Force
 
 # WP-only scripts (not overwritten by shared sync)
-$wpOnly = @('castory-wp-bridge.js', 'castory-wp-data.js')
+$wpOnly = @('castory-wp-bridge.js', 'castory-wp-data.js', 'castory-wp-progress.js', 'castory-wp-library.js', 'castory-wp-playlists.js', 'castory-wp-profile.js')
 $wpOnly | ForEach-Object {
   if (-not (Test-Path "$plugin\js\$_")) {
     Write-Warning "$_ missing - restore from plugin source."

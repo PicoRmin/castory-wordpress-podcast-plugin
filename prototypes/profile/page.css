@@ -737,3 +737,31 @@
     display: none;
   }
 }
+
+.profile-edit-form .form-field {
+  margin-bottom: 14px;
+}
+
+.profile-edit-form label {
+  display: block;
+  font-size: 13px;
+  font-weight: 600;
+  margin-bottom: 6px;
+  color: var(--color-text-secondary);
+}
+
+.profile-edit-form input,
+.profile-edit-form textarea {
+  width: 100%;
+  padding: 10px 12px;
+  border-radius: var(--radius-md);
+  border: 1px solid var(--color-border);
+  background: var(--color-bg-secondary);
+  color: var(--color-text);
+  font: inherit;
+}
+
+.profile-edit-form textarea {
+  resize: vertical;
+  min-height: 72px;
+}

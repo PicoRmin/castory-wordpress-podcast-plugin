@@ -138,11 +138,36 @@
 
 <div class="toast" id="toast" role="status" aria-live="polite"></div>
 
+<div class="playlist-modal" id="playlistModal" aria-hidden="true">
+  <div class="playlist-modal-backdrop" id="playlistModalBackdrop"></div>
+  <div class="playlist-modal-dialog glass" role="dialog" aria-labelledby="playlistModalTitle">
+    <button type="button" class="modal-close" id="playlistModalClose" aria-label="Close">×</button>
+    <h3 id="playlistModalTitle">New Playlist</h3>
+    <form id="playlistForm">
+      <div class="form-field">
+        <label for="playlistNameInput">Name</label>
+        <input type="text" id="playlistNameInput" maxlength="80" required placeholder="My playlist">
+      </div>
+      <div id="playlistEpisodePicker" class="playlist-episode-picker"></div>
+      <div class="playlist-modal-actions">
+        <button type="button" class="btn btn-secondary" id="playlistModalCancel">Cancel</button>
+        <button type="submit" class="btn btn-primary" id="playlistModalSave">Save</button>
+      </div>
+    </form>
+  </div>
+</div>
+
 <script src="../shared/js/utils.js"></script>
 <script src="../shared/js/storage.js"></script>
+<script src="../shared/js/library-data.js"></script>
+<script src="../shared/js/playlists.js"></script>
 <script src="../shared/js/mock-data.js"></script>
 <script src="../shared/js/components/sidebar.js"></script>
 <script src="../shared/js/components/nav.js"></script>
+<script src="../shared/js/components/player.js"></script>
+<script src="../shared/js/components/quick-play.js"></script>
+<script src="../shared/js/components/library-actions.js"></script>
+<script src="../shared/js/components/playlists-ui.js"></script>
 <script src="../shared/js/components/global-player.js"></script>
 <script src="../shared/js/components/notifications.js"></script>
 <script src="../shared/js/components/search.js"></script>

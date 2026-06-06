@@ -257,6 +257,7 @@ class Admin {
 		$count     = Sample_Data::import();
 		$backfilled = Sample_Data::backfill_creator_names();
 		$count     += $backfilled;
+		$count     += Sample_Data::backfill_media_urls();
 
 		wp_safe_redirect(
 			add_query_arg(

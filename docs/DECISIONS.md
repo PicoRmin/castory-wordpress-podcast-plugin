@@ -97,8 +97,26 @@
 
 ---
 
+## ADR-008: Media Player Architecture
+
+**تصمیم:** یک موتور مشترک **`Castory.Player`** (HTML5 `<audio>` / `<video>`) با UI سفارشی.
+
+| Topic | Choice |
+|-------|--------|
+| Engine | Single instance, vanilla JS |
+| Audio UI | Hidden media + decorative waveform |
+| Video UI | Inline `<video>` in `.video-stage` |
+| Progress (v1) | `localStorage` — `castory:playback`, `castory:nowPlaying` |
+| Progress (v2) | WP user meta `_castory_playback_progress` + REST `/castory/v1/progress` ✅ |
+| Fallback media | SoundHelix MP3 / Big Buck Bunny MP4 when `mediaUrl` empty |
+| Embeds (YouTube/Vimeo) | **Not in 9.2** — open question below |
+
+**Spec:** [docs/PLAYER.md](./PLAYER.md)
+
+---
+
 ## Open Questions (برای تصمیم بعدی)
 
 - [ ] WooCommerce برای Premium membership یا custom meta؟
-- [ ] Video hosting: self-hosted vs YouTube/Vimeo embed؟
+- [ ] Video hosting: self-hosted vs YouTube/Vimeo embed؟ *(see ADR-008)*
 - [ ] Multi-site WordPress support در v1.0؟

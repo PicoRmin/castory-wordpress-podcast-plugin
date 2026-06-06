@@ -21,24 +21,29 @@
 
   document.getElementById('mobileLink').href = '../mobile/index.html?id=' + ep.id;
 
-  var totalSeconds = Castory.EpisodeDetail.parseDuration(ep.duration);
-  document.getElementById('totalTime').textContent = Castory.EpisodeDetail.formatTime(totalSeconds);
-
   var stage = document.getElementById('videoStage');
-  var player = Castory.EpisodeDetail.bindPlayer({
+  var videoMount = document.createElement('div');
+  videoMount.className = 'video-mount';
+  videoMount.id = 'videoMount';
+  stage.insertBefore(videoMount, stage.querySelector('.video-overlay'));
+
+  Castory.EpisodeDetail.bindPlayer({
+    episode: ep,
     playBtn: document.getElementById('videoPlayBtn'),
     progressFill: document.getElementById('progressFill'),
     progressBar: document.getElementById('seekBar'),
     currentTimeEl: document.getElementById('currentTime'),
-    totalSeconds: totalSeconds,
+    totalTimeEl: document.getElementById('totalTime'),
+    volumeBtn: document.getElementById('volumeBtn'),
+    fullscreenBtn: document.getElementById('fullscreenBtn'),
+    fullscreenTarget: stage,
+    videoContainer: videoMount,
+    stageEl: stage,
+    resume: true,
   });
 
   document.getElementById('videoPlaySmall').addEventListener('click', function () {
     document.getElementById('videoPlayBtn').click();
-  });
-
-  document.getElementById('videoPlayBtn').addEventListener('click', function () {
-    stage.classList.toggle('is-playing');
   });
 
   document.getElementById('creatorRow').innerHTML =
@@ -66,6 +71,9 @@
       row.addEventListener('click', function () {
         Castory.qsa('.chapter-row').forEach(function (r) { r.classList.remove('active'); });
         row.classList.add('active');
+        if (Castory.Player) {
+          Castory.Player.seekToChapter(row.getAttribute('data-time'));
+        }
       });
     });
   } else {
@@ -93,14 +101,13 @@
   document.getElementById('shareBtn').addEventListener('click', function () {
     Castory.EpisodeDetail.showToast('Link copied');
   });
-  document.getElementById('bookmarkBtn').addEventListener('click', function () {
-    Castory.EpisodeDetail.showToast('Saved to library');
-  });
+  if (Castory.LibraryActions) {
+    Castory.LibraryActions.bindEpisode(ep, { bookmarkBtn: document.getElementById('bookmarkBtn') });
+  }
   document.getElementById('downloadBtn').addEventListener('click', function () {
-    Castory.EpisodeDetail.showToast('Download started');
-  });
-  document.getElementById('fullscreenBtn').addEventListener('click', function () {
-    Castory.EpisodeDetail.showToast('Fullscreen mode');
+    var url = Castory.Player.resolveSrc(ep);
+    if (url) window.open(url, '_blank');
+    else Castory.EpisodeDetail.showToast('Download unavailable');
   });
   });
 })();

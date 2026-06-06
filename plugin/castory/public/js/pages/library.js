@@ -52,89 +52,63 @@
   }
 
   function renderContinueListening() {
-    document.getElementById('continueListening').innerHTML = LIB.continueListening.map(function (item) {
+    var items = Castory.LibraryData ? Castory.LibraryData.getContinueItems('audio') : [];
+    var container = document.getElementById('continueListening');
+
+    if (!items.length) {
+      container.innerHTML = '<p class="text-muted empty-state">' +
+        (Castory.LibraryData ? Castory.LibraryData.emptyMessage('continue') : 'No items yet.') + '</p>';
+      return;
+    }
+
+    container.innerHTML = items.map(function (item) {
+      var ep = item.ep;
+      var url = CASTORY_MOCK.getEpisodeUrl(ep, '../');
       return (
-        '<article class="continue-card glass searchable" data-title="' + item.title + '">' +
+        '<a href="' + url + '" class="episode-card-link" data-episode-id="' + ep.id + '">' +
+        '<article class="continue-card glass searchable" data-title="' + ep.title + '">' +
         '<div class="continue-card-header">' +
-        '<button class="play-btn listen-play" type="button" aria-label="Play ' + item.title + '">▶</button>' +
-        '<img src="' + item.thumbnail + '" alt="">' +
-        '<div><h4>' + item.title + '</h4><p class="meta">' + item.podcast + ' · ' + item.duration + '</p></div></div>' +
+        '<button class="play-btn listen-play castory-quick-play" type="button" aria-label="Play ' + ep.title + '">▶</button>' +
+        '<img src="' + ep.thumbnail + '" alt="">' +
+        '<div><h4>' + ep.title + '</h4><p class="meta">' + (ep.podcast || ep.creator) + ' · ' + ep.duration + '</p></div></div>' +
         waveformHtml() +
         '<div class="progress player-progress"><span class="progress-fill" style="width:' + item.progress + '%"></span></div>' +
-        '<p class="meta">' + item.progress + '% complete</p></article>'
+        '<p class="meta">' + item.progress + '% complete</p></article></a>'
       );
     }).join('');
-
-    Castory.qsa('.listen-play', document.getElementById('continueListening')).forEach(function (btn) {
-      btn.addEventListener('click', function () {
-        var wasPlaying = btn.classList.contains('playing');
-        Castory.qsa('.listen-play').forEach(function (b) {
-          b.classList.remove('playing');
-          b.textContent = '▶';
-        });
-        if (!wasPlaying) {
-          btn.classList.add('playing');
-          btn.textContent = '⏸';
-          showToast('Now playing');
-        }
-      });
-    });
   }
 
   function renderContinueWatching() {
-    document.getElementById('continueWatching').innerHTML = LIB.continueWatching.map(function (item) {
+    var items = Castory.LibraryData ? Castory.LibraryData.getContinueItems('video') : [];
+    var container = document.getElementById('continueWatching');
+
+    if (!items.length) {
+      container.innerHTML = '<p class="text-muted empty-state">' +
+        (Castory.LibraryData ? Castory.LibraryData.emptyMessage('continue') : 'No items yet.') + '</p>';
+      return;
+    }
+
+    container.innerHTML = items.map(function (item) {
+      var ep = item.ep;
+      var url = CASTORY_MOCK.getEpisodeUrl(ep, '../');
       return (
-        '<article class="watch-card glass searchable" data-title="' + item.title + '">' +
-        '<div class="thumb"><img src="' + item.thumbnail + '" alt="' + item.title + '">' +
-        '<span class="duration">' + item.duration + '</span></div>' +
-        '<div class="card-body"><h4>' + item.title + '</h4>' +
-        '<p class="creator">' + item.creator + '</p>' +
+        '<a href="' + url + '" class="episode-card-link" data-episode-id="' + ep.id + '">' +
+        '<article class="watch-card glass searchable" data-title="' + ep.title + '">' +
+        '<div class="thumb"><img src="' + ep.thumbnail + '" alt="' + ep.title + '">' +
+        '<button type="button" class="castory-quick-play" aria-label="Play" style="position:absolute;inset:0;margin:auto;width:48px;height:48px;border-radius:50%;border:none;background:rgba(124,58,237,.9);color:#fff">▶</button>' +
+        '<span class="duration">' + ep.duration + '</span></div>' +
+        '<div class="card-body"><h4>' + ep.title + '</h4>' +
+        '<p class="creator">' + ep.creator + '</p>' +
         '<div class="progress player-progress"><span class="progress-fill" style="width:' + item.progress + '%"></span></div>' +
-        '<p class="meta">' + item.progress + '% watched</p></div></article>'
+        '<p class="meta">' + item.progress + '% watched</p></div></article></a>'
       );
     }).join('');
   }
 
   function renderPlaylists() {
-    document.getElementById('playlistGrid').innerHTML = LIB.playlists.map(function (pl) {
-      var collage = pl.covers.map(function (url) {
-        return '<img src="' + url + '" alt="">';
-      }).join('');
-      return (
-        '<article class="playlist-card glass searchable" data-title="' + pl.name + '">' +
-        '<button class="playlist-menu-btn" type="button" aria-label="Playlist options" data-id="' + pl.id + '">⋯</button>' +
-        '<div class="playlist-dropdown" id="playlistMenu' + pl.id + '">' +
-        '<button type="button" data-action="edit">Edit Playlist</button>' +
-        '<button type="button" data-action="share">Share</button>' +
-        '<button type="button" data-action="delete">Delete</button></div>' +
-        '<div class="playlist-collage">' + collage + '</div>' +
-        '<div class="playlist-info"><h4>' + pl.name + '</h4>' +
-        '<p>' + pl.episodes + ' episodes · Updated ' + pl.updated + '</p></div></article>'
-      );
-    }).join('');
-
-    Castory.qsa('.playlist-menu-btn').forEach(function (btn) {
-      btn.addEventListener('click', function (e) {
-        e.stopPropagation();
-        var id = btn.getAttribute('data-id');
-        var menu = document.getElementById('playlistMenu' + id);
-        Castory.qsa('.playlist-dropdown').forEach(function (m) {
-          if (m !== menu) m.classList.remove('is-open');
-        });
-        menu.classList.toggle('is-open');
-      });
-    });
-
-    Castory.qsa('.playlist-dropdown button').forEach(function (btn) {
-      btn.addEventListener('click', function () {
-        showToast(btn.textContent + ' — coming soon');
-        Castory.qsa('.playlist-dropdown').forEach(function (m) { m.classList.remove('is-open'); });
-      });
-    });
-
-    document.addEventListener('click', function () {
-      Castory.qsa('.playlist-dropdown').forEach(function (m) { m.classList.remove('is-open'); });
-    });
+    if (Castory.PlaylistsUI) {
+      Castory.PlaylistsUI.render();
+    }
   }
 
   function renderDownloads() {
@@ -151,16 +125,27 @@
   }
 
   function renderSaved() {
-    document.getElementById('savedGrid').innerHTML = LIB.savedForLater.map(function (item) {
-      var badge = item.mediaType === 'video'
+    var episodes = Castory.LibraryData ? Castory.LibraryData.getWatchLaterEpisodes() : [];
+    var grid = document.getElementById('savedGrid');
+
+    if (!episodes.length) {
+      grid.innerHTML = '<p class="text-muted empty-state">' +
+        (Castory.LibraryData ? Castory.LibraryData.emptyMessage('watchLater') : 'No saved episodes.') + '</p>';
+      return;
+    }
+
+    grid.innerHTML = episodes.map(function (ep) {
+      var url = CASTORY_MOCK.getEpisodeUrl(ep, '../');
+      var badge = ep.mediaType === 'video'
         ? '<span class="badge-video">Video</span>'
         : '<span class="badge-audio">Audio</span>';
       return (
-        '<article class="saved-card glass searchable" data-title="' + item.title + '">' +
-        '<img src="' + item.thumbnail + '" alt="' + item.title + '">' +
-        '<div><div>' + badge + '</div><h4>' + item.title + '</h4>' +
-        '<p class="creator">' + item.creator + '</p>' +
-        '<span class="duration">' + item.duration + '</span></div></article>'
+        '<a href="' + url + '" class="episode-card-link" data-episode-id="' + ep.id + '">' +
+        '<article class="saved-card glass searchable" data-title="' + ep.title + '">' +
+        '<img src="' + ep.thumbnail + '" alt="' + ep.title + '">' +
+        '<div><div>' + badge + '</div><h4>' + ep.title + '</h4>' +
+        '<p class="creator">' + ep.creator + '</p>' +
+        '<span class="duration">' + ep.duration + '</span></div></article></a>'
       );
     }).join('');
   }
@@ -196,15 +181,17 @@
   }
 
   function renderWatchlist() {
-    var w = LIB.watchlistSummary;
+    var saved = Castory.Storage ? Castory.Storage.getWatchLater().length : 0;
+    var unfinished = Castory.LibraryData ? Castory.LibraryData.getContinueItems().length : 0;
     document.getElementById('watchlistWidget').innerHTML =
       '<div class="watchlist-stats">' +
-      '<div class="watchlist-stat"><p class="value">' + w.saved + '</p><p class="label">Saved</p></div>' +
-      '<div class="watchlist-stat"><p class="value">' + w.unfinished + '</p><p class="label">Unfinished</p></div>' +
-      '<div class="watchlist-stat"><p class="value">' + w.newUploads + '</p><p class="label">New</p></div></div>' +
-      '<button class="btn btn-primary" type="button" style="width:100%" id="watchlistCta">View Watchlist</button>';
+      '<div class="watchlist-stat"><p class="value">' + saved + '</p><p class="label">Saved</p></div>' +
+      '<div class="watchlist-stat"><p class="value">' + unfinished + '</p><p class="label">Unfinished</p></div>' +
+      '<div class="watchlist-stat"><p class="value">' + (Castory.Storage ? Castory.Storage.getBookmarks().length : 0) + '</p><p class="label">Bookmarks</p></div></div>' +
+      '<button class="btn btn-primary" type="button" style="width:100%" id="watchlistCta">View Saved</button>';
     document.getElementById('watchlistCta').addEventListener('click', function () {
-      showToast('Opening watchlist…');
+      var section = document.getElementById('savedGrid');
+      if (section) section.scrollIntoView({ behavior: 'smooth', block: 'start' });
     });
   }
 
@@ -270,17 +257,11 @@
   }
 
   function initHeaderActions() {
-    document.getElementById('createPlaylistBtn').addEventListener('click', function () {
-      showToast('Create Playlist — coming soon');
-    });
     document.getElementById('importBtn').addEventListener('click', function () {
       showToast('Import Podcasts — coming soon');
     });
     document.getElementById('downloadsBtn').addEventListener('click', function () {
       showToast('Manage Downloads — coming soon');
-    });
-    document.getElementById('newPlaylistBtn').addEventListener('click', function () {
-      showToast('New Playlist — coming soon');
     });
   }
 
@@ -312,10 +293,30 @@
   initHeaderActions();
   initSidebarActions();
 
+  if (Castory.PlaylistsUI) {
+    Castory.PlaylistsUI.init();
+  }
+
   Castory.Sidebar.init({
     menuBtn: document.getElementById('menuBtn'),
     sidebar: document.getElementById('sidebar'),
     backdrop: document.getElementById('sidebarBackdrop'),
+  });
+
+  window.addEventListener('castory:playlists', function () {
+    renderPlaylists();
+    renderWatchlist();
+  });
+
+  window.addEventListener('castory:library', function () {
+    renderSaved();
+    renderWatchlist();
+  });
+
+  window.addEventListener('castory:player', function () {
+    renderContinueListening();
+    renderContinueWatching();
+    renderWatchlist();
   });
   });
 })();

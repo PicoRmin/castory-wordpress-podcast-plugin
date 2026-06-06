@@ -103,7 +103,7 @@ flowchart TD
 |----------|------|
 | **Preview** | `prototypes/library/index.html` |
 | Prompt | `prompts/LibraryPage-Prompt.txt` |
-| MockUp refs | `mockups/Castory-libraryPage-*` (PNG restore pending) |
+| MockUp refs | `mockups/Castory-libraryPage-*` ✅ — QA: [QA-MOCKUP-CHECKLIST.md](../QA-MOCKUP-CHECKLIST.md) |
 
 ---
 
@@ -132,7 +132,7 @@ flowchart TD
 
 | # | Issue | Severity |
 |---|--------|----------|
-| 1 | MockUp PNG QA blocked | 🟡 |
+| 1 | MockUp pixel QA pending (PNGs restored ✅) | 🟡 |
 | 2 | Header actions — toast simulation only | 🟢 expected |
 | 3 | Watch Later / Downloads nav → `#` placeholder | 🟡 v2 |
 
@@ -142,7 +142,8 @@ flowchart TD
 
 - [ ] Build `prototypes/profile/index.html` from `prompts/ProfilePage-Prompt.txt`
 - [ ] Shared nav partial component
-- [ ] Restore mockup PNGs for Library QA
+- [x] Restore mockup PNGs for Library QA
+- [ ] Run Library pixel QA — [QA-MOCKUP-CHECKLIST.md](../QA-MOCKUP-CHECKLIST.md) §6
 
 ---
 

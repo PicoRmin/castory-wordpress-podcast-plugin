@@ -141,7 +141,7 @@ New Episodes
 1. Clone / open project
 2. Read docs/DECISIONS.md + docs/IA.md
 3. Open prototypes/index.html via Live Server (not file://)
-4. Compare UI with mockups/MANIFEST.md (when PNGs restored)
+4. Compare UI with mockups — [QA-MOCKUP-CHECKLIST.md](../QA-MOCKUP-CHECKLIST.md)
 5. Pick next task from docs/roadmap.md
 6. Implement in prototypes/{page}/
 7. Update docs/phases/PHASE-N.md at phase end
@@ -233,7 +233,7 @@ prompts/ProfilePage-Prompt.txt
 
 | # | Issue | Severity |
 |---|--------|----------|
-| 1 | MockUp PNGs deleted during `MockUps` → `mockups` rename on Windows | 🔴 |
+| 1 | MockUp PNGs deleted during `MockUps` → `mockups` rename — **resolved:** 15/15 restored | ✅ |
 | 2 | `trending-audio/index.html` loads `app.js` but file is `script.js` | 🔴 |
 | 3 | Brand inconsistency: UI says PodStream, product is Castory | 🟡 |
 | 4 | No cross-page navigation links | 🟡 |

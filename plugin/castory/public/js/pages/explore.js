@@ -137,15 +137,23 @@
     });
   }
 
+  function quickPlayBtn() {
+    return Castory.QuickPlay ? Castory.QuickPlay.buttonHtml() : '';
+  }
+
+  function cardLinkStart(ep) {
+    return '<a href="' + CASTORY_MOCK.getEpisodeUrl(ep, '../') + '" class="episode-card-link" data-episode-id="' + ep.id + '">';
+  }
+
   function renderVideoGrid() {
     var grid = document.getElementById('videoGrid');
     var items = Castory.filterEpisodes(CASTORY_MOCK.getVideoEpisodes(), filterOpts()).slice(0, 4);
     grid.innerHTML = items.map(function (ep) {
-      var url = CASTORY_MOCK.getEpisodeUrl(ep, '../');
       return (
-        '<a href="' + url + '" class="episode-card-link">' +
+        cardLinkStart(ep) +
         '<article class="episode-card glass searchable" data-category="' + ep.category + '">' +
         '<div class="thumb"><img src="' + ep.thumbnail + '" alt="' + ep.title + '">' +
+        quickPlayBtn() +
         '<span class="duration">' + ep.duration + '</span></div>' +
         '<div class="episode-info"><h3>' + ep.title + '</h3><p>' + ep.creator + '</p>' +
         '<div class="meta"><span>' + ep.views + ' views</span></div></div></article></a>'
@@ -157,11 +165,10 @@
     var list = document.getElementById('audioList');
     var items = Castory.filterEpisodes(CASTORY_MOCK.getAudioEpisodes(), filterOpts()).slice(0, 5);
     list.innerHTML = items.map(function (ep) {
-      var url = CASTORY_MOCK.getEpisodeUrl(ep, '../');
       return (
-        '<a href="' + url + '" class="episode-row-link">' +
+        '<a href="' + CASTORY_MOCK.getEpisodeUrl(ep, '../') + '" class="episode-row-link" data-episode-id="' + ep.id + '">' +
         '<article class="audio-explore-row glass searchable" data-category="' + ep.category + '">' +
-        '<button class="play-btn" type="button" aria-label="Play ' + ep.title + '">▶</button>' +
+        '<button class="play-btn castory-quick-play" type="button" aria-label="Play ' + ep.title + '">▶</button>' +
         waveformHtml() +
         '<div class="audio-info"><h4>' + ep.title + '</h4>' +
         '<p class="text-muted">' + (ep.podcast || ep.creator) + '</p></div>' +
@@ -178,9 +185,10 @@
         ? '<span class="badge-video">Video</span>'
         : '<span class="badge-audio">Audio</span>';
       return (
-        '<a href="' + CASTORY_MOCK.getEpisodeUrl(ep, '../') + '" class="episode-card-link">' +
+        cardLinkStart(ep) +
         '<article class="recommended-card glass searchable" data-category="' + ep.category + '">' +
-        '<img src="' + ep.thumbnail + '" alt="' + ep.title + '">' +
+        '<div class="thumb" style="position:relative"><img src="' + ep.thumbnail + '" alt="' + ep.title + '">' +
+        quickPlayBtn() + '</div>' +
         '<div class="rec-meta"><div>' + badge + '</div><h4>' + ep.title + '</h4>' +
         '<p class="text-muted">' + ep.creator + ' · ' + ep.duration + '</p></div></article></a>'
       );

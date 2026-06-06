@@ -22,21 +22,20 @@
     '<span class="meta-tag">' + ep.views + ' views</span>' +
     '<span class="meta-tag">' + ep.date + '</span>';
 
-  var totalSeconds = Castory.EpisodeDetail.parseDuration(ep.duration);
-  document.getElementById('totalTime').textContent = Castory.EpisodeDetail.formatTime(totalSeconds);
-
   document.getElementById('mobileLink').href = '../mobile/index.html?id=' + ep.id;
 
   Castory.EpisodeDetail.bindPlayer({
+    episode: ep,
     playBtn: document.getElementById('playBtn'),
     progressFill: document.getElementById('progressFill'),
     progressBar: document.getElementById('seekBar'),
     currentTimeEl: document.getElementById('currentTime'),
+    totalTimeEl: document.getElementById('totalTime'),
     skipBack: document.getElementById('skipBack'),
     skipForward: document.getElementById('skipForward'),
+    speedSelect: document.getElementById('speedSelect'),
     waveform: document.querySelector('.waveform'),
-    totalSeconds: totalSeconds,
-    startAt: Math.floor(totalSeconds * 0.12),
+    resume: true,
   });
 
   var creator = CASTORY_MOCK.creators[1] || { name: ep.creator, avatar: ep.thumbnail, followers: '950K' };
@@ -68,12 +67,13 @@
   document.getElementById('shareBtn').addEventListener('click', function () {
     Castory.EpisodeDetail.showToast('Link copied to clipboard');
   });
-  document.getElementById('bookmarkBtn').addEventListener('click', function () {
-    document.getElementById('bookmarkBtn').classList.toggle('active');
-    Castory.EpisodeDetail.showToast('Saved to library');
-  });
+  if (Castory.LibraryActions) {
+    Castory.LibraryActions.bindEpisode(ep, { bookmarkBtn: document.getElementById('bookmarkBtn') });
+  }
   document.getElementById('downloadBtn').addEventListener('click', function () {
-    Castory.EpisodeDetail.showToast('Download started');
+    var url = Castory.Player.resolveSrc(ep);
+    if (url) window.open(url, '_blank');
+    else Castory.EpisodeDetail.showToast('Download unavailable');
   });
 
   Castory.Sidebar.init({ menuBtn: document.getElementById('menuBtn'), sidebar: document.getElementById('sidebar') });

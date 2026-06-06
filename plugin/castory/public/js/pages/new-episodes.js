@@ -34,33 +34,18 @@
         : '<span class="badge-audio">Audio</span>';
       var url = CASTORY_MOCK.getEpisodeUrl(ep, '../');
       return (
-        '<a href="' + url + '" class="episode-list-link">' +
+        '<a href="' + url + '" class="episode-list-link" data-episode-id="' + ep.id + '">' +
         '<article class="episode-list-row glass-card">' +
         '<img class="list-thumb" src="' + ep.thumbnail + '" alt="' + ep.title + '">' +
         '<div class="list-info"><h3>' + ep.title + '</h3>' +
         '<p class="text-secondary">' + ep.creator + (ep.verified ? ' <span class="verified">✔</span>' : '') + '</p>' +
         '<div class="meta">' + badge + ' <span>' + ep.duration + '</span> <span>' + ep.date + '</span></div></div>' +
         '<div class="list-actions">' +
-        '<button type="button" class="bookmark" aria-label="Bookmark">★</button>' +
-        '<button type="button" class="play-btn" aria-label="Play">▶</button>' +
+        '<button type="button" class="bookmark castory-bookmark-btn" aria-label="Bookmark">★</button>' +
+        '<button type="button" class="play-btn castory-quick-play" aria-label="Play">▶</button>' +
         '<button type="button" class="more" aria-label="More">⋮</button></div></article></a>'
       );
     }).join('');
-
-    Castory.qsa('.bookmark', episodeList).forEach(function (btn) {
-      btn.addEventListener('click', function (e) {
-        e.preventDefault();
-        e.stopPropagation();
-        btn.classList.toggle('is-bookmarked');
-      });
-    });
-    Castory.qsa('.play-btn', episodeList).forEach(function (btn) {
-      btn.addEventListener('click', function (e) {
-        e.preventDefault();
-        e.stopPropagation();
-        btn.classList.toggle('is-playing');
-      });
-    });
   }
 
   function renderPagination() {

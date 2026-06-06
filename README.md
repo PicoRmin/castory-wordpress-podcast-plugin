@@ -2,7 +2,7 @@
 
 Premium dark-mode podcast & video streaming platform for WordPress.
 
-**Status:** Phase 8 in progress — WordPress plugin scaffold + prototypes complete through Phase 7  
+**Status:** Phase 8 ✅ core · Phase 9 🔄 (~90% — player, library, playlists, profile)  
 **Brand:** Castory  
 **Stack:** HTML/CSS/JS prototypes → PHP WordPress plugin
 
@@ -43,6 +43,12 @@ prototypes/index.html
 
 **Requirements:** WordPress 6.0+, PHP 8.0+
 
+After editing prototypes, sync assets:
+
+```powershell
+.\scripts\sync-assets.ps1
+```
+
 ---
 
 ## Project Structure
@@ -50,20 +56,22 @@ prototypes/index.html
 ```
 castory-wordpress-podcast-plugin/
 ├── docs/
-│   ├── phases/           # PHASE-0 … PHASE-8 completion reports
+│   ├── phases/           # PHASE-0 … PHASE-9 completion reports
+│   ├── PLAYER.md         # Media player spec
 │   ├── DECISIONS.md
 │   ├── IA.md
 │   ├── DESIGN-SYSTEM.md
+│   ├── QA-MOCKUP-CHECKLIST.md
 │   ├── review.md
 │   └── roadmap.md
-├── mockups/              # Design PNG references (see MANIFEST.md)
+├── mockups/              # Design PNG references (15 files — see MANIFEST.md)
 ├── prompts/              # AI design prompts (*.txt)
 ├── prototypes/
 │   ├── shared/           # Design system — source of truth for plugin assets
 │   ├── home/ … episode-detail/
 │   └── _archive/
 └── plugin/
-    └── castory/          # WordPress plugin (Phase 8)
+    └── castory/          # WordPress plugin
         ├── castory.php
         ├── includes/
         ├── admin/
@@ -77,12 +85,16 @@ castory-wordpress-podcast-plugin/
 
 | Doc | Purpose |
 |-----|---------|
-| [docs/phases/](docs/phases/) | Phase completion reports (PHASE-0 … PHASE-8) |
+| [docs/phases/](docs/phases/) | Phase completion reports (PHASE-0 … PHASE-9) |
+| [docs/PLAYLISTS.md](docs/PLAYLISTS.md) | Playlists CRUD spec (Phase 9.3) |
+| [docs/PROFILE.md](docs/PROFILE.md) | Profile + WP user meta spec (Phase 9.1) |
+| [docs/PLAYER.md](docs/PLAYER.md) | Media player + progress sync spec |
 | [docs/roadmap.md](docs/roadmap.md) | Full development roadmap |
 | [docs/DECISIONS.md](docs/DECISIONS.md) | Brand, MVP scope, ADRs |
 | [docs/IA.md](docs/IA.md) | Navigation, routing, WP slugs |
 | [docs/DESIGN-SYSTEM.md](docs/DESIGN-SYSTEM.md) | Shared CSS/JS components |
-| [docs/review.md](docs/review.md) | Prompt vs implementation audit (updated Phase 8) |
+| [docs/QA-MOCKUP-CHECKLIST.md](docs/QA-MOCKUP-CHECKLIST.md) | Page-by-page pixel QA |
+| [docs/review.md](docs/review.md) | Prompt vs implementation audit |
 
 ---
 
@@ -106,10 +118,11 @@ Plugin copy: `plugin/castory/public/css/castory.css`
 | Phase | Status |
 |-------|--------|
 | 0–7 | ✅ Prototypes + SPA-lite shell |
-| 8 | 🔄 Plugin scaffold, CPT, assets, shortcodes |
-| 9+ | 🔲 User features, real player, premium |
+| 8 | ✅ Plugin scaffold, CPT, REST, templates, shortcodes |
+| 9 | 🔄 Player + library + playlists ✅ · auth pending |
+| 10 | 🔲 Testing & launch |
 
-See [docs/phases/PHASE-8.md](docs/phases/PHASE-8.md) for current plugin work.
+See [docs/phases/PHASE-9.md](docs/phases/PHASE-9.md) for current work.
 
 ---
 

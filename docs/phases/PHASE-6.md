@@ -136,7 +136,7 @@ flowchart TD
 
 | # | Issue | Severity |
 |---|--------|----------|
-| 1 | MockUp PNG QA blocked | 🟡 |
+| 1 | MockUp pixel QA pending (PNGs restored ✅) | 🟡 |
 | 2 | Play buttons inside linked rows — bookmark stops propagation; play toggles local state only | 🟢 |
 | 3 | No real media playback (simulation) | 🟢 expected |
 

@@ -27,6 +27,7 @@ class Activator {
 		self::seed_default_options();
 		Sample_Data::import_if_empty();
 		Sample_Data::backfill_creator_names();
+		Sample_Data::backfill_media_urls();
 
 		flush_rewrite_rules();
 	}

@@ -46,12 +46,13 @@
     const paginated = Castory.paginate(filtered, currentPage, pageSize);
 
     episodeGrid.innerHTML = paginated.map(function (ep) {
-      var url = CASTORY_MOCK.getEpisodeUrl(ep, '../');
       return (
-        '<a href="' + url + '" class="episode-card-link">' +
+        '<a href="' + CASTORY_MOCK.getEpisodeUrl(ep, '../') + '" class="episode-card-link" data-episode-id="' + ep.id + '">' +
         '<article class="episode-card video-card">' +
         '<div class="thumbnail thumb"><img src="' + ep.thumbnail + '" alt="' + ep.title + '">' +
-        '<div class="play-overlay"><div class="play-circle play-btn">▶</div></div>' +
+        '<div class="play-overlay">' +
+        (Castory.QuickPlay ? Castory.QuickPlay.buttonHtml('play-circle') : '<div class="play-circle play-btn">▶</div>') +
+        '</div>' +
         '<span class="duration">' + ep.duration + '</span></div>' +
         '<div class="card-content episode-info"><h3 class="card-title line-clamp-2">' + ep.title + '</h3>' +
         '<div class="creator">' + ep.creator + (ep.verified ? ' <span class="verified">✔</span>' : '') + '</div>' +

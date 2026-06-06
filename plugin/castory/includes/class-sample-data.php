@@ -18,6 +18,9 @@ if ( ! defined( 'ABSPATH' ) ) {
  */
 class Sample_Data {
 
+	private const DEMO_AUDIO = 'https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3';
+	private const DEMO_VIDEO = 'https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4';
+
 	/**
 	 * Import sample episodes if the site has no published castory_episode posts.
 	 */
@@ -94,6 +97,7 @@ class Sample_Data {
 			update_post_meta( $post_id, '_castory_duration', $item['duration'] );
 			update_post_meta( $post_id, '_castory_views', $item['views'] );
 			update_post_meta( $post_id, '_castory_thumbnail_url', $item['thumbnail'] );
+			update_post_meta( $post_id, '_castory_media_url', self::demo_media_url( $item['media_type'] ) );
 			if ( ! empty( $item['creator'] ) ) {
 				update_post_meta( $post_id, '_castory_creator_name', $item['creator'] );
 			}
@@ -106,6 +110,38 @@ class Sample_Data {
 		}
 
 		return $created;
+	}
+
+	private static function demo_media_url( string $media_type ): string {
+		return 'audio' === $media_type ? self::DEMO_AUDIO : self::DEMO_VIDEO;
+	}
+
+	/**
+	 * Backfill demo media URLs on existing sample episodes.
+	 */
+	public static function backfill_media_urls(): int {
+		$updated = 0;
+		$query   = new \WP_Query(
+			array(
+				'post_type'      => 'castory_episode',
+				'post_status'    => 'publish',
+				'posts_per_page' => 100,
+				'fields'         => 'ids',
+			)
+		);
+
+		foreach ( $query->posts as $post_id ) {
+			$post_id = (int) $post_id;
+			$current = get_post_meta( $post_id, '_castory_media_url', true );
+			if ( is_string( $current ) && '' !== trim( $current ) ) {
+				continue;
+			}
+			$type = get_post_meta( $post_id, '_castory_media_type', true );
+			update_post_meta( $post_id, '_castory_media_url', self::demo_media_url( is_string( $type ) ? $type : 'video' ) );
+			++$updated;
+		}
+
+		return $updated;
 	}
 
 	private static function episode_exists( string $title ): bool {

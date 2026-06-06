@@ -46,6 +46,10 @@ final class Castory {
 		require_once CASTORY_PLUGIN_DIR . 'includes/class-rest-api.php';
 		require_once CASTORY_PLUGIN_DIR . 'includes/class-widget-data.php';
 		require_once CASTORY_PLUGIN_DIR . 'includes/class-episode-routing.php';
+		require_once CASTORY_PLUGIN_DIR . 'includes/class-user-progress.php';
+		require_once CASTORY_PLUGIN_DIR . 'includes/class-user-library.php';
+		require_once CASTORY_PLUGIN_DIR . 'includes/class-user-playlists.php';
+		require_once CASTORY_PLUGIN_DIR . 'includes/class-user-profile.php';
 		require_once CASTORY_PLUGIN_DIR . 'admin/class-admin.php';
 		require_once CASTORY_PLUGIN_DIR . 'public/class-public.php';
 		require_once CASTORY_PLUGIN_DIR . 'public/class-shortcodes.php';

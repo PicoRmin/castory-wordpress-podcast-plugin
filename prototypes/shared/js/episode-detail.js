@@ -47,77 +47,29 @@
     },
 
     bindPlayer: function (opts) {
-      var playBtn = opts.playBtn;
-      var progressEl = opts.progressFill;
-      var currentEl = opts.currentTimeEl;
-      var totalSeconds = opts.totalSeconds || 0;
-      var waveform = opts.waveform;
-      var playing = false;
-      var current = opts.startAt || 0;
-      var timer = null;
-
-      function updateUI() {
-        var pct = totalSeconds ? (current / totalSeconds) * 100 : 0;
-        if (progressEl) progressEl.style.width = pct + '%';
-        if (currentEl) currentEl.textContent = Castory.EpisodeDetail.formatTime(current);
-        if (waveform) waveform.classList.toggle('is-playing', playing);
+      if (!opts.episode || !Castory.Player) {
+        return null;
       }
 
-      function tick() {
-        current += 1;
-        if (current >= totalSeconds) {
-          current = totalSeconds;
-          stop();
-        }
-        updateUI();
-      }
-
-      function play() {
-        playing = true;
-        if (playBtn) playBtn.textContent = '⏸';
-        if (playBtn) playBtn.setAttribute('aria-label', 'Pause');
-        timer = setInterval(tick, 1000);
-      }
-
-      function stop() {
-        playing = false;
-        if (playBtn) playBtn.textContent = '▶';
-        if (playBtn) playBtn.setAttribute('aria-label', 'Play');
-        clearInterval(timer);
-      }
-
-      if (playBtn) {
-        playBtn.addEventListener('click', function () {
-          if (playing) stop();
-          else play();
-        });
-      }
-
-      if (opts.skipBack) {
-        opts.skipBack.addEventListener('click', function () {
-          current = Math.max(0, current - 15);
-          updateUI();
-        });
-      }
-
-      if (opts.skipForward) {
-        opts.skipForward.addEventListener('click', function () {
-          current = Math.min(totalSeconds, current + 30);
-          updateUI();
-        });
-      }
-
-      if (opts.progressBar) {
-        opts.progressBar.addEventListener('click', function (e) {
-          var rect = opts.progressBar.getBoundingClientRect();
-          var pct = (e.clientX - rect.left) / rect.width;
-          current = Math.floor(pct * totalSeconds);
-          updateUI();
-        });
-      }
-
-      updateUI();
-      return { play: play, stop: stop, getCurrent: function () { return current; } };
+      return Castory.Player.attachUI(opts.episode, {
+        playBtn: opts.playBtn,
+        progressFill: opts.progressFill,
+        progressBar: opts.progressBar,
+        currentTimeEl: opts.currentTimeEl,
+        totalTimeEl: opts.totalTimeEl,
+        waveform: opts.waveform,
+        skipBack: opts.skipBack,
+        skipForward: opts.skipForward,
+        speedSelect: opts.speedSelect,
+        volumeBtn: opts.volumeBtn,
+        fullscreenBtn: opts.fullscreenBtn,
+        fullscreenTarget: opts.fullscreenTarget,
+        videoContainer: opts.videoContainer,
+        stageEl: opts.stageEl,
+        startAt: opts.startAt,
+        resume: opts.resume,
+        autoplay: opts.autoplay,
+      });
     },
 
     renderRelated: function (container, episode, prefix) {

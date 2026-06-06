@@ -411,7 +411,7 @@ prototypes/shared/
 | 1 | MVP pages not using shared CSS yet | Phase 2 |
 | 2 | `trending-audio` → wrong script src `app.js` | Phase 2 |
 | 3 | `trending-video/app.js` sorts `"6 hrs ago"` strings | Phase 2 → use `CASTORY_MOCK` |
-| 4 | MockUp PNGs still missing | User restore → `mockups/` |
+| 4 | MockUp PNGs restored ✅ — pixel QA: [QA-MOCKUP-CHECKLIST.md](../QA-MOCKUP-CHECKLIST.md) | 🟡 QA pending |
 | 5 | UI brand still "PodStream" in pages | Phase 2 |
 | 6 | `@import` in castory.css may flash on slow networks | Optional: bundle/minify later |
 

@@ -137,7 +137,7 @@ flowchart TD
 | Entry CSS | `castory.css` + `page.css` |
 | Entry JS | `script.js` |
 | Prompt | `prompts/ExplorePage-Prompt.txt` |
-| MockUp refs | `mockups/Castory-explorePage-*` (PNG restore pending) |
+| MockUp refs | `mockups/Castory-explorePage-*` ✅ — QA: [QA-MOCKUP-CHECKLIST.md](../QA-MOCKUP-CHECKLIST.md) |
 
 ---
 
@@ -145,7 +145,7 @@ flowchart TD
 
 | Section | Built | Interactive | vs MockUp |
 |---------|-------|-------------|-----------|
-| Sidebar (Explore active) | ✅ | ✅ linked | ⚠️ PNG QA blocked |
+| Sidebar (Explore active) | ✅ | ✅ linked | 🟡 QA pending |
 | Header + search | ✅ | ✅ | ✅ |
 | Category pills | ✅ | ✅ filter | ✅ |
 | Hero slider | ✅ | ✅ dots + pause | ✅ |
@@ -164,7 +164,7 @@ flowchart TD
 
 | # | Issue | Severity |
 |---|--------|----------|
-| 1 | MockUp PNGs missing — pixel QA blocked | 🟡 |
+| 1 | MockUp pixel QA pending (PNGs restored ✅) | 🟡 |
 | 2 | Placeholder nav items (Categories, Community, etc.) → `#` | 🟡 expected |
 | 3 | Advanced Search button — UI only | 🟢 |
 | 4 | `prefers-reduced-motion` for hero carousel not added | 🟢 |
@@ -174,7 +174,8 @@ flowchart TD
 ## Handoff → Phase 4
 
 - [ ] Build `prototypes/library/index.html` from `prompts/LibraryPage-Prompt.txt`
-- [ ] Restore mockup PNGs for Explore QA
+- [x] Restore mockup PNGs for Explore QA
+- [ ] Run Explore pixel QA — [QA-MOCKUP-CHECKLIST.md](../QA-MOCKUP-CHECKLIST.md) §5
 - [ ] Shared nav partial to reduce duplicated sidebar HTML
 - [ ] Optional: add Explore to mobile nav on all MVP pages
 

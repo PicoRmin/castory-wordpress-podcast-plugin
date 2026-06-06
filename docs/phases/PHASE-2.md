@@ -212,7 +212,7 @@ category     // string
 
 | Page | Shared DS | CASTORY_MOCK | Nav Linked | Functional | vs MockUp |
 |------|-----------|--------------|------------|------------|-----------|
-| **Home** | ✅ | ✅ | ✅ | ✅ ~90% | ⚠️ PNGs missing |
+| **Home** | ✅ | ✅ | ✅ | ✅ ~90% | 🟡 QA pending — [QA-MOCKUP-CHECKLIST.md](../QA-MOCKUP-CHECKLIST.md) |
 | **Trending Video** | ✅ | ✅ | ✅ | ✅ ~90% | ⚠️ |
 | **Trending Audio** | ✅ | ✅ | ✅ | ✅ ~90% | ⚠️ |
 | **New Episodes** | ✅ | ✅ | ✅ | ✅ ~85% | ⚠️ |
@@ -229,7 +229,7 @@ category     // string
 - [x] Trending Audio → fix `script.js` load + dynamic table + filters  
 - [x] New Episodes → 15+ episodes + pagination + filters + Unsplash assets  
 - [x] Brand PodStream → **Castory**  
-- [ ] MockUp pixel QA — blocked until PNG restore  
+- [ ] MockUp pixel QA — PNGs restored; run [QA-MOCKUP-CHECKLIST.md](../QA-MOCKUP-CHECKLIST.md)  
 - [x] Trending Audio sidebar nav full hrefs
 
 ---
@@ -238,7 +238,7 @@ category     // string
 
 | # | Issue | Severity |
 |---|--------|----------|
-| 1 | MockUp PNGs still missing in `mockups/` | 🟡 |
+| 1 | MockUp pixel QA not yet executed (PNGs restored ✅) | 🟡 |
 | 2 | `styles.css` legacy files still on disk (unused) | 🟢 cleanup |
 | 3 | Library/Explore/Profile links → README placeholders | 🟡 expected v1.1 |
 | 4 | Trending Audio sidebar nav — now linked | ✅ fixed |
@@ -250,7 +250,8 @@ category     // string
 
 - [ ] Build `prototypes/explore/index.html` from `prompts/ExplorePage-Prompt.txt`
 - [ ] Optional: delete legacy `styles.css` files
-- [ ] Restore mockup PNGs for QA
+- [x] Restore mockup PNGs for QA (15/15 in `mockups/`)
+- [ ] Execute pixel QA — [QA-MOCKUP-CHECKLIST.md](../QA-MOCKUP-CHECKLIST.md)
 - [ ] Shared nav partial component (reduce duplicated sidebar HTML)
 
 ---

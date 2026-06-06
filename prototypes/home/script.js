@@ -38,6 +38,15 @@
     Castory.qsa('.dot', heroDots).forEach(function (d, i) {
       d.classList.toggle('active', i === current);
     });
+
+    var saveBtn = document.getElementById('saveLaterBtn');
+    if (saveBtn && slide.episodeId) {
+      saveBtn.setAttribute('data-episode-id', slide.episodeId);
+      saveBtn.classList.add('castory-watch-later-btn');
+      if (Castory.LibraryActions) {
+        Castory.LibraryActions.refreshButton(saveBtn, 'watchLater', slide.episodeId);
+      }
+    }
   }
 
   function nextSlide() {
@@ -61,6 +70,14 @@
   heroSection.addEventListener('mouseenter', stopCarousel);
   heroSection.addEventListener('mouseleave', startCarousel);
 
+  function quickPlayBtn() {
+    return Castory.QuickPlay ? Castory.QuickPlay.buttonHtml() : '';
+  }
+
+  function cardLinkStart(ep) {
+    return '<a href="' + CASTORY_MOCK.getEpisodeUrl(ep, '../') + '" class="episode-card-link" data-episode-id="' + ep.id + '">';
+  }
+
   function renderVideoGrid() {
     const grid = document.getElementById('videoGrid');
     const items = Castory.filterEpisodes(CASTORY_MOCK.getVideoEpisodes(), {
@@ -68,11 +85,11 @@
     }).slice(0, 6);
 
     grid.innerHTML = items.map(function (ep) {
-      var url = CASTORY_MOCK.getEpisodeUrl(ep, '../');
       return (
-        '<a href="' + url + '" class="episode-card-link">' +
+        cardLinkStart(ep) +
         '<article class="episode-card glass searchable" data-category="' + ep.category + '">' +
         '<div class="thumb"><img src="' + ep.thumbnail + '" alt="' + ep.title + '">' +
+        quickPlayBtn() +
         '<span class="duration">' + ep.duration + '</span></div>' +
         '<div class="episode-info"><h3>' + ep.title + '</h3><p>' + ep.creator + '</p>' +
         '<div class="meta"><span>' + ep.views + ' views</span><span>' + ep.date + '</span></div></div></article></a>'
@@ -87,11 +104,12 @@
     }).slice(0, 6);
 
     grid.innerHTML = items.map(function (ep) {
-      var url = CASTORY_MOCK.getEpisodeUrl(ep, '../');
       return (
-        '<a href="' + url + '" class="episode-card-link">' +
+        cardLinkStart(ep) +
         '<article class="audio-card glass searchable" data-category="' + ep.category + '">' +
+        '<div class="audio-thumb-wrap" style="position:relative;display:inline-block">' +
         '<img class="audio-thumb" src="' + ep.thumbnail + '" alt="">' +
+        quickPlayBtn() + '</div>' +
         '<div class="audio-meta"><h4>' + ep.title + '</h4><p class="text-secondary">' + ep.creator + '</p>' +
         '<span class="audio-duration">' + ep.duration + ' · ' + ep.date + '</span></div></article></a>'
       );
@@ -105,11 +123,11 @@
     });
 
     grid.innerHTML = items.map(function (ep) {
-      var url = CASTORY_MOCK.getEpisodeUrl(ep, '../');
       return (
-        '<a href="' + url + '" class="episode-card-link">' +
+        cardLinkStart(ep) +
         '<article class="feed-card glass searchable" data-category="' + ep.category + '">' +
-        '<img src="' + ep.thumbnail + '" alt="' + ep.title + '">' +
+        '<div class="thumb" style="width:130px;min-width:130px;height:90px;flex-shrink:0">' +
+        '<img src="' + ep.thumbnail + '" alt="' + ep.title + '">' + quickPlayBtn() + '</div>' +
         '<div><h3>' + ep.title + '</h3><p class="text-secondary">' + ep.category + ' · ' + ep.duration + '</p></div></article></a>'
       );
     }).join('');
@@ -187,11 +205,6 @@
         activeChipCategory = chip.dataset.category || 'All';
         refreshGrids();
       });
-    });
-
-    document.getElementById('saveLaterBtn').addEventListener('click', function () {
-      this.classList.toggle('is-saved');
-      this.textContent = this.classList.contains('is-saved') ? 'Saved ✓' : 'Save Later';
     });
 
     document.getElementById('createBtn').addEventListener('click', function () {

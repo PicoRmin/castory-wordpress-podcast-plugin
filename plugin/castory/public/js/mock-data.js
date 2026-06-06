@@ -11,13 +11,19 @@
     return NOW - ms;
   }
 
+  var DEMO_AUDIO = 'https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3';
+  var DEMO_VIDEO = 'https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4';
+
   function episode(partial) {
+    var mediaType = partial.mediaType || 'video';
+    var defaultUrl = mediaType === 'audio' ? DEMO_AUDIO : DEMO_VIDEO;
     return {
       mediaType: 'video',
       viewsCount: 0,
       podcast: '',
       description: '',
       ...partial,
+      mediaUrl: partial.mediaUrl || defaultUrl,
       date: global.Castory?.formatRelativeDate
         ? global.Castory.formatRelativeDate(partial.publishedAt)
         : partial.date || '',
@@ -99,18 +105,21 @@
 
     heroSlides: [
       {
+        episodeId: 14,
         title: 'Future of Artificial Intelligence',
         category: 'Technology',
         description: 'Discover how AI is reshaping business, creativity and the future of humanity.',
         image: 'https://images.unsplash.com/photo-1516321318423-f06f85e504b3?w=1600',
       },
       {
+        episodeId: 15,
         title: 'The Creator Economy Revolution',
         category: 'Business',
         description: 'How creators are building million dollar businesses.',
         image: 'https://images.unsplash.com/photo-1497366754035-f200968a6e72?w=1600',
       },
       {
+        episodeId: 3,
         title: 'Building Global SaaS Products',
         category: 'Startups',
         description: 'Learn the frameworks behind the fastest growing startups.',
@@ -269,6 +278,13 @@
         { id: 2, name: 'Tech Deep Dives', episodes: 18, updated: '5 days ago', covers: ['https://images.unsplash.com/photo-1519389950473-47ba0277781c?w=200', 'https://images.unsplash.com/photo-1497366811353-6870744d04b2?w=200', 'https://images.unsplash.com/photo-1639762681057-408e52192e55?w=200', 'https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=200'] },
         { id: 3, name: 'Creator Economy', episodes: 12, updated: '1 week ago', covers: ['https://images.unsplash.com/photo-1497366754035-f200968a6e72?w=200', 'https://images.unsplash.com/photo-1522202176988-66273c2fd55f?w=200', 'https://images.unsplash.com/photo-1557804506-669a67965ba0?w=200', 'https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?w=200'] },
         { id: 4, name: 'Weekend Listening', episodes: 31, updated: '3 days ago', covers: ['https://images.unsplash.com/photo-1506126613408-eca07ce68773?w=200', 'https://images.unsplash.com/photo-1455390582262-044cdead277a?w=200', 'https://images.unsplash.com/photo-1446776811953-b23d57bd21aa?w=200', 'https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?w=200'] },
+      ],
+
+      defaultPlaylists: [
+        { name: 'Morning Focus', episodeIds: [14, 13, 21] },
+        { name: 'Tech Deep Dives', episodeIds: [2, 7, 12] },
+        { name: 'Creator Economy', episodeIds: [15, 4, 9] },
+        { name: 'Weekend Listening', episodeIds: [21, 16, 8] },
       ],
 
       downloaded: [

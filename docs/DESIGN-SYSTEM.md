@@ -158,12 +158,23 @@ Converts Unix ms → `"6 hrs ago"`. Use `publishedAt` field for sorting.
 Phase 7 bootstrap — auto-runs when `<body data-castory-app>`.
 
 ### `Castory.Storage`
-localStorage: `setNowPlaying`, `toggleBookmark`, `toggleWatchLater`, `setTheme`.
+localStorage: `setNowPlaying`, `getPlaybackPosition`, `setPlaybackPosition`, `toggleBookmark`, `toggleWatchLater`, `setTheme`.
 
-### `Castory.Nav.syncActive()` / `Castory.Search.redirect(q)`
+### `Castory.Player`
+HTML5 media engine — see **[PLAYER.md](./PLAYER.md)** for full API.
 
-### `CASTORY_MOCK`
-Global mock data: 20 episodes, creators, nav, hero slides, top podcasts.
+| Method | Purpose |
+|--------|---------|
+| `load(episode, opts)` | Load audio/video source |
+| `attachUI(episode, opts)` | Episode page shorthand |
+| `bindUI(ui)` | Register control DOM refs |
+| `play()` / `pause()` / `toggle()` | Playback |
+| `seek(seconds)` / `skip(delta)` | Seek |
+| `getState()` | `{ episodeId, playing, currentTime, progress, … }` |
+
+Event: `castory:player` on `window`.
+
+### `Castory.init({ sidebar, nav, globalPlayer, search, notifications, lazyImages, hydrateDates })`
 
 ---
 

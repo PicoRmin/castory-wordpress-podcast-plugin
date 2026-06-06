@@ -75,4 +75,23 @@ require CASTORY_PLUGIN_DIR . 'templates/partials/urls.php';
 <nav class="bottom-nav" id="bottomNav" aria-label="<?php esc_attr_e( 'Mobile navigation', 'castory' ); ?>"></nav>
 <div class="sidebar-backdrop" id="sidebarBackdrop"></div>
 <div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+<div class="playlist-modal" id="playlistModal" aria-hidden="true">
+  <div class="playlist-modal-backdrop" id="playlistModalBackdrop"></div>
+  <div class="playlist-modal-dialog glass" role="dialog" aria-labelledby="playlistModalTitle">
+    <button type="button" class="modal-close" id="playlistModalClose" aria-label="<?php esc_attr_e( 'Close', 'castory' ); ?>">×</button>
+    <h3 id="playlistModalTitle"><?php esc_html_e( 'New Playlist', 'castory' ); ?></h3>
+    <form id="playlistForm">
+      <div class="form-field">
+        <label for="playlistNameInput"><?php esc_html_e( 'Name', 'castory' ); ?></label>
+        <input type="text" id="playlistNameInput" maxlength="80" required placeholder="<?php esc_attr_e( 'My playlist', 'castory' ); ?>">
+      </div>
+      <div id="playlistEpisodePicker" class="playlist-episode-picker"></div>
+      <div class="playlist-modal-actions">
+        <button type="button" class="btn btn-secondary" id="playlistModalCancel"><?php esc_html_e( 'Cancel', 'castory' ); ?></button>
+        <button type="submit" class="btn btn-primary" id="playlistModalSave"><?php esc_html_e( 'Save', 'castory' ); ?></button>
+      </div>
+    </form>
+  </div>
+</div>
 </div>

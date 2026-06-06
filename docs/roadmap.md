@@ -64,7 +64,7 @@ castory-wordpress-podcast-plugin/
 ```
 
 - [x] **🔴** rename `new-episoes` → `new-episodes`
-- [x] **🟡** ایجاد `mockups/` + `MANIFEST.md` — ⚠️ PNGها باید از backup بازگردانده شوند
+- [x] **🟡** ایجاد `mockups/` + `MANIFEST.md` — ✅ ۱۵ PNG بازگردانده شد
 - [x] **🟡** انتقال ۷ فایل `.txt` به `prompts/`
 
 ### ۰.۳ ابزارها و مستندات
@@ -95,7 +95,7 @@ castory-wordpress-podcast-plugin/
 **خروجی فاز ۰:** ✅ ساختار پوشه، `docs/DECISIONS.md`, `docs/IA.md`, README, Git, `prototypes/index.html` hub  
 **گزارش فاز:** [`docs/phases/PHASE-0.md`](phases/PHASE-0.md)
 
-**اقدام باقی‌مانده:** بازگردانی ۱۵ فایل PNG به `mockups/` (از backup/Figma)
+**MockUp QA:** [QA-MOCKUP-CHECKLIST.md](./QA-MOCKUP-CHECKLIST.md) — PNGها بازگردانده شد ✅
 
 ---
 
@@ -181,7 +181,7 @@ castory-wordpress-podcast-plugin/
 - [x] **🟡** Audio cards: اضافه کردن thumbnail + duration (طبق Prompt)
 - [ ] **🟡** Breakpoint 1440px جداگانه
 - [ ] **🟢** `prefers-reduced-motion` برای carousel
-- [ ] **✅ QA:** مقایسه side-by-side با MockUp Desktop + Mobile *(PNGها بازیابی نشده)*
+- [ ] **✅ QA:** مقایسه side-by-side با MockUp Desktop + Mobile — [QA-MOCKUP-CHECKLIST.md](./QA-MOCKUP-CHECKLIST.md)
 
 ### ۲.۲ New Episodes (`prototypes/new-episodes/`)
 
@@ -303,7 +303,7 @@ filtered.sort((a,b) => b.publishedAt - a.publishedAt);
 - [x] **🟡** Topic card click highlight
 - [x] **🔴** Tablet: right sidebar below content
 - [x] **🔴** Mobile: bottom nav، horizontal scroll sections
-- [ ] **✅ QA:** side-by-side MockUp Desktop + Mobile *(PNGها بازیابی نشده)*
+- [ ] **✅ QA:** side-by-side MockUp Desktop + Mobile — [QA-MOCKUP-CHECKLIST.md](./QA-MOCKUP-CHECKLIST.md)
 
 **خروجی فاز ۳:** ✅ Explore page کامل — [PHASE-3.md](./phases/PHASE-3.md)
 
@@ -353,7 +353,7 @@ filtered.sort((a,b) => b.publishedAt - a.publishedAt);
 - [x] **🟡** Playlist more options menu
 - [x] **🟡** Settings / Notifications / Logout در sidebar
 - [x] **🔴** Responsive: sidebar hide mobile، sections stack
-- [ ] **✅ QA:** MockUp comparison *(PNGها بازیابی نشده)*
+- [ ] **✅ QA:** MockUp comparison — [QA-MOCKUP-CHECKLIST.md](./QA-MOCKUP-CHECKLIST.md)
 
 **خروجی فاز ۴:** ✅ Library page کامل — [PHASE-4.md](./phases/PHASE-4.md)
 
@@ -410,7 +410,7 @@ filtered.sort((a,b) => b.publishedAt - a.publishedAt);
 - [x] **🟡** Edit/Share/Settings button handlers (modal placeholder)
 - [x] **🟡** Carousel scroll + arrow buttons
 - [x] **🔴** Mobile responsive stack
-- [ ] **✅ QA:** MockUp comparison *(PNGها بازیابی نشده)*
+- [ ] **✅ QA:** MockUp comparison — [QA-MOCKUP-CHECKLIST.md](./QA-MOCKUP-CHECKLIST.md)
 
 **خروجی فاز ۵:** ✅ Profile page کامل — [PHASE-5.md](./phases/PHASE-5.md)
 
@@ -552,7 +552,7 @@ filtered.sort((a,b) => b.publishedAt - a.publishedAt);
 - [ ] **🟡** Dashboard widget: stats overview
 - [ ] **🟡** Import tool (RSS feed → episodes)
 
-**خروجی فاز ۸:** 🔄 Plugin قابل نصب — UI کامل از shortcode؛ hero/creators و user features برای فاز ۹
+**خروجی فاز ۸:** ✅ Plugin قابل نصب — UI کامل از shortcode + REST + permalinks
 
 ---
 
@@ -564,24 +564,30 @@ filtered.sort((a,b) => b.publishedAt - a.publishedAt);
 
 ### ۹.۱ Authentication & User
 
-- [ ] **🔴** Integrate با WP user system
-- [ ] **🟡** Premium membership check (WooCommerce Memberships یا custom)
-- [ ] **🟡** User profile page → WP user meta
+- [x] **🔴** Integrate با WP user system — profile REST + `castory-wp-profile.js`
+- [ ] **🟡** Premium membership check (WooCommerce Memberships یا custom) — role stub `castory_premium`
+- [x] **🟡** User profile page → WP user meta — bio, location, website, cover + computed stats
+
+**Spec:** [PROFILE.md](./PROFILE.md)
 
 ### ۹.۲ Player
 
-- [ ] **🔴** Audio player: HTML5 `<audio>` + custom UI skin
-- [ ] **🔴** Video player: HTML5 `<video>` یا embed support
-- [ ] **🔴** Progress tracking → save to user meta (REST)
-- [ ] **🟡** Mini-player persistent (AJAX/JS + localStorage fallback)
+- [x] **🔴** Audio player: HTML5 `<audio>` + custom UI skin
+- [x] **🔴** Video player: HTML5 `<video>` inline in stage
+- [x] **🟡** Progress tracking → localStorage (`playback` map)
+- [x] **🟡** Mini-player persistent — wired to `Castory.Player`
+- [x] **🔴** Progress → WP user meta (REST, auth)
+- [x] **🟡** Play from episode cards without opening detail
+
+**Spec:** [PLAYER.md](./PLAYER.md)
 
 ### ۹.۳ Library Features
 
-- [ ] **🟡** Watch Later — custom table or user meta
-- [ ] **🟡** Bookmarks
-- [ ] **🟡** Playlists CRUD
+- [x] **🟡** Watch Later — user meta `_castory_watch_later` + REST
+- [x] **🟡** Bookmarks — user meta `_castory_bookmarks` + REST
+- [x] **🟡** Playlists CRUD — user meta + REST + Library UI
 - [ ] **🟡** Download tracking (file URL + permission)
-- [ ] **🟢** Continue Listening/Watching (resume position)
+- [x] **🟢** Continue Listening/Watching (resume position) — localStorage + WP user meta + Library UI
 
 ### ۹.۴ Discovery
 
@@ -596,7 +602,7 @@ filtered.sort((a,b) => b.publishedAt - a.publishedAt);
 - [ ] **🟢** Creator upload alerts
 - [ ] **🟢** WP Admin email integration
 
-**خروجی فاز ۹:** Feature-complete product
+**خروجی فاز ۹:** 🔄 Player + library features ✅ — auth/profile widgets pending
 
 ---
 
@@ -684,16 +690,16 @@ Explore، Library، Profile → v1.1
 ## Checklist وضعیت فعلی (Snapshot)
 
 ```
-[██████████] فاز ۰ — 100% (mockup PNGs need restore from backup)
+[██████████] فاز ۰ — 100% (mockup PNGs restored — QA checklist ready)
 [██████████] فاز ۱ — 100%
-[█████░░░░░] فاز ۲ — 50% (pages not yet migrated to shared CSS)
-[░░░░░░░░░░] فاز ۳ —  0%
-[░░░░░░░░░░] فاز ۴ —  0%
-[░░░░░░░░░░] فاز ۵ —  0%
-[░░░░░░░░░░] فاز ۶ —  0%
-[░░░░░░░░░░] فاز ۷ —  0%
-[░░░░░░░░░░] فاز ۸ —  0%
-[░░░░░░░░░░] فاز ۹ —  0%
+[██████████] فاز ۲ — 100% (shared CSS migration complete)
+[██████████] فاز ۳ — 100% (Explore)
+[██████████] فاز ۴ — 100% (Library)
+[██████████] فاز ۵ — 100% (Profile)
+[██████████] فاز ۶ — 100% (Episode Detail)
+[██████████] فاز ۷ — 100% (SPA-lite shell)
+[██████████] فاز ۸ — 100% (plugin core — optional RSS/blocks remain)
+[████████░░] فاز ۹ — 75% (player · library · playlists CRUD)
 [░░░░░░░░░░] فاز ۱۰ — 0%
 ```
 

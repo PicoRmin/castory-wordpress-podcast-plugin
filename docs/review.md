@@ -1,6 +1,6 @@
 # Castory — Implementation Audit (Updated)
 
-> **Last updated:** 2026-06-06 — Phase 8 prerequisites  
+> **Last updated:** 2026-06-06 — Phase 9.3 progress + quick play  
 > **Previous audit:** June 2026 (pre–Phase 2) — archived sections below replaced  
 > **Sources:** 10 prompts, 11 prototype pages, `plugin/castory/` WordPress scaffold
 
@@ -14,8 +14,9 @@
 | UI Prototypes | ✅ **11 pages** + hub + design preview |
 | Design System | ✅ `prototypes/shared/` — synced to plugin |
 | SPA-lite shell | ✅ Phase 7 — nav, player, search, notifications, storage |
-| WordPress Plugin | 🔄 Phase 8 — scaffold, CPT, REST, shortcodes (foundation) |
-| MockUp PNGs | ❌ Missing from repo — see `mockups/MANIFEST.md` |
+| WordPress Plugin | ✅ Phase 8 core · 🔄 Phase 9 (player + progress) |
+| Media Player | ✅ HTML5 `Castory.Player` + QuickPlay + REST progress — [PLAYER.md](./PLAYER.md) |
+| MockUp PNGs | ✅ 15/15 in `mockups/` — pixel QA: [QA-MOCKUP-CHECKLIST.md](./QA-MOCKUP-CHECKLIST.md) |
 
 ---
 
@@ -29,7 +30,7 @@
 | New Episodes | ✅ | ✅ | `[castory_new_episodes]` | ~85% |
 | Explore | ✅ | ✅ | `[castory_explore]` | ~80% |
 | Library | ✅ | ✅ | `[castory_library]` | ~80% |
-| Profile | ✅ | ✅ | `[castory_profile]` | ~75% |
+| Profile | ✅ | ✅ | `[castory_profile]` | ~85% |
 | Episode Detail | ✅ (3) | ✅ audio/video/mobile | `[castory_episode id=""]` | ~80% |
 
 ---
@@ -72,11 +73,11 @@
 
 | # | Item | Phase |
 |---|------|-------|
-| 1 | MockUp PNG restore | QA |
-| 2 | Bookmark UI → `Castory.Storage` | 9 |
+| 1 | MockUp pixel QA (PNG restored — run checklist) | [QA-MOCKUP-CHECKLIST.md](./QA-MOCKUP-CHECKLIST.md) |
+| 2 | ~~Bookmark UI → Storage + REST~~ | ✅ 9.3 |
 | 3 | ~~Full WP template port~~ | ✅ 8.4 done |
 | 4 | ~~Extend REST beyond episodes~~ | ✅ widgets + creators + trending |
-| 5 | Profile/library user widgets still mock | 9 |
+| 5 | Achievements / insights widgets still mock (stats/history live) | optional |
 | 6 | a11y / SEO / cross-browser QA | 7.3 / 8 |
 | 7 | Gutenberg blocks | 8.4 optional |
 
@@ -96,8 +97,9 @@ Canonical structure in `docs/IA.md`. Sidebar varies by page (Explore has extende
 
 ## Next Steps
 
-1. Phase 9 — user library REST, real player, premium
-2. RSS import + Gutenberg blocks (optional 8.6)
+1. MockUp pixel QA — [QA-MOCKUP-CHECKLIST.md](./QA-MOCKUP-CHECKLIST.md)
+2. Discovery search REST (Phase 9.4)
+3. RSS import + Gutenberg blocks (optional 8.6)
 
 ---
 

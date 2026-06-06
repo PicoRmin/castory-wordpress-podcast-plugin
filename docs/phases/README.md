@@ -14,7 +14,8 @@
 | 5 | [PHASE-5.md](./PHASE-5.md) | ✅ Complete | 2026-06-06 |
 | 6 | [PHASE-6.md](./PHASE-6.md) | ✅ Complete | 2026-06-06 |
 | 7 | [PHASE-7.md](./PHASE-7.md) | ✅ Complete | 2026-06-06 |
-| 8 | [PHASE-8.md](./PHASE-8.md) | 🔄 Core done — widgets + permalinks | 2026-06-06 |
+| 8 | [PHASE-8.md](./PHASE-8.md) | 🔄 Core done | 2026-06-06 |
+| 9 | [PHASE-9.md](./PHASE-9.md) | 🔄 ~90% (9.1–9.3 ✅) | 2026-06-06 |
 
 ## قالب استاندارد (برای فازهای بعد)
 
@@ -37,3 +38,5 @@
 - [Decisions](../DECISIONS.md)
 - [IA](../IA.md)
 - [Design System](../DESIGN-SYSTEM.md)
+- [MockUp Pixel QA](../QA-MOCKUP-CHECKLIST.md)
+- [Media Player](../PLAYER.md)

@@ -107,6 +107,202 @@ class Rest_Api {
 				),
 			)
 		);
+
+		register_rest_route(
+			'castory/v1',
+			'/progress',
+			array(
+				array(
+					'methods'             => \WP_REST_Server::READABLE,
+					'callback'            => array( $this, 'get_progress' ),
+					'permission_callback' => array( $this, 'progress_read_permission' ),
+				),
+				array(
+					'methods'             => \WP_REST_Server::CREATABLE,
+					'callback'            => array( $this, 'save_progress' ),
+					'permission_callback' => array( $this, 'progress_write_permission' ),
+					'args'                => array(
+						'episode_id'   => array(
+							'type'     => 'integer',
+							'required' => true,
+						),
+						'current_time' => array(
+							'type'     => 'number',
+							'required' => true,
+						),
+						'duration'     => array(
+							'type'     => 'number',
+							'required' => true,
+						),
+					),
+				),
+			)
+		);
+
+		register_rest_route(
+			'castory/v1',
+			'/library',
+			array(
+				array(
+					'methods'             => \WP_REST_Server::READABLE,
+					'callback'            => array( $this, 'get_library' ),
+					'permission_callback' => array( $this, 'library_read_permission' ),
+				),
+				array(
+					'methods'             => \WP_REST_Server::EDITABLE,
+					'callback'            => array( $this, 'save_library' ),
+					'permission_callback' => array( $this, 'library_write_permission' ),
+					'args'                => array(
+						'bookmarks'  => array(
+							'type'  => 'array',
+							'items' => array( 'type' => 'integer' ),
+						),
+						'watchLater' => array(
+							'type'  => 'array',
+							'items' => array( 'type' => 'integer' ),
+						),
+					),
+				),
+			)
+		);
+
+		register_rest_route(
+			'castory/v1',
+			'/library/bookmark',
+			array(
+				'methods'             => \WP_REST_Server::CREATABLE,
+				'callback'            => array( $this, 'toggle_bookmark' ),
+				'permission_callback' => array( $this, 'library_write_permission' ),
+				'args'                => array(
+					'episode_id' => array(
+						'type'     => 'integer',
+						'required' => true,
+					),
+				),
+			)
+		);
+
+		register_rest_route(
+			'castory/v1',
+			'/library/watch-later',
+			array(
+				'methods'             => \WP_REST_Server::CREATABLE,
+				'callback'            => array( $this, 'toggle_watch_later' ),
+				'permission_callback' => array( $this, 'library_write_permission' ),
+				'args'                => array(
+					'episode_id' => array(
+						'type'     => 'integer',
+						'required' => true,
+					),
+				),
+			)
+		);
+
+		register_rest_route(
+			'castory/v1',
+			'/playlists',
+			array(
+				array(
+					'methods'             => \WP_REST_Server::READABLE,
+					'callback'            => array( $this, 'get_playlists' ),
+					'permission_callback' => array( $this, 'library_read_permission' ),
+				),
+				array(
+					'methods'             => \WP_REST_Server::EDITABLE,
+					'callback'            => array( $this, 'save_playlists' ),
+					'permission_callback' => array( $this, 'library_write_permission' ),
+					'args'                => array(
+						'items' => array(
+							'type'  => 'array',
+							'items' => array( 'type' => 'object' ),
+						),
+					),
+				),
+				array(
+					'methods'             => \WP_REST_Server::CREATABLE,
+					'callback'            => array( $this, 'create_playlist' ),
+					'permission_callback' => array( $this, 'library_write_permission' ),
+					'args'                => array(
+						'name'        => array(
+							'type'     => 'string',
+							'required' => true,
+						),
+						'episode_ids' => array(
+							'type'  => 'array',
+							'items' => array( 'type' => 'integer' ),
+						),
+					),
+				),
+			)
+		);
+
+		register_rest_route(
+			'castory/v1',
+			'/playlists/(?P<id>pl_[a-zA-Z0-9_-]+)',
+			array(
+				array(
+					'methods'             => \WP_REST_Server::READABLE,
+					'callback'            => array( $this, 'get_playlist' ),
+					'permission_callback' => array( $this, 'library_read_permission' ),
+				),
+				array(
+					'methods'             => \WP_REST_Server::EDITABLE,
+					'callback'            => array( $this, 'update_playlist' ),
+					'permission_callback' => array( $this, 'library_write_permission' ),
+					'args'                => array(
+						'name'        => array( 'type' => 'string' ),
+						'episode_ids' => array(
+							'type'  => 'array',
+							'items' => array( 'type' => 'integer' ),
+						),
+					),
+				),
+				array(
+					'methods'             => \WP_REST_Server::DELETABLE,
+					'callback'            => array( $this, 'delete_playlist' ),
+					'permission_callback' => array( $this, 'library_write_permission' ),
+				),
+			)
+		);
+
+		register_rest_route(
+			'castory/v1',
+			'/profile',
+			array(
+				array(
+					'methods'             => \WP_REST_Server::READABLE,
+					'callback'            => array( $this, 'get_profile' ),
+					'permission_callback' => array( $this, 'profile_read_permission' ),
+				),
+				array(
+					'methods'             => \WP_REST_Server::EDITABLE,
+					'callback'            => array( $this, 'save_profile' ),
+					'permission_callback' => array( $this, 'profile_write_permission' ),
+					'args'                => array(
+						'bio'       => array( 'type' => 'string' ),
+						'location'  => array( 'type' => 'string' ),
+						'website'   => array( 'type' => 'string' ),
+						'cover_url' => array( 'type' => 'string' ),
+					),
+				),
+			)
+		);
+
+		register_rest_route(
+			'castory/v1',
+			'/playlists/(?P<id>pl_[a-zA-Z0-9_-]+)/episodes',
+			array(
+				'methods'             => \WP_REST_Server::CREATABLE,
+				'callback'            => array( $this, 'toggle_playlist_episode' ),
+				'permission_callback' => array( $this, 'library_write_permission' ),
+				'args'                => array(
+					'episode_id' => array(
+						'type'     => 'integer',
+						'required' => true,
+					),
+				),
+			)
+		);
 	}
 
 	/**
@@ -215,6 +411,383 @@ class Rest_Api {
 			),
 			200
 		);
+	}
+
+	public function profile_read_permission(): bool {
+		return is_user_logged_in();
+	}
+
+	public function profile_write_permission(): bool {
+		return is_user_logged_in();
+	}
+
+	/**
+	 * @param \WP_REST_Request $request Request object.
+	 */
+	public function get_profile( \WP_REST_Request $request ): \WP_REST_Response|\WP_Error {
+		$user_id = get_current_user_id();
+		if ( ! $user_id ) {
+			return new \WP_Error( 'castory_unauthorized', __( 'Login required.', 'castory' ), array( 'status' => 401 ) );
+		}
+
+		return new \WP_REST_Response( User_Profile::build_payload( $user_id ), 200 );
+	}
+
+	/**
+	 * @param \WP_REST_Request $request Request object.
+	 */
+	public function save_profile( \WP_REST_Request $request ): \WP_REST_Response|\WP_Error {
+		$user_id = get_current_user_id();
+		if ( ! $user_id ) {
+			return new \WP_Error( 'castory_unauthorized', __( 'Login required.', 'castory' ), array( 'status' => 401 ) );
+		}
+
+		$data = array();
+		foreach ( array( 'bio', 'location', 'website', 'cover_url' ) as $key ) {
+			if ( null !== $request->get_param( $key ) ) {
+				$data[ $key ] = (string) $request->get_param( $key );
+			}
+		}
+
+		if ( empty( $data ) ) {
+			return new \WP_Error( 'castory_invalid', __( 'No profile fields provided.', 'castory' ), array( 'status' => 400 ) );
+		}
+
+		User_Profile::update_fields( $user_id, $data );
+
+		return new \WP_REST_Response( User_Profile::build_payload( $user_id ), 200 );
+	}
+
+	public function progress_read_permission(): bool {
+		return is_user_logged_in();
+	}
+
+	public function progress_write_permission(): bool {
+		return is_user_logged_in();
+	}
+
+	/**
+	 * @param \WP_REST_Request $request Request object.
+	 */
+	public function get_progress( \WP_REST_Request $request ): \WP_REST_Response|\WP_Error {
+		$user_id = get_current_user_id();
+		if ( ! $user_id ) {
+			return new \WP_Error( 'castory_unauthorized', __( 'Login required.', 'castory' ), array( 'status' => 401 ) );
+		}
+
+		return new \WP_REST_Response(
+			array(
+				'items' => User_Progress::get_map( $user_id ),
+			),
+			200
+		);
+	}
+
+	/**
+	 * @param \WP_REST_Request $request Request object.
+	 */
+	public function save_progress( \WP_REST_Request $request ): \WP_REST_Response|\WP_Error {
+		$user_id = get_current_user_id();
+		if ( ! $user_id ) {
+			return new \WP_Error( 'castory_unauthorized', __( 'Login required.', 'castory' ), array( 'status' => 401 ) );
+		}
+
+		$episode_id = absint( $request->get_param( 'episode_id' ) );
+		$post       = get_post( $episode_id );
+		if ( ! $post instanceof \WP_Post || 'castory_episode' !== $post->post_type ) {
+			return new \WP_Error( 'castory_not_found', __( 'Episode not found.', 'castory' ), array( 'status' => 404 ) );
+		}
+
+		User_Progress::set_position(
+			$user_id,
+			$episode_id,
+			(float) $request->get_param( 'current_time' ),
+			(float) $request->get_param( 'duration' )
+		);
+
+		return new \WP_REST_Response(
+			array(
+				'saved'      => true,
+				'episode_id' => $episode_id,
+			),
+			200
+		);
+	}
+
+	public function library_read_permission(): bool {
+		return is_user_logged_in();
+	}
+
+	public function library_write_permission(): bool {
+		return is_user_logged_in();
+	}
+
+	/**
+	 * @param \WP_REST_Request $request Request object.
+	 */
+	public function get_library( \WP_REST_Request $request ): \WP_REST_Response|\WP_Error {
+		$user_id = get_current_user_id();
+		if ( ! $user_id ) {
+			return new \WP_Error( 'castory_unauthorized', __( 'Login required.', 'castory' ), array( 'status' => 401 ) );
+		}
+
+		return new \WP_REST_Response( User_Library::get_all( $user_id ), 200 );
+	}
+
+	/**
+	 * @param \WP_REST_Request $request Request object.
+	 */
+	public function save_library( \WP_REST_Request $request ): \WP_REST_Response|\WP_Error {
+		$user_id = get_current_user_id();
+		if ( ! $user_id ) {
+			return new \WP_Error( 'castory_unauthorized', __( 'Login required.', 'castory' ), array( 'status' => 401 ) );
+		}
+
+		$bookmarks  = $request->get_param( 'bookmarks' );
+		$watch_later = $request->get_param( 'watchLater' );
+
+		if ( is_array( $bookmarks ) ) {
+			$valid = $this->filter_valid_episode_ids( $bookmarks );
+			User_Library::set_bookmarks( $user_id, $valid );
+		}
+
+		if ( is_array( $watch_later ) ) {
+			$valid = $this->filter_valid_episode_ids( $watch_later );
+			User_Library::set_watch_later( $user_id, $valid );
+		}
+
+		return new \WP_REST_Response( User_Library::get_all( $user_id ), 200 );
+	}
+
+	/**
+	 * @param \WP_REST_Request $request Request object.
+	 */
+	public function toggle_bookmark( \WP_REST_Request $request ): \WP_REST_Response|\WP_Error {
+		$user_id = get_current_user_id();
+		if ( ! $user_id ) {
+			return new \WP_Error( 'castory_unauthorized', __( 'Login required.', 'castory' ), array( 'status' => 401 ) );
+		}
+
+		$episode_id = absint( $request->get_param( 'episode_id' ) );
+		if ( ! $this->episode_exists( $episode_id ) ) {
+			return new \WP_Error( 'castory_not_found', __( 'Episode not found.', 'castory' ), array( 'status' => 404 ) );
+		}
+
+		$added = User_Library::toggle_bookmark( $user_id, $episode_id );
+
+		return new \WP_REST_Response(
+			array(
+				'added'      => $added,
+				'episode_id' => $episode_id,
+				'bookmarks'  => User_Library::get_bookmarks( $user_id ),
+			),
+			200
+		);
+	}
+
+	/**
+	 * @param \WP_REST_Request $request Request object.
+	 */
+	public function toggle_watch_later( \WP_REST_Request $request ): \WP_REST_Response|\WP_Error {
+		$user_id = get_current_user_id();
+		if ( ! $user_id ) {
+			return new \WP_Error( 'castory_unauthorized', __( 'Login required.', 'castory' ), array( 'status' => 401 ) );
+		}
+
+		$episode_id = absint( $request->get_param( 'episode_id' ) );
+		if ( ! $this->episode_exists( $episode_id ) ) {
+			return new \WP_Error( 'castory_not_found', __( 'Episode not found.', 'castory' ), array( 'status' => 404 ) );
+		}
+
+		$added = User_Library::toggle_watch_later( $user_id, $episode_id );
+
+		return new \WP_REST_Response(
+			array(
+				'added'      => $added,
+				'episode_id' => $episode_id,
+				'watchLater' => User_Library::get_watch_later( $user_id ),
+			),
+			200
+		);
+	}
+
+	/**
+	 * @param \WP_REST_Request $request Request object.
+	 */
+	public function get_playlists( \WP_REST_Request $request ): \WP_REST_Response|\WP_Error {
+		$user_id = get_current_user_id();
+		if ( ! $user_id ) {
+			return new \WP_Error( 'castory_unauthorized', __( 'Login required.', 'castory' ), array( 'status' => 401 ) );
+		}
+
+		return new \WP_REST_Response(
+			array(
+				'items' => User_Playlists::get_all( $user_id ),
+			),
+			200
+		);
+	}
+
+	/**
+	 * @param \WP_REST_Request $request Request object.
+	 */
+	public function get_playlist( \WP_REST_Request $request ): \WP_REST_Response|\WP_Error {
+		$user_id = get_current_user_id();
+		if ( ! $user_id ) {
+			return new \WP_Error( 'castory_unauthorized', __( 'Login required.', 'castory' ), array( 'status' => 401 ) );
+		}
+
+		$playlist = User_Playlists::get_by_id( $user_id, (string) $request->get_param( 'id' ) );
+		if ( null === $playlist ) {
+			return new \WP_Error( 'castory_not_found', __( 'Playlist not found.', 'castory' ), array( 'status' => 404 ) );
+		}
+
+		return new \WP_REST_Response( $playlist, 200 );
+	}
+
+	/**
+	 * @param \WP_REST_Request $request Request object.
+	 */
+	public function save_playlists( \WP_REST_Request $request ): \WP_REST_Response|\WP_Error {
+		$user_id = get_current_user_id();
+		if ( ! $user_id ) {
+			return new \WP_Error( 'castory_unauthorized', __( 'Login required.', 'castory' ), array( 'status' => 401 ) );
+		}
+
+		$items = $request->get_param( 'items' );
+		if ( ! is_array( $items ) ) {
+			return new \WP_Error( 'castory_invalid', __( 'Invalid playlist payload.', 'castory' ), array( 'status' => 400 ) );
+		}
+
+		$clean = array();
+		foreach ( $items as $row ) {
+			if ( ! is_array( $row ) ) {
+				continue;
+			}
+			if ( isset( $row['episodeIds'] ) && is_array( $row['episodeIds'] ) ) {
+				$row['episodeIds'] = $this->filter_valid_episode_ids( $row['episodeIds'] );
+			}
+			$clean[] = $row;
+		}
+
+		User_Playlists::save_all( $user_id, $clean );
+
+		return new \WP_REST_Response(
+			array(
+				'items' => User_Playlists::get_all( $user_id ),
+			),
+			200
+		);
+	}
+
+	/**
+	 * @param \WP_REST_Request $request Request object.
+	 */
+	public function create_playlist( \WP_REST_Request $request ): \WP_REST_Response|\WP_Error {
+		$user_id = get_current_user_id();
+		if ( ! $user_id ) {
+			return new \WP_Error( 'castory_unauthorized', __( 'Login required.', 'castory' ), array( 'status' => 401 ) );
+		}
+
+		if ( count( User_Playlists::get_all( $user_id ) ) >= 50 ) {
+			return new \WP_Error( 'castory_limit', __( 'Playlist limit reached.', 'castory' ), array( 'status' => 400 ) );
+		}
+
+		$episode_ids = $this->filter_valid_episode_ids( (array) $request->get_param( 'episode_ids' ) );
+		$playlist    = User_Playlists::create( $user_id, (string) $request->get_param( 'name' ), $episode_ids );
+
+		if ( empty( $playlist ) ) {
+			return new \WP_Error( 'castory_create_failed', __( 'Could not create playlist.', 'castory' ), array( 'status' => 500 ) );
+		}
+
+		return new \WP_REST_Response( $playlist, 201 );
+	}
+
+	/**
+	 * @param \WP_REST_Request $request Request object.
+	 */
+	public function update_playlist( \WP_REST_Request $request ): \WP_REST_Response|\WP_Error {
+		$user_id = get_current_user_id();
+		if ( ! $user_id ) {
+			return new \WP_Error( 'castory_unauthorized', __( 'Login required.', 'castory' ), array( 'status' => 401 ) );
+		}
+
+		$data = array();
+		if ( null !== $request->get_param( 'name' ) ) {
+			$data['name'] = (string) $request->get_param( 'name' );
+		}
+		if ( is_array( $request->get_param( 'episode_ids' ) ) ) {
+			$data['episodeIds'] = $this->filter_valid_episode_ids( (array) $request->get_param( 'episode_ids' ) );
+		}
+
+		$playlist = User_Playlists::update( $user_id, (string) $request->get_param( 'id' ), $data );
+		if ( null === $playlist ) {
+			return new \WP_Error( 'castory_not_found', __( 'Playlist not found.', 'castory' ), array( 'status' => 404 ) );
+		}
+
+		return new \WP_REST_Response( $playlist, 200 );
+	}
+
+	/**
+	 * @param \WP_REST_Request $request Request object.
+	 */
+	public function delete_playlist( \WP_REST_Request $request ): \WP_REST_Response|\WP_Error {
+		$user_id = get_current_user_id();
+		if ( ! $user_id ) {
+			return new \WP_Error( 'castory_unauthorized', __( 'Login required.', 'castory' ), array( 'status' => 401 ) );
+		}
+
+		$deleted = User_Playlists::delete( $user_id, (string) $request->get_param( 'id' ) );
+		if ( ! $deleted ) {
+			return new \WP_Error( 'castory_not_found', __( 'Playlist not found.', 'castory' ), array( 'status' => 404 ) );
+		}
+
+		return new \WP_REST_Response( array( 'deleted' => true ), 200 );
+	}
+
+	/**
+	 * @param \WP_REST_Request $request Request object.
+	 */
+	public function toggle_playlist_episode( \WP_REST_Request $request ): \WP_REST_Response|\WP_Error {
+		$user_id = get_current_user_id();
+		if ( ! $user_id ) {
+			return new \WP_Error( 'castory_unauthorized', __( 'Login required.', 'castory' ), array( 'status' => 401 ) );
+		}
+
+		$episode_id = absint( $request->get_param( 'episode_id' ) );
+		if ( ! $this->episode_exists( $episode_id ) ) {
+			return new \WP_Error( 'castory_not_found', __( 'Episode not found.', 'castory' ), array( 'status' => 404 ) );
+		}
+
+		$playlist = User_Playlists::toggle_episode( $user_id, (string) $request->get_param( 'id' ), $episode_id );
+		if ( null === $playlist ) {
+			return new \WP_Error( 'castory_not_found', __( 'Playlist not found.', 'castory' ), array( 'status' => 404 ) );
+		}
+
+		return new \WP_REST_Response( $playlist, 200 );
+	}
+
+	/**
+	 * @param list<int>|mixed $ids Episode IDs.
+	 * @return list<int>
+	 */
+	private function filter_valid_episode_ids( $ids ): array {
+		if ( ! is_array( $ids ) ) {
+			return array();
+		}
+		$valid = array();
+		foreach ( $ids as $id ) {
+			$episode_id = absint( $id );
+			if ( $episode_id && $this->episode_exists( $episode_id ) ) {
+				$valid[] = $episode_id;
+			}
+		}
+		return array_values( array_unique( $valid ) );
+	}
+
+	private function episode_exists( int $episode_id ): bool {
+		$post = get_post( $episode_id );
+		return $post instanceof \WP_Post && 'castory_episode' === $post->post_type;
 	}
 
 	/**

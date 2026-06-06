@@ -68,6 +68,8 @@ class Public_Frontend {
 				'pluginUrl'        => CASTORY_PLUGIN_URL,
 				'pageUrls'         => $this->get_page_urls(),
 				'isLoggedIn'       => is_user_logged_in(),
+				'userId'           => get_current_user_id(),
+				'loginUrl'         => esc_url_raw( wp_login_url( get_permalink() ?: home_url( '/' ) ) ),
 				'currentEpisodeId' => is_singular( 'castory_episode' ) ? get_queried_object_id() : 0,
 				'usePermalinks'    => true,
 			)
@@ -94,6 +96,21 @@ class Public_Frontend {
 		wp_enqueue_script( 'castory-storage', $base . 'storage.js', $deps, CASTORY_VERSION, true );
 		$deps[] = 'castory-storage';
 
+		wp_enqueue_script( 'castory-library-data', $base . 'library-data.js', $deps, CASTORY_VERSION, true );
+		$deps[] = 'castory-library-data';
+
+		wp_enqueue_script( 'castory-playlists', $base . 'playlists.js', $deps, CASTORY_VERSION, true );
+		$deps[] = 'castory-playlists';
+
+		wp_enqueue_script(
+			'castory-profile-data',
+			$base . 'profile-data.js',
+			array( 'castory-storage', 'castory-library-data', 'castory-playlists' ),
+			CASTORY_VERSION,
+			true
+		);
+		$deps[] = 'castory-profile-data';
+
 		wp_enqueue_script( 'castory-mock-data', $base . 'mock-data.js', $deps, CASTORY_VERSION, true );
 		$deps[] = 'castory-mock-data';
 
@@ -104,12 +121,45 @@ class Public_Frontend {
 		$deps[] = 'castory-wp-data';
 
 		wp_enqueue_script( 'castory-nav', $base . 'components/nav.js', $deps, CASTORY_VERSION, true );
+		wp_enqueue_script( 'castory-player', $base . 'components/player.js', $deps, CASTORY_VERSION, true );
+		$deps[] = 'castory-player';
+
+		wp_enqueue_script( 'castory-quick-play', $base . 'components/quick-play.js', array( 'castory-player' ), CASTORY_VERSION, true );
+		$deps[] = 'castory-quick-play';
+
+		wp_enqueue_script( 'castory-library-actions', $base . 'components/library-actions.js', array( 'castory-storage' ), CASTORY_VERSION, true );
+		$deps[] = 'castory-library-actions';
+
 		wp_enqueue_script( 'castory-global-player', $base . 'components/global-player.js', $deps, CASTORY_VERSION, true );
 		wp_enqueue_script( 'castory-notifications', $base . 'components/notifications.js', $deps, CASTORY_VERSION, true );
 		wp_enqueue_script( 'castory-search', $base . 'components/search.js', $deps, CASTORY_VERSION, true );
 		$deps = array_merge( $deps, array( 'castory-nav', 'castory-global-player', 'castory-notifications', 'castory-search' ) );
 
 		wp_enqueue_script( 'castory-bootstrap', $base . 'castory.js', $deps, CASTORY_VERSION, true );
+
+		wp_enqueue_script(
+			'castory-wp-progress',
+			$base . 'castory-wp-progress.js',
+			array( 'castory-bootstrap', 'castory-storage', 'castory-wp-data', 'castory-player' ),
+			CASTORY_VERSION,
+			true
+		);
+
+		wp_enqueue_script(
+			'castory-wp-library',
+			$base . 'castory-wp-library.js',
+			array( 'castory-bootstrap', 'castory-storage', 'castory-wp-data', 'castory-library-actions' ),
+			CASTORY_VERSION,
+			true
+		);
+
+		wp_enqueue_script(
+			'castory-wp-playlists',
+			$base . 'castory-wp-playlists.js',
+			array( 'castory-bootstrap', 'castory-storage', 'castory-wp-data', 'castory-playlists' ),
+			CASTORY_VERSION,
+			true
+		);
 	}
 
 	private function enqueue_view_assets( string $view ): void {
@@ -161,13 +211,34 @@ class Public_Frontend {
 		}
 
 		if ( 'episode' === $view ) {
-			wp_enqueue_script( 'castory-episode-detail', CASTORY_PLUGIN_URL . 'public/js/episode-detail.js', array( 'castory-utils', 'castory-mock-data' ), CASTORY_VERSION, true );
+			wp_enqueue_script( 'castory-episode-detail', CASTORY_PLUGIN_URL . 'public/js/episode-detail.js', array( 'castory-utils', 'castory-mock-data', 'castory-player' ), CASTORY_VERSION, true );
 			$extra_deps[] = 'castory-episode-detail';
 
 			if ( 'audio' === self::$episode_media ) {
 				wp_enqueue_script( 'castory-sidebar', CASTORY_PLUGIN_URL . 'public/js/components/sidebar.js', array( 'castory-utils' ), CASTORY_VERSION, true );
 				$extra_deps[] = 'castory-sidebar';
 			}
+		}
+
+		if ( 'profile' === $view ) {
+			wp_enqueue_script(
+				'castory-wp-profile',
+				CASTORY_PLUGIN_URL . 'public/js/castory-wp-profile.js',
+				array( 'castory-bootstrap', 'castory-profile-data', 'castory-wp-data', 'castory-wp-progress', 'castory-wp-library', 'castory-wp-playlists' ),
+				CASTORY_VERSION,
+				true
+			);
+		}
+
+		if ( 'library' === $view ) {
+			wp_enqueue_script(
+				'castory-playlists-ui',
+				CASTORY_PLUGIN_URL . 'public/js/components/playlists-ui.js',
+				array( 'castory-playlists', 'castory-library-data', 'castory-player' ),
+				CASTORY_VERSION,
+				true
+			);
+			$extra_deps[] = 'castory-playlists-ui';
 		}
 
 		if ( file_exists( CASTORY_PLUGIN_DIR . 'public/js/pages/' . $assets['js'] ) ) {

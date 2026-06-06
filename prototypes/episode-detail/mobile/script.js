@@ -41,23 +41,32 @@
       '<p class="mobile-desc">' + ep.description + '</p></article>';
   }
 
-  var totalSeconds = Castory.EpisodeDetail.parseDuration(ep.duration);
-  var player = Castory.EpisodeDetail.bindPlayer({
-    playBtn: document.getElementById('miniPlay'),
-    progressFill: document.getElementById('miniProgress'),
-    totalSeconds: totalSeconds,
-    startAt: Math.floor(totalSeconds * 0.08),
+  Castory.Player.load(ep, {
+    resume: true,
+    ui: {
+      playBtn: document.getElementById('miniPlay'),
+      progressFill: document.getElementById('miniProgress'),
+    },
   });
 
   function buildFsContent() {
     var fs = document.getElementById('fsContent');
     var fc = document.getElementById('fsControls');
     if (isVideo) {
-      fs.innerHTML = '<img class="fs-video" src="' + ep.thumbnail + '" alt="">';
+      fs.innerHTML = '<div class="video-mount" id="fsVideoMount"></div>';
       fc.innerHTML =
         '<div class="progress player-progress seek-bar" id="fsSeek"><span class="progress-fill" id="fsProgress"></span></div>' +
         '<div class="player-controls-row">' +
         '<button type="button" class="play-btn" id="fsPlay">▶</button></div>';
+      Castory.Player.load(ep, {
+        resume: true,
+        container: document.getElementById('fsVideoMount'),
+        ui: {
+          playBtn: document.getElementById('fsPlay'),
+          progressFill: document.getElementById('fsProgress'),
+          progressBar: document.getElementById('fsSeek'),
+        },
+      });
     } else {
       fs.innerHTML =
         '<img src="' + ep.thumbnail + '" alt="" style="max-width:280px;border-radius:16px">' +
@@ -68,16 +77,16 @@
         '<button type="button" class="ctrl-btn" id="fsBack">↺ 15</button>' +
         '<button type="button" class="play-btn" id="fsPlay">▶</button>' +
         '<button type="button" class="ctrl-btn" id="fsFwd">30 ↻</button></div>';
-    }
 
-    Castory.EpisodeDetail.bindPlayer({
-      playBtn: document.getElementById('fsPlay'),
-      progressFill: document.getElementById('fsProgress'),
-      progressBar: document.getElementById('fsSeek'),
-      skipBack: document.getElementById('fsBack'),
-      skipForward: document.getElementById('fsFwd'),
-      totalSeconds: totalSeconds,
-    });
+      Castory.Player.bindUI({
+        playBtn: document.getElementById('fsPlay'),
+        progressFill: document.getElementById('fsProgress'),
+        progressBar: document.getElementById('fsSeek'),
+        skipBack: document.getElementById('fsBack'),
+        skipForward: document.getElementById('fsFwd'),
+        waveform: fs.querySelector('.waveform'),
+      });
+    }
   }
 
   function openFullscreen() {
@@ -122,8 +131,8 @@
   document.getElementById('shareBtn').addEventListener('click', function () {
     Castory.EpisodeDetail.showToast('Shared');
   });
-  document.getElementById('bookmarkBtn').addEventListener('click', function () {
-    Castory.EpisodeDetail.showToast('Bookmarked');
-  });
+  if (Castory.LibraryActions) {
+    Castory.LibraryActions.bindEpisode(ep, { bookmarkBtn: document.getElementById('bookmarkBtn') });
+  }
   });
 })();
