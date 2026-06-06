@@ -81,6 +81,7 @@ class Admin {
 
 		add_action( 'add_meta_boxes', array( $this, 'register_episode_meta_box' ) );
 		add_action( 'save_post_castory_episode', array( $this, 'save_episode_meta' ) );
+		add_action( 'admin_post_castory_import_sample', array( $this, 'handle_import_sample' ) );
 	}
 
 	/**
@@ -117,9 +118,23 @@ class Admin {
 		}
 
 		$page_ids = get_option( 'castory_page_ids', array() );
+		$imported = isset( $_GET['castory_imported'] ) ? absint( $_GET['castory_imported'] ) : null; // phpcs:ignore WordPress.Security.NonceVerification.Recommended
 		?>
 		<div class="wrap">
 			<h1><?php echo esc_html__( 'Castory Settings', 'castory' ); ?></h1>
+			<?php if ( null !== $imported ) : ?>
+				<div class="notice notice-success is-dismissible"><p>
+					<?php
+					echo esc_html(
+						sprintf(
+							/* translators: %d: number of episodes imported */
+							_n( '%d episode imported.', '%d episodes imported.', $imported, 'castory' ),
+							$imported
+						)
+					);
+					?>
+				</p></div>
+			<?php endif; ?>
 			<form method="post" action="options.php">
 				<?php
 				settings_fields( 'castory_settings_group' );
@@ -138,6 +153,13 @@ class Admin {
 					<?php endforeach; ?>
 				</ul>
 			<?php endif; ?>
+			<h2><?php esc_html_e( 'Sample Data', 'castory' ); ?></h2>
+			<p><?php esc_html_e( 'Import demo episodes from the Castory catalog (skips duplicates).', 'castory' ); ?></p>
+			<form method="post" action="<?php echo esc_url( admin_url( 'admin-post.php' ) ); ?>">
+				<?php wp_nonce_field( 'castory_import_sample', 'castory_import_nonce' ); ?>
+				<input type="hidden" name="action" value="castory_import_sample" />
+				<?php submit_button( __( 'Import Sample Episodes', 'castory' ), 'secondary' ); ?>
+			</form>
 		</div>
 		<?php
 	}
@@ -163,6 +185,7 @@ class Admin {
 		$views      = get_post_meta( $post->ID, '_castory_views', true );
 		$media_type = get_post_meta( $post->ID, '_castory_media_type', true ) ?: 'video';
 		$media_url  = get_post_meta( $post->ID, '_castory_media_url', true );
+		$creator    = get_post_meta( $post->ID, '_castory_creator_name', true );
 		?>
 		<p>
 			<label for="castory_media_type"><strong><? esc_html_e( 'Media type', 'castory' ); ?></strong></label><br />
@@ -182,6 +205,10 @@ class Admin {
 		<p>
 			<label for="castory_media_url"><strong><? esc_html_e( 'Media URL', 'castory' ); ?></strong></label><br />
 			<input type="url" name="castory_media_url" id="castory_media_url" value="<?php echo esc_url( (string) $media_url ); ?>" class="large-text" />
+		</p>
+		<p>
+			<label for="castory_creator_name"><strong><? esc_html_e( 'Creator name', 'castory' ); ?></strong></label><br />
+			<input type="text" name="castory_creator_name" id="castory_creator_name" value="<?php echo esc_attr( (string) $creator ); ?>" class="regular-text" placeholder="<?php esc_attr_e( 'Display name shown in UI', 'castory' ); ?>" />
 		</p>
 		<?php
 	}
@@ -207,10 +234,39 @@ class Admin {
 		$duration   = isset( $_POST['castory_duration'] ) ? sanitize_text_field( wp_unslash( $_POST['castory_duration'] ) ) : '';
 		$views      = isset( $_POST['castory_views'] ) ? absint( $_POST['castory_views'] ) : 0;
 		$media_url  = isset( $_POST['castory_media_url'] ) ? esc_url_raw( wp_unslash( $_POST['castory_media_url'] ) ) : '';
+		$creator    = isset( $_POST['castory_creator_name'] ) ? sanitize_text_field( wp_unslash( $_POST['castory_creator_name'] ) ) : '';
 
 		update_post_meta( $post_id, '_castory_media_type', in_array( $media_type, array( 'audio', 'video' ), true ) ? $media_type : 'video' );
 		update_post_meta( $post_id, '_castory_duration', $duration );
 		update_post_meta( $post_id, '_castory_views', $views );
 		update_post_meta( $post_id, '_castory_media_url', $media_url );
+		update_post_meta( $post_id, '_castory_creator_name', $creator );
+	}
+
+	/**
+	 * Handle sample episode import from settings page.
+	 */
+	public function handle_import_sample(): void {
+		if ( ! current_user_can( 'manage_options' ) ) {
+			wp_die( esc_html__( 'Unauthorized', 'castory' ) );
+		}
+
+		check_admin_referer( 'castory_import_sample', 'castory_import_nonce' );
+
+		require_once CASTORY_PLUGIN_DIR . 'includes/class-sample-data.php';
+		$count     = Sample_Data::import();
+		$backfilled = Sample_Data::backfill_creator_names();
+		$count     += $backfilled;
+
+		wp_safe_redirect(
+			add_query_arg(
+				array(
+					'page'             => 'castory',
+					'castory_imported' => $count,
+				),
+				admin_url( 'admin.php' )
+			)
+		);
+		exit;
 	}
 }

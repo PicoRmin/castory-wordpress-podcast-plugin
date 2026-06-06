@@ -81,6 +81,7 @@
   }
 
   document.addEventListener('DOMContentLoaded', function () {
+    Castory.whenReady(function () {
     Castory.Sidebar.init({ menuBtn: '#mobileMenu', sidebar: '#sidebar' });
 
     document.getElementById('creatorsSide').innerHTML = CASTORY_MOCK.creators.slice(0, 2).map(function (c) {
@@ -137,5 +138,6 @@
     });
 
     refresh();
+    });
   });
 })();

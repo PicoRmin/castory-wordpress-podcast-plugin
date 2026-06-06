@@ -54,11 +54,13 @@
 
   if (typeof document !== 'undefined') {
     document.addEventListener('DOMContentLoaded', function () {
-      if (_autoBooted) return;
-      if (document.body && document.body.hasAttribute('data-castory-app')) {
-        Castory.init();
-        _autoBooted = true;
-      }
+      Castory.whenReady(function () {
+        if (_autoBooted) return;
+        if (document.body.hasAttribute('data-castory-app') || document.querySelector('[data-castory-app]')) {
+          Castory.init();
+          _autoBooted = true;
+        }
+      });
     });
   }
 

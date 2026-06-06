@@ -7,9 +7,13 @@
   Castory.EpisodeDetail = {
     getFromQuery: function (defaultId, mediaType) {
       var params = new URLSearchParams(global.location.search);
-      var id = parseInt(params.get('id'), 10) || defaultId;
+      var id = parseInt(params.get('id'), 10);
+      if (!id && global.castoryConfig && global.castoryConfig.currentEpisodeId) {
+        id = parseInt(global.castoryConfig.currentEpisodeId, 10);
+      }
+      if (!id) id = defaultId;
       var ep = global.CASTORY_MOCK.getEpisodeById(id);
-      if (ep && mediaType && ep.mediaType !== mediaType) {
+      if (ep && mediaType && ep.mediaType !== mediaType && !global.castoryConfig) {
         var folder = ep.mediaType === 'audio' ? 'audio' : 'video';
         global.location.replace('../' + folder + '/index.html?id=' + ep.id);
         return null;

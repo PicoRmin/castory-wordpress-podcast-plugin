@@ -74,10 +74,11 @@
 |---|------|-------|
 | 1 | MockUp PNG restore | QA |
 | 2 | Bookmark UI → `Castory.Storage` | 9 |
-| 3 | Full WP template port (library, profile, trending…) | 8.4 |
-| 4 | Replace `CASTORY_MOCK` with REST in frontend JS | 8.5 |
-| 5 | a11y / SEO / cross-browser QA | 7.3 / 8 |
-| 6 | Gutenberg blocks | 8.4 optional |
+| 3 | ~~Full WP template port~~ | ✅ 8.4 done |
+| 4 | ~~Extend REST beyond episodes~~ | ✅ widgets + creators + trending |
+| 5 | Profile/library user widgets still mock | 9 |
+| 6 | a11y / SEO / cross-browser QA | 7.3 / 8 |
+| 7 | Gutenberg blocks | 8.4 optional |
 
 ---
 
@@ -95,10 +96,8 @@ Canonical structure in `docs/IA.md`. Sidebar varies by page (Explore has extende
 
 ## Next Steps
 
-1. Complete template port to `plugin/castory/templates/`
-2. Wire frontend JS to `/wp-json/castory/v1/episodes`
-3. Sample episode importer from mock data
-4. Phase 9 — user features, real player, premium
+1. Phase 9 — user library REST, real player, premium
+2. RSS import + Gutenberg blocks (optional 8.6)
 
 ---
 

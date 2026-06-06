@@ -121,5 +121,17 @@
     });
   };
 
+  /**
+   * Wait for WordPress REST hydration (castory-wp-data.js) before running page logic.
+   */
+  Castory.whenReady = function (fn) {
+    var ready = global.castoryDataReady;
+    if (ready && typeof ready.then === 'function') {
+      ready.then(function () { fn(); }).catch(function () { fn(); });
+      return;
+    }
+    fn();
+  };
+
   global.Castory = Castory;
 })(typeof window !== 'undefined' ? window : globalThis);

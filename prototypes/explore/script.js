@@ -1,4 +1,5 @@
 (function () {
+  Castory.whenReady(function () {
   var R = CASTORY_MOCK.routes;
   var slides = CASTORY_MOCK.exploreHeroSlides;
   var currentSlide = 0;
@@ -322,5 +323,6 @@
     menuBtn: document.getElementById('menuBtn'),
     sidebar: document.getElementById('sidebar'),
     backdrop: document.getElementById('sidebarBackdrop'),
+  });
   });
 })();

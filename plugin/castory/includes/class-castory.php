@@ -44,6 +44,8 @@ final class Castory {
 		require_once CASTORY_PLUGIN_DIR . 'includes/class-post-types.php';
 		require_once CASTORY_PLUGIN_DIR . 'includes/class-templates.php';
 		require_once CASTORY_PLUGIN_DIR . 'includes/class-rest-api.php';
+		require_once CASTORY_PLUGIN_DIR . 'includes/class-widget-data.php';
+		require_once CASTORY_PLUGIN_DIR . 'includes/class-episode-routing.php';
 		require_once CASTORY_PLUGIN_DIR . 'admin/class-admin.php';
 		require_once CASTORY_PLUGIN_DIR . 'public/class-public.php';
 		require_once CASTORY_PLUGIN_DIR . 'public/class-shortcodes.php';
@@ -58,6 +60,9 @@ final class Castory {
 
 		$rest = new Rest_Api();
 		$this->loader->add_action( 'rest_api_init', $rest, 'register_routes' );
+
+		$routing = new Episode_Routing();
+		$routing->register();
 
 		if ( is_admin() ) {
 			$admin = new Admin();

@@ -20,10 +20,13 @@ class Activator {
 
 	public static function activate(): void {
 		require_once CASTORY_PLUGIN_DIR . 'includes/class-post-types.php';
+		require_once CASTORY_PLUGIN_DIR . 'includes/class-sample-data.php';
 		( new Post_Types() )->register();
 
 		self::create_default_pages();
 		self::seed_default_options();
+		Sample_Data::import_if_empty();
+		Sample_Data::backfill_creator_names();
 
 		flush_rewrite_rules();
 	}

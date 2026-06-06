@@ -3,22 +3,27 @@
  * Episode detail — [castory_episode id="123"]
  *
  * @package Castory
+ * @var int    $episode_id  Episode post ID.
+ * @var string $media_type  audio|video
  */
 
 defined( 'ABSPATH' ) || exit;
 
-/** @var int $episode_id */
 $episode_id = isset( $episode_id ) ? absint( $episode_id ) : 0;
 if ( ! $episode_id && isset( $_GET['id'] ) ) { // phpcs:ignore WordPress.Security.NonceVerification.Recommended
 	$episode_id = absint( $_GET['id'] ); // phpcs:ignore WordPress.Security.NonceVerification.Recommended
 }
-?>
-<div class="castory-root">
-  <div class="castory-episode-detail" data-castory-app data-episode-id="<?php echo esc_attr( (string) $episode_id ); ?>">
-    <main class="main-content" style="padding: var(--space-8);">
-      <nav class="breadcrumb" id="breadcrumb" aria-label="<?php esc_attr_e( 'Breadcrumb', 'castory' ); ?>"></nav>
-      <div id="episodeDetailMount" data-episode-id="<?php echo esc_attr( (string) $episode_id ); ?>"></div>
-      <p class="text-muted"><?php esc_html_e( 'Episode detail template — full UI port in Phase 8.4.', 'castory' ); ?></p>
-    </main>
-  </div>
-</div>
+
+$media_type = isset( $media_type ) ? sanitize_key( (string) $media_type ) : 'video';
+if ( $episode_id ) {
+	$meta = get_post_meta( $episode_id, '_castory_media_type', true );
+	if ( is_string( $meta ) && in_array( $meta, array( 'audio', 'video' ), true ) ) {
+		$media_type = $meta;
+	}
+}
+
+if ( 'audio' === $media_type ) {
+	include CASTORY_PLUGIN_DIR . 'templates/partials/episode-audio.php';
+} else {
+	include CASTORY_PLUGIN_DIR . 'templates/partials/episode-video.php';
+}

@@ -1,4 +1,5 @@
 (function () {
+  Castory.whenReady(function () {
   var params = new URLSearchParams(window.location.search);
   var id = parseInt(params.get('id'), 10) || 14;
   var ep = CASTORY_MOCK.getEpisodeById(id);
@@ -123,5 +124,6 @@
   });
   document.getElementById('bookmarkBtn').addEventListener('click', function () {
     Castory.EpisodeDetail.showToast('Bookmarked');
+  });
   });
 })();

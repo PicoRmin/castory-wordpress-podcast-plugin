@@ -146,6 +146,7 @@
   }
 
   document.addEventListener('DOMContentLoaded', function () {
+    Castory.whenReady(function () {
     renderHeroDots();
     updateHero();
     startCarousel();
@@ -201,6 +202,7 @@
       if (!e.target.closest('.create-wrap')) {
         document.getElementById('createMenu').classList.remove('is-open');
       }
+    });
     });
   });
 })();

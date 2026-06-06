@@ -104,10 +104,29 @@ class Shortcodes {
 
 		Public_Frontend::register_view( 'episode' );
 
+		$episode_id = absint( $atts['id'] );
+		if ( ! $episode_id && is_singular( 'castory_episode' ) ) {
+			$episode_id = get_queried_object_id();
+		}
+		if ( ! $episode_id && isset( $_GET['id'] ) ) { // phpcs:ignore WordPress.Security.NonceVerification.Recommended
+			$episode_id = absint( $_GET['id'] ); // phpcs:ignore WordPress.Security.NonceVerification.Recommended
+		}
+
+		$media_type = 'video';
+		if ( $episode_id ) {
+			$meta = get_post_meta( $episode_id, '_castory_media_type', true );
+			if ( is_string( $meta ) && in_array( $meta, array( 'audio', 'video' ), true ) ) {
+				$media_type = $meta;
+			}
+		}
+
+		Public_Frontend::$episode_media = $media_type;
+
 		return Templates::render(
 			'episode-detail',
 			array(
-				'episode_id' => absint( $atts['id'] ),
+				'episode_id' => $episode_id,
+				'media_type' => $media_type,
 			)
 		);
 	}

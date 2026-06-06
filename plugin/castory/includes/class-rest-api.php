@@ -60,6 +60,53 @@ class Rest_Api {
 				),
 			)
 		);
+
+		register_rest_route(
+			'castory/v1',
+			'/widgets',
+			array(
+				'methods'             => \WP_REST_Server::READABLE,
+				'callback'            => array( $this, 'get_widgets' ),
+				'permission_callback' => '__return_true',
+			)
+		);
+
+		register_rest_route(
+			'castory/v1',
+			'/creators',
+			array(
+				'methods'             => \WP_REST_Server::READABLE,
+				'callback'            => array( $this, 'get_creators' ),
+				'permission_callback' => '__return_true',
+				'args'                => array(
+					'limit' => array(
+						'type'    => 'integer',
+						'default' => 8,
+					),
+				),
+			)
+		);
+
+		register_rest_route(
+			'castory/v1',
+			'/trending',
+			array(
+				'methods'             => \WP_REST_Server::READABLE,
+				'callback'            => array( $this, 'get_trending' ),
+				'permission_callback' => '__return_true',
+				'args'                => array(
+					'media_type' => array(
+						'type'    => 'string',
+						'default' => 'all',
+						'enum'    => array( 'audio', 'video', 'all' ),
+					),
+					'limit'      => array(
+						'type'    => 'integer',
+						'default' => 12,
+					),
+				),
+			)
+		);
 	}
 
 	/**
@@ -135,26 +182,94 @@ class Rest_Api {
 	}
 
 	/**
+	 * @param \WP_REST_Request $request Request object.
+	 */
+	public function get_widgets( \WP_REST_Request $request ): \WP_REST_Response {
+		return new \WP_REST_Response( Widget_Data::get_widgets(), 200 );
+	}
+
+	/**
+	 * @param \WP_REST_Request $request Request object.
+	 */
+	public function get_creators( \WP_REST_Request $request ): \WP_REST_Response {
+		$limit = min( 20, max( 1, (int) $request->get_param( 'limit' ) ) );
+		return new \WP_REST_Response(
+			array(
+				'items' => Widget_Data::get_creators( $limit ),
+			),
+			200
+		);
+	}
+
+	/**
+	 * @param \WP_REST_Request $request Request object.
+	 */
+	public function get_trending( \WP_REST_Request $request ): \WP_REST_Response {
+		$media_type = (string) $request->get_param( 'media_type' );
+		$limit      = min( 50, max( 1, (int) $request->get_param( 'limit' ) ) );
+		$items      = Widget_Data::get_trending( $media_type, $limit );
+
+		return new \WP_REST_Response(
+			array(
+				'items' => $items,
+			),
+			200
+		);
+	}
+
+	/**
+	 * Public formatter for other Castory classes.
+	 *
+	 * @return array<string, mixed>
+	 */
+	public function format_episode_public( \WP_Post $post ): array {
+		return $this->format_episode( $post );
+	}
+
+	/**
 	 * @return array<string, mixed>
 	 */
 	private function format_episode( \WP_Post $post ): array {
 		$thumb = get_the_post_thumbnail_url( $post, 'medium' );
-		$terms = wp_get_post_terms( $post->ID, 'castory_category', array( 'fields' => 'names' ) );
+		if ( ! $thumb ) {
+			$thumb = get_post_meta( $post->ID, '_castory_thumbnail_url', true ) ?: '';
+		}
+		$terms     = wp_get_post_terms( $post->ID, 'castory_category', array( 'fields' => 'names' ) );
+		$views     = (int) get_post_meta( $post->ID, '_castory_views', true );
+		$published = strtotime( $post->post_date_gmt . ' GMT' ) * 1000;
+
+		$creator_meta = get_post_meta( $post->ID, '_castory_creator_name', true );
+		$creator      = is_string( $creator_meta ) && '' !== trim( $creator_meta )
+			? trim( $creator_meta )
+			: get_the_author_meta( 'display_name', (int) $post->post_author );
 
 		return array(
-			'id'          => $post->ID,
-			'title'       => get_the_title( $post ),
-			'description' => get_the_excerpt( $post ),
-			'creator'     => get_the_author_meta( 'display_name', (int) $post->post_author ),
-			'category'    => is_array( $terms ) && ! empty( $terms ) ? (string) $terms[0] : '',
-			'mediaType'   => get_post_meta( $post->ID, '_castory_media_type', true ) ?: 'video',
-			'duration'    => get_post_meta( $post->ID, '_castory_duration', true ) ?: '',
-			'views'       => (int) get_post_meta( $post->ID, '_castory_views', true ),
-			'viewsCount'  => (int) get_post_meta( $post->ID, '_castory_views', true ),
-			'thumbnail'   => $thumb ?: '',
-			'mediaUrl'    => get_post_meta( $post->ID, '_castory_media_url', true ) ?: '',
-			'publishedAt' => strtotime( $post->post_date_gmt . ' GMT' ) * 1000,
-			'permalink'   => get_permalink( $post ),
+			'id'              => $post->ID,
+			'title'           => get_the_title( $post ),
+			'description'     => get_the_excerpt( $post ) ?: wp_trim_words( wp_strip_all_tags( $post->post_content ), 40 ),
+			'creator'         => $creator,
+			'category'        => is_array( $terms ) && ! empty( $terms ) ? (string) $terms[0] : '',
+			'mediaType'       => get_post_meta( $post->ID, '_castory_media_type', true ) ?: 'video',
+			'duration'        => get_post_meta( $post->ID, '_castory_duration', true ) ?: '',
+			'views'           => $views,
+			'viewsCount'      => $views,
+			'viewsFormatted'  => self::format_views( $views ),
+			'thumbnail'       => $thumb,
+			'thumbnailUrl'    => $thumb,
+			'mediaUrl'        => get_post_meta( $post->ID, '_castory_media_url', true ) ?: '',
+			'publishedAt'     => $published,
+			'verified'        => false,
+			'permalink'       => get_permalink( $post ),
 		);
+	}
+
+	private static function format_views( int $count ): string {
+		if ( $count >= 1000000 ) {
+			return rtrim( rtrim( number_format( $count / 1000000, 1 ), '0' ), '.' ) . 'M';
+		}
+		if ( $count >= 1000 ) {
+			return (string) (int) round( $count / 1000 ) . 'K';
+		}
+		return (string) $count;
 	}
 }

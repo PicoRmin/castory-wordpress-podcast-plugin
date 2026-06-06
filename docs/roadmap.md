@@ -502,7 +502,7 @@ filtered.sort((a,b) => b.publishedAt - a.publishedAt);
 **هدف:** تبدیل UI به پلاگین WordPress واقعی  
 **مدت تخمینی:** ۱۰–۱۵ روز  
 **پیش‌نیاز:** فاز ۷  
-**وضعیت:** 🔄 foundation complete — [PHASE-8.md](./phases/PHASE-8.md)
+**وضعیت:** 🔄 templates + REST hydration complete — [PHASE-8.md](./phases/PHASE-8.md)
 
 ### ۸.۱ Plugin Scaffold
 
@@ -530,7 +530,7 @@ filtered.sort((a,b) => b.publishedAt - a.publishedAt);
 
 ### ۸.۴ Templates & Shortcodes
 
-- [ ] **🔴** Full HTML template port (home ✅, explore ✅, others shell)
+- [x] **🔴** Full HTML template port (all pages + episode audio/video)
 - [x] **🔴** Shortcodes: `[castory_home]`, `[castory_explore]`, `[castory_library]`, `[castory_profile]`, `[castory_trending]`, `[castory_new_episodes]`, `[castory_episode]`
 - [ ] **🟡** Gutenberg blocks (wrapper around shortcodes)
 
@@ -538,8 +538,11 @@ filtered.sort((a,b) => b.publishedAt - a.publishedAt);
 
 - [x] **🔴** `GET /wp-json/castory/v1/episodes`
 - [x] **🔴** `GET /wp-json/castory/v1/episodes/{id}`
-- [ ] **🟡** `GET /wp-json/castory/v1/trending`
-- [ ] **🟡** `GET /wp-json/castory/v1/creators`
+- [x] **🔴** Frontend JS hydration (`castory-wp-data.js` + `Castory.whenReady`)
+- [x] **🟡** Sample episode importer (activation + admin button)
+- [x] **🟡** `GET /wp-json/castory/v1/widgets` (hero, creators, topics)
+- [x] **🟡** `GET /wp-json/castory/v1/trending`
+- [x] **🟡** `GET /wp-json/castory/v1/creators`
 - [ ] **🟡** User endpoints: library، watch-later، progress (auth required)
 
 ### ۸.۶ Admin UI
@@ -549,7 +552,7 @@ filtered.sort((a,b) => b.publishedAt - a.publishedAt);
 - [ ] **🟡** Dashboard widget: stats overview
 - [ ] **🟡** Import tool (RSS feed → episodes)
 
-**خروجی فاز ۸:** 🔄 Plugin قابل نصب — foundation آماده؛ template port + REST frontend باقی‌مانده
+**خروجی فاز ۸:** 🔄 Plugin قابل نصب — UI کامل از shortcode؛ hero/creators و user features برای فاز ۹
 
 ---
 

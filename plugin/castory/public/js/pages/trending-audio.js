@@ -105,6 +105,7 @@
   }
 
   document.addEventListener('DOMContentLoaded', function () {
+    Castory.whenReady(function () {
     Castory.Sidebar.init({ menuBtn: '#mobileMenu', sidebar: '#sidebar' });
 
     Castory.Filters.initPills('.section-top .pill', {
@@ -156,5 +157,6 @@
 
     refresh();
     Castory.init({ sidebar: false, nav: true, globalPlayer: true, search: true, notifications: true, hydrateDates: true });
+    });
   });
 })();

@@ -52,6 +52,8 @@ class Post_Types {
 			'_castory_media_url'   => 'string',
 			'_castory_podcast_id'  => 'integer',
 			'_castory_published_at'=> 'integer',
+			'_castory_thumbnail_url' => 'string',
+			'_castory_creator_name'  => 'string',
 		);
 
 		foreach ( $meta_keys as $key => $type ) {

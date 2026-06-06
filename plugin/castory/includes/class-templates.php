@@ -52,6 +52,30 @@ class Templates {
 	 * Episode detail URL for a post ID.
 	 */
 	public static function episode_url( int $episode_id ): string {
+		if ( $episode_id > 0 && 'castory_episode' === get_post_type( $episode_id ) ) {
+			$permalink = get_permalink( $episode_id );
+			if ( is_string( $permalink ) && '' !== $permalink ) {
+				return $permalink;
+			}
+		}
 		return add_query_arg( 'id', $episode_id, self::page_url( 'castory-episode' ) );
+	}
+
+	/**
+	 * Common Castory page URLs for templates.
+	 *
+	 * @return array<string, string>
+	 */
+	public static function urls(): array {
+		return array(
+			'home'           => esc_url( self::page_url( 'castory-home' ) ),
+			'explore'        => esc_url( self::page_url( 'castory-explore' ) ),
+			'library'        => esc_url( self::page_url( 'castory-library' ) ),
+			'profile'        => esc_url( self::page_url( 'castory-profile' ) ),
+			'trending_video' => esc_url( self::page_url( 'castory-trending-video' ) ),
+			'trending_audio' => esc_url( self::page_url( 'castory-trending-audio' ) ),
+			'new_episodes'   => esc_url( self::page_url( 'castory-new-episodes' ) ),
+			'episode'        => esc_url( self::page_url( 'castory-episode' ) ),
+		);
 	}
 }

@@ -17,13 +17,32 @@
 
   CASTORY_MOCK.routes = routes;
 
-  var episodeBase = u.episode || '';
-  if (episodeBase && CASTORY_MOCK.getEpisodeUrl) {
+  if (CASTORY_MOCK.getEpisodeUrl) {
     var original = CASTORY_MOCK.getEpisodeUrl;
-    CASTORY_MOCK.getEpisodeUrl = function (episode) {
-      if (!episode || !episode.id) return original(episode, '../');
-      var sep = episodeBase.indexOf('?') === -1 ? '?' : '&';
-      return episodeBase + sep + 'id=' + episode.id;
+    var episodeBase = u.episode || '';
+
+    CASTORY_MOCK.getEpisodeUrl = function (episode, prefix) {
+      if (!episode || !episode.id) return original(episode, prefix);
+
+      if (episode.permalink) {
+        return episode.permalink;
+      }
+
+      if (global.castoryConfig && global.castoryConfig.usePermalinks) {
+        var list = CASTORY_MOCK.episodes || [];
+        for (var i = 0; i < list.length; i++) {
+          if (list[i].id === episode.id && list[i].permalink) {
+            return list[i].permalink;
+          }
+        }
+      }
+
+      if (episodeBase) {
+        var sep = episodeBase.indexOf('?') === -1 ? '?' : '&';
+        return episodeBase + sep + 'id=' + episode.id;
+      }
+
+      return original(episode, prefix);
     };
   }
 

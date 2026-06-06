@@ -1,4 +1,5 @@
 (function () {
+  Castory.whenReady(function () {
   var R = CASTORY_MOCK.routes;
   var LIB = CASTORY_MOCK.library;
   var user = CASTORY_MOCK.user;
@@ -315,5 +316,6 @@
     menuBtn: document.getElementById('menuBtn'),
     sidebar: document.getElementById('sidebar'),
     backdrop: document.getElementById('sidebarBackdrop'),
+  });
   });
 })();

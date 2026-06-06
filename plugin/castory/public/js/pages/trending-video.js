@@ -87,6 +87,7 @@
   }
 
   document.addEventListener('DOMContentLoaded', function () {
+    Castory.whenReady(function () {
     renderCategoryPills();
     renderEpisodes();
     renderPagination();
@@ -103,5 +104,6 @@
     }
 
     Castory.init({ sidebar: false, nav: true, globalPlayer: true, search: true, notifications: true });
+    });
   });
 })();

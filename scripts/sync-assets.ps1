@@ -30,9 +30,17 @@ Copy-Item "$proto\trending-video\app.js" "$plugin\js\pages\trending-video.js" -F
 Copy-Item "$proto\trending-audio\script.js" "$plugin\js\pages\trending-audio.js" -Force
 Copy-Item "$proto\new-episodes\js\main.js" "$plugin\js\pages\new-episodes.js" -Force
 
-# Preserve WP-only bridge (not in prototypes)
-if (-not (Test-Path "$plugin\js\castory-wp-bridge.js")) {
-  Write-Warning 'castory-wp-bridge.js missing — restore from plugin source.'
+Copy-Item "$proto\episode-detail\audio\page.css" "$plugin\css\pages\episode-audio.css" -Force
+Copy-Item "$proto\episode-detail\video\page.css" "$plugin\css\pages\episode-video.css" -Force
+Copy-Item "$proto\episode-detail\audio\script.js" "$plugin\js\pages\episode-audio.js" -Force
+Copy-Item "$proto\episode-detail\video\script.js" "$plugin\js\pages\episode-video.js" -Force
+
+# WP-only scripts (not overwritten by shared sync)
+$wpOnly = @('castory-wp-bridge.js', 'castory-wp-data.js')
+$wpOnly | ForEach-Object {
+  if (-not (Test-Path "$plugin\js\$_")) {
+    Write-Warning "$_ missing - restore from plugin source."
+  }
 }
 
 Write-Host "Synced assets to $plugin"

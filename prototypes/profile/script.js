@@ -1,4 +1,5 @@
 (function () {
+  Castory.whenReady(function () {
   var R = CASTORY_MOCK.routes;
   var user = CASTORY_MOCK.user;
   var PROF = CASTORY_MOCK.profile;
@@ -297,5 +298,6 @@
     menuBtn: document.getElementById('menuBtn'),
     sidebar: document.getElementById('sidebar'),
     backdrop: document.getElementById('sidebarBackdrop'),
+  });
   });
 })();

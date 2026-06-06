@@ -230,7 +230,7 @@ category     // string
 - [x] New Episodes → 15+ episodes + pagination + filters + Unsplash assets  
 - [x] Brand PodStream → **Castory**  
 - [ ] MockUp pixel QA — blocked until PNG restore  
-- [x] Trending Audio sidebar nav full hrefs  
+- [x] Trending Audio sidebar nav full hrefs
 
 ---
 
